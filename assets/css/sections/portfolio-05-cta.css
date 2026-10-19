@@ -1,0 +1,156 @@
+/* Seção 05 — Chamada final "Comece um projeto": barra de status + padrão de traços ao fundo.
+   Fonte: design/Main.dc.html (Claude Design) — valores literais do design. */
+
+.pf-cta {
+  background: #111111;
+}
+
+.pf-cta__bar {
+  border-top: 1px solid #212123;
+  padding-top: 24px;
+}
+
+.pf-cta__status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.pf-cta__st {
+  flex: none;
+  font-family: "Instrument Serif",serif;
+  font-style: italic;
+  font-size: 20px;
+  line-height: 1.3;
+  color: #b5b5b5;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.pf-cta__led {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 12px;
+  background: #6f7277;
+  vertical-align: middle;
+}
+
+.pf-sig {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  overflow: hidden;
+}
+
+.pf-sig__lines {
+  flex: 1 1 auto;
+  height: 14px;
+  background-image: repeating-linear-gradient(90deg,#3a3a3c 0 1px,transparent 1px 6px);
+}
+
+.pf-cta__main {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  min-height: 578px;
+  padding-block: var(--py);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 48px;
+}
+
+.pf-dash {
+  position: absolute;
+  z-index: 0;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 1440px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  pointer-events: none;
+}
+
+.pf-dash__g {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.pf-dash__g--end {
+  align-items: flex-end;
+}
+
+.pf-dash__g img {
+  height: 24px;
+  max-width: none;
+}
+
+.pf-dash__g span {
+  display: block;
+}
+
+.pf-cta__body {
+  position: relative;
+  z-index: 2;
+  max-width: 524px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.pf-cta__title {
+  font-family: "Cabin",sans-serif;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 1.2;
+  text-shadow: 0 0 24px #111111;
+}
+
+.pf-cta__text {
+  margin-block: 16px 32px !important;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #b5b5b5;
+}
+
+.pf-cta__aside {
+  position: relative;
+  z-index: 2;
+  align-self: flex-end;
+  max-width: 408px;
+  text-align: right;
+}
+
+@media (max-width: 767px) {
+  .pf-cta__st {
+    font-size: 16px;
+  }
+  .pf-cta__status-mid, .pf-cta__status-end, .pf-sig--2 {
+    display: none;
+  }
+  .pf-cta__main {
+    min-height: 526px;
+  }
+  .pf-dash {
+    left: calc(50% + 0.5px);
+  }
+  .pf-cta__aside {
+    align-self: stretch;
+    text-align: right;
+    font-size: 18px;
+  }
+  .pf-cta__title {
+    font-size: 28px;
+  }
+  .pf-cta__text {
+    font-size: 16px;
+  }
+}

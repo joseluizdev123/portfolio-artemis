@@ -1,0 +1,199 @@
+/* Footer.
+   Fonte: design/Main.dc.html (Claude Design) — valores literais do design. */
+
+.pf-ftr {
+  padding-top: var(--py);
+}
+
+.pf-ftr__top {
+  display: grid;
+  grid-template-columns: minmax(0,5fr) minmax(0,7fr);
+  gap: 32px;
+}
+
+.pf-ftr__claim {
+  max-width: 440px;
+  margin-top: 24px !important;
+  font-family: "Exo",sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+.pf-ftr__claim em {
+  font-style: normal;
+  color: #848485;
+}
+
+.pf-ftr__form {
+  display: flex;
+  gap: 8px;
+  max-width: 444px;
+  margin-top: 32px;
+}
+
+.pf-ftr__input {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 56px;
+  padding: 0 23px;
+  border: 1px solid #3a3a3c;
+  border-radius: 999px;
+  background: transparent;
+  color: #fff;
+  font: 400 16px/1.5 "Cabin",sans-serif;
+}
+
+.pf-ftr__input::placeholder {
+  color: #9d9d9d;
+}
+
+/* Desvio do design (correção): no design as 3 colunas têm 1fr e o e-mail (Exo 24, 292 px, sem ponto de quebra)
+   não cabe na coluna de contato (237 px em 1440) — vaza 20 px para fora da tela e cria rolagem lateral.
+   Como no site oficial, a coluna de contato tem a largura do e-mail (min-content: o e-mail não quebra, o endereço
+   quebra) e as outras duas dividem o resto.
+   No celular (≤767) vale a grade de 2 colunas do design, abaixo. */
+.pf-ftr__cols {
+  display: grid;
+  grid-template-columns: minmax(max-content,1fr) minmax(max-content,1fr) min-content; /* max-content: "Estudos de impacto" não quebra (1101–1170) */
+  gap: 32px;
+}
+
+.pf-ftr__h {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.pf-ftr__links {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #b5b5b5;
+}
+
+.pf-ftr__label {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #b5b5b5;
+}
+
+.pf-ftr__val {
+  display: block;
+  margin-top: 8px;
+  margin-bottom: 24px;
+  font-family: "Exo",sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.2;
+  color: #fff;
+}
+
+.pf-ftr__mid {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  margin-top: 64px;
+}
+
+.pf-ftr__icons {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+  display: flex;
+  gap: 8px;
+}
+
+.pf-ico {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #3a3a3c;
+  border-radius: 50%;
+}
+
+.pf-ico img {
+  width: 22px;
+  height: 22px;
+}
+
+.pf-ftr__legal {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 48px;
+  padding-bottom: 48px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #b5b5b5;
+}
+
+.pf-ftr__pattern {
+  height: 64px;
+  border-top: 1px solid #212123;
+  background-image: repeating-linear-gradient(110deg,transparent 0 16px,#212123 16px 17px);
+}
+
+@media (max-width: 1100px) {
+  .pf-ftr__top {
+    grid-template-columns: minmax(0,1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .pf-ftr {
+    padding-top: 60px;
+  }
+  .pf-ftr__claim {
+    font-size: 20px;
+  }
+  .pf-ftr__cols {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+  .pf-ftr__contact {
+    grid-column: span 2;
+  }
+  .pf-ftr__val {
+    font-size: 20px;
+  }
+  .pf-ftr__mid {
+    flex-wrap: wrap;
+  }
+  .pf-ftr__legal {
+    flex-direction: column;
+  }
+}
+
+/* Aviso da newsletter (prévia sem servidor) — acréscimo desta implementação */
+.pf-ftr__msg:empty {
+  margin-top: 0 !important; /* região live presente desde o carregamento, vazia até o aviso */
+}
+
+.pf-ftr__msg {
+  margin-top: 12px !important;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #9d9d9d;
+}
+
+/* Telas de 320 (fora do design, que vai até 390): 6 ícones × 48 + 5 × 8 = 328 px não cabem em 288 — quebram linha.
+   Onde cabem (≥ 360), nada muda. */
+.pf-ftr__icons {
+  flex-wrap: wrap;
+}
+
+/* Logo do rodapé: o <a> era inline em volta de uma imagem block — sem anel de foco visível e com área de clique
+   na largura da coluna inteira. Block com a largura da imagem (inline-block criaria espaço de descendente). */
+.pf-ftr__top > div > a:first-child {
+  display: block;
+  width: max-content;
+}

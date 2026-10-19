@@ -1,0 +1,141 @@
+/* Seção 02 — Filtro: faixas de elipses (topo/base), contagem de projetos e abas de categoria.
+   Fonte: design/Main.dc.html (Claude Design) — valores literais do design. */
+
+.pf-filter {
+  border-block: 1px solid #212123;
+}
+
+.pf-band {
+  height: 65px;
+  border-bottom: 1px solid #212123;
+}
+
+.pf-band--bottom {
+  border-bottom: 0;
+  border-top: 1px solid #212123;
+}
+
+.pf-band__pattern {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: clip;
+  box-shadow: inset 1px 0 0 #212123,inset -1px 0 0 #212123;
+}
+
+.pf-band__pattern--flip {
+  transform: scaleY(-1);
+}
+
+.pf-band__ell {
+  flex: none;
+  width: 686px;
+  height: 62px;
+}
+
+.pf-band__ell--mirror {
+  transform: scaleX(-1);
+}
+
+.pf-filter__in {
+  box-shadow: inset 1px 0 0 #212123,inset -1px 0 0 #212123;
+}
+
+.pf-hero__count {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 32px;
+  background: #09090b;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #9d9d9d;
+}
+
+.pf-hero__count strong {
+  color: #fff;
+  font-weight: 600;
+}
+
+.pf-tabs {
+  display: flex;
+  border-top: 1px solid #212123;
+}
+
+.pf-tab {
+  flex: 1 0 0;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 32px var(--px);
+  background: #09090b;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+  color: #fff;
+  border-left: 1px solid #212123;
+}
+
+.pf-tab:last-child {
+  border-right: 1px solid #212123;
+}
+
+.pf-tab:hover {
+  background: #111111;
+  color: #fff;
+}
+
+.pf-tab--on {
+  background: #ffffff;
+  color: #09090b;
+}
+
+.pf-tab--on:hover {
+  background: #ffffff;
+  color: #09090b;
+}
+
+@media (max-width: 767px) {
+  .pf-hero__count {
+    padding: 16px 20px;
+    font-size: 14px;
+  }
+  .pf-tabs {
+    display: grid;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+  .pf-tab, .pf-tab:first-child {
+    padding: 20px;
+    border-left: 0;
+    border-bottom: 1px solid #212123;
+  }
+  .pf-tab:nth-child(even) {
+    border-left: 1px solid #212123;
+  }
+  .pf-tab:last-child {
+    grid-column: span 2;
+    border-bottom: 0;
+    border-right: 0;
+  }
+}
+
+/* Filtro ativo: "Filtre por categoria" vira o link "Ver os projetos ↓" (assets/js/portfolio.js) */
+.pf-hero__count [data-pf-ver] {
+  color: #87baff;
+  font-weight: 600;
+}
+
+.pf-hero__count [data-pf-ver]:hover {
+  color: #ffffff;
+}
+
+/* Foco: a aba focada fica por cima das vizinhas (senão a seguinte cobre a borda direita do anel) */
+.pf-tab:focus-visible {
+  position: relative;
+  z-index: 1;
+}

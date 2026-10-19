@@ -1,0 +1,647 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Portfólio — Studio Artemis</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Cabin:wdth,wght@75..100,400..700&amp;family=Exo:wght@400..700&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#09090b}
+a{color:inherit;text-decoration:none}
+a:hover{color:#b5b5b5}
+.pf{--gray-0:#ffffff;--gray-300:#b5b5b5;--gray-400:#9d9d9d;--gray-500:#848485;--gray-800:#3a3a3c;--gray-900:#212123;--black-100:#111111;--black-200:#09090b;--blue-300:#87baff;--blue-400:#5499ff;--px:clamp(16px,2.2223vw,32px);--py:120px;background:#09090b;color:#ffffff;font-family:"Cabin",sans-serif;-webkit-font-smoothing:antialiased;min-width:0}
+.pf *{box-sizing:border-box}
+.pf p,.pf h1,.pf h2,.pf h3{margin:0}
+.pf img{display:block}
+.pf a:focus-visible,.pf button:focus-visible,.pf input:focus-visible{outline:2px solid #5499ff;outline-offset:3px}
+.wrap{width:100%;max-width:1440px;margin-inline:auto;padding-inline:var(--px)}
+.hdr{height:80px;display:flex;align-items:center;border-bottom:1px solid #212123;background:#09090b}
+.hdr__in{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.nav{display:flex;align-items:center;gap:24px;flex-wrap:wrap;justify-content:flex-end}
+.nav a{font-size:16px;line-height:1.5;white-space:nowrap}
+.nav__cur{position:relative}
+.nav__cur::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1px;background:#87baff}
+.nav__sep{width:4px;height:4px;background:#848485;flex:none}
+.nav__cta{font-weight:600}
+.menu-btn{display:none;min-height:44px;padding:0 4px;background:none;border:0;color:#fff;font:600 16px/1.5 "Cabin",sans-serif}
+.tag{display:inline-flex;align-items:center;height:20px;padding:0 6px;border-radius:2px;background:#87baff;color:#09090b;font-weight:700;font-size:12px;line-height:1;letter-spacing:.02em;text-transform:uppercase}
+.eyebrow{font-family:"Instrument Serif",serif;font-style:italic;font-size:20px;line-height:1.3;color:#b5b5b5}
+.hero{padding-top:var(--py);padding-bottom:var(--px)}
+.hero__box{position:relative;isolation:isolate;border:1px solid #212123;overflow:clip;background:radial-gradient(120% 90% at 50% 0%,#0f1420 0%,#09090b 60%)}
+.hero__fx{position:absolute;inset:0;z-index:0;width:100%;height:100%;display:block;pointer-events:none}
+.hero__glow{position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(50% 60% at 50% 55%,rgba(9,9,11,.92) 0%,rgba(9,9,11,.55) 55%,rgba(9,9,11,0) 100%)}
+.hero__intro{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;padding:96px var(--px) 104px;text-align:center}
+.hero__hint{position:absolute;right:16px;bottom:12px;z-index:1;font-family:"Instrument Serif",serif;font-style:italic;font-size:14px;line-height:1.3;color:#848485;pointer-events:none}
+.hero__title{max-width:982px;margin-top:24px !important;font-family:"Exo",sans-serif;font-weight:600;font-size:clamp(40px,4.3056vw,62px);line-height:1.1;text-wrap:pretty}
+.hero__title em{font-style:normal;color:#848485}
+.hero__lead{max-width:705px;margin-top:32px !important;font-size:18px;line-height:1.5;color:#b5b5b5}
+.filter{border-block:1px solid #212123}
+.band{height:65px;border-bottom:1px solid #212123}
+.band--bottom{border-bottom:0;border-top:1px solid #212123}
+.band__pattern{height:64px;display:flex;align-items:center;justify-content:center;overflow:clip;box-shadow:inset 1px 0 0 #212123,inset -1px 0 0 #212123}
+.band__pattern--flip{transform:scaleY(-1)}
+.band__ell{flex:none;width:686px;height:62px}
+.band__ell--mirror{transform:scaleX(-1)}
+.filter__in{box-shadow:inset 1px 0 0 #212123,inset -1px 0 0 #212123}
+.hero__count{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 32px;background:#09090b;font-size:16px;line-height:1.5;color:#9d9d9d}
+.hero__count strong{color:#fff;font-weight:600}
+.tabs{display:flex;border-top:1px solid #212123}
+.tab{flex:1 0 0;min-width:0;display:flex;align-items:center;justify-content:center;min-height:44px;padding:32px var(--px);background:#09090b;font-weight:600;font-size:16px;line-height:1.5;text-align:center;color:#fff;border-left:1px solid #212123}
+.tab:last-child{border-right:1px solid #212123}
+.tab:hover{background:#111111;color:#fff}
+.tab--on{background:#ffffff;color:#09090b}
+.tab--on:hover{background:#ffffff;color:#09090b}
+.feat{padding-block:64px calc(var(--py) - var(--px))}
+.feat__card{--mx:50%;--my:50%;--rx:0deg;--ry:0deg;--on:0;position:relative;isolation:isolate;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px;padding:32px;background-color:#111111;background-image:radial-gradient(rgba(132,132,133,.14) 1px,transparent 1.3px);background-size:24px 24px;overflow:clip}
+.feat__card::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:var(--on);transition:opacity .4s ease;background:radial-gradient(420px circle at var(--mx) var(--my),rgba(84,153,255,.16),transparent 65%)}
+.feat__card::after{content:"";position:absolute;inset:0;pointer-events:none;padding:1px;opacity:var(--on);transition:opacity .4s ease;background:radial-gradient(300px circle at var(--mx) var(--my),#87baff,transparent 70%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+.feat__media{position:relative;display:block;perspective:1200px;color:#fff}
+.feat__media .shot{transform:rotateX(var(--rx)) rotateY(var(--ry));transition:transform .25s ease-out,box-shadow .3s ease;box-shadow:0 30px 60px -30px rgba(0,0,0,.8)}
+.feat__media:hover .shot{box-shadow:0 40px 80px -30px rgba(84,153,255,.35)}
+.feat__open{position:absolute;left:50%;top:50%;z-index:2;display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:999px;background:#ffffff;color:#09090b;font-weight:600;font-size:16px;line-height:1.5;opacity:0;transform:translate(-50%,-40%);transition:opacity .25s ease,transform .3s cubic-bezier(.2,.7,.2,1);pointer-events:none}
+.feat__media:hover .feat__open,.feat__media:focus-visible .feat__open{opacity:1;transform:translate(-50%,-50%)}
+.feat__scan{position:absolute;left:0;right:0;top:28px;height:60px;z-index:1;pointer-events:none;background:linear-gradient(180deg,transparent,rgba(135,186,255,.18),transparent);animation:feat-scan 4.5s linear infinite}
+@keyframes feat-scan{from{transform:translateY(-60px)}to{transform:translateY(420px)}}
+@media (prefers-reduced-motion:reduce){.feat__scan{animation:none;display:none}.feat__media .shot{transform:none}}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:0;border-top:1px solid #212123;border-bottom:1px solid #212123}
+.fact{display:flex;flex-direction:column;gap:6px;padding:16px 16px 16px 0}
+.fact + .fact{padding-left:16px;border-left:1px solid #212123}
+.fact dt{font-family:"Instrument Serif",serif;font-style:italic;font-size:16px;line-height:1.3;color:#9d9d9d}
+.fact dd{margin:0;font-weight:600;font-size:16px;line-height:1.4;color:#fff}
+.feat__text{display:flex;flex-direction:column;justify-content:center;gap:24px;padding:32px}
+.meta{display:flex;flex-wrap:wrap;align-items:center;column-gap:8px;font-weight:600;font-size:16px;line-height:21px;color:#848485}
+.meta__lead{color:#fff}
+.feat__title{font-family:"Exo",sans-serif;font-weight:600;font-size:40px;line-height:1.2}
+.feat__desc{font-size:18px;line-height:1.5;color:#b5b5b5}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:17px 23px;border:1px solid #3a3a3c;border-radius:999px;font-weight:600;font-size:16px;line-height:1.5;white-space:nowrap;color:#fff;background:transparent}
+.btn:hover{border-color:#848485;color:#fff}
+.btn--pri{background:#ffffff;border-color:#ffffff;color:#09090b}
+.btn--pri:hover{background:#cecece;border-color:#cecece;color:#09090b}
+.shot{position:relative;width:100%;aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;background-color:#0d0d0f;background-image:repeating-linear-gradient(110deg,transparent 0 15px,#1a1a1c 15px 16px);border:1px solid #212123;overflow:hidden}
+.shot__bar{position:absolute;inset:0 0 auto;height:28px;display:flex;align-items:center;gap:6px;padding-inline:12px;background:#111111;border-bottom:1px solid #212123}
+.shot__dot{width:7px;height:7px;border-radius:50%;background:#3a3a3c}
+.shot__url{margin-left:8px;font-size:12px;line-height:1;color:#848485;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.shot__img{position:absolute;top:28px;left:0;width:100%;height:calc(100% - 28px);object-fit:cover;object-position:top center;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.card:hover .shot__img{transform:scale(1.04)}
+.shot__label{margin-top:28px;font-family:"Instrument Serif",serif;font-style:italic;font-size:18px;line-height:1.3;color:#848485;text-align:center;padding-inline:16px}
+.list{padding-bottom:var(--py)}
+.list__head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;padding-block:var(--py) 80px;border-top:1px solid #212123}
+.list__title{font-family:"Exo",sans-serif;font-weight:600;font-size:40px;line-height:1.2}
+.list__title em{font-style:normal;color:#848485}
+.list__note{max-width:520px;font-size:18px;line-height:1.5;color:#b5b5b5}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid #212123;border-left:1px solid #212123}
+.card{position:relative;display:flex;flex-direction:column;gap:24px;padding:32px;border-right:1px solid #212123;border-bottom:1px solid #212123;background:#09090b;transition:transform .35s cubic-bezier(.2,.7,.2,1),background-color .2s ease,box-shadow .2s ease}
+.card:hover{z-index:2;transform:scale(1.03);background:#111111;box-shadow:inset 0 0 0 1px #3a3a3c}
+.card__info{display:flex;flex-direction:column;gap:12px}
+.card__name{font-family:"Exo",sans-serif;font-weight:600;font-size:24px;line-height:31px}
+.card__go{display:inline-flex;align-items:center;gap:8px;min-height:44px;margin-top:auto;font-weight:600;font-size:16px;line-height:1.5;color:#fff}
+.card__go svg{transition:transform .2s ease}
+.card:hover .card__go svg{transform:translate(2px,-2px)}
+.banner{position:relative;isolation:isolate;overflow:clip;background:#111111;border-top:1px solid #212123}
+.banner__lines{display:flex;flex-direction:column;align-items:center;justify-content:center}
+.banner__curves{flex:none;width:1657px;height:193px}
+.banner__curves:first-child{margin-bottom:-1px}
+.banner__curves--flip{transform:scaleY(-1)}
+.banner__curves img{width:1657px;height:194px;max-width:none;margin-top:-0.4px}
+.banner__curves img.only-m{display:none}
+.banner__light{position:absolute;top:32px;left:calc(50% - 682px);width:1369px;height:345px;pointer-events:none}
+.pulse{position:absolute;left:calc(var(--x) * 1px);top:calc(var(--y) * 1px);width:32px;height:1px;background:linear-gradient(to right,transparent,#87baff);transform:rotate(var(--r,0deg))}
+.cta-card{grid-column:span 2;position:relative;display:flex;flex-direction:column;border-right:1px solid #212123;border-bottom:1px solid #212123;background:#111111;overflow:clip}
+.cta-card__body{flex:1 0 auto;display:flex;flex-direction:column;gap:24px;padding:48px}
+.cta-card__top{display:flex;align-items:flex-start;justify-content:space-between;gap:32px}
+.cta-card__title{max-width:560px;font-family:"Exo",sans-serif;font-weight:600;font-size:40px;line-height:1.2}
+.cta-card__title em{font-style:normal;color:#848485}
+.cta-card__text{max-width:520px;font-size:18px;line-height:1.5;color:#b5b5b5}
+.go{flex:none;width:96px;height:96px;display:flex;align-items:center;justify-content:center;border:1px solid #3a3a3c;border-radius:50%;color:#fff;transition:background-color .25s ease,color .25s ease,transform .35s cubic-bezier(.2,.7,.2,1)}
+.go:hover{background:#ffffff;color:#09090b;transform:rotate(45deg)}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:0;border-top:1px solid #212123}
+.stat{display:flex;flex-direction:column;gap:8px;padding:24px 48px;border-left:1px solid #212123}
+.stat:first-child{border-left:0}
+.stat dt{font-family:"Instrument Serif",serif;font-style:italic;font-size:18px;line-height:1.3;color:#9d9d9d}
+.stat dd{margin:0;font-family:"Exo",sans-serif;font-weight:600;font-size:40px;line-height:1.1;color:#fff}
+.stat dd span{font-size:20px;color:#848485}
+.diag{height:32px;border-top:1px solid #212123;background-image:repeating-linear-gradient(110deg,transparent 0 16px,#212123 16px 17px)}
+.cta{background:#111111}
+.cta__bar{border-top:1px solid #212123;padding-top:24px}
+.cta__status{display:flex;align-items:center;justify-content:space-between;gap:32px}
+.cta__st{flex:none;font-family:"Instrument Serif",serif;font-style:italic;font-size:20px;line-height:1.3;color:#b5b5b5;text-transform:uppercase;white-space:nowrap}
+.cta__led{display:inline-block;width:8px;height:8px;margin-right:12px;background:#6f7277;vertical-align:middle}
+.sig{flex:1 1 0;min-width:0;display:flex;align-items:center;gap:6px;overflow:hidden}
+.sig__lines{flex:1 1 auto;height:14px;background-image:repeating-linear-gradient(90deg,#3a3a3c 0 1px,transparent 1px 6px)}
+.cta__main{position:relative;isolation:isolate;overflow:clip;min-height:578px;padding-block:var(--py);display:flex;flex-direction:column;justify-content:space-between;gap:48px}
+.dash{position:absolute;z-index:0;left:50%;top:50%;transform:translate(-50%,-50%);width:1440px;display:flex;flex-direction:column;gap:15px;pointer-events:none}
+.dash__g{display:flex;flex-direction:column;align-items:flex-start;gap:15px}
+.dash__g--end{align-items:flex-end}
+.dash__g img{height:24px;max-width:none}
+.dash__g span{display:block}
+.cta__body{position:relative;z-index:2;max-width:524px;display:flex;flex-direction:column;align-items:flex-start}
+.cta__title{font-family:"Cabin",sans-serif;font-weight:600;font-size:40px;line-height:1.2;text-shadow:0 0 24px #111111}
+.cta__text{margin-block:16px 32px !important;font-size:18px;line-height:1.5;color:#b5b5b5}
+.cta__aside{position:relative;z-index:2;align-self:flex-end;max-width:408px;text-align:right}
+.ftr{padding-top:var(--py)}
+.ftr__top{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:32px}
+.ftr__claim{max-width:440px;margin-top:24px !important;font-family:"Exo",sans-serif;font-weight:600;font-size:24px;line-height:1.2}
+.ftr__claim em{font-style:normal;color:#848485}
+.ftr__form{display:flex;gap:8px;max-width:444px;margin-top:32px}
+.ftr__input{flex:1 1 auto;min-width:0;min-height:56px;padding:0 23px;border:1px solid #3a3a3c;border-radius:999px;background:transparent;color:#fff;font:400 16px/1.5 "Cabin",sans-serif}
+.ftr__input::placeholder{color:#9d9d9d}
+.ftr__cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}
+.ftr__h{font-weight:700;font-size:16px;line-height:1.5}
+.ftr__links{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-direction:column;gap:16px;font-size:16px;line-height:1.5;color:#b5b5b5}
+.ftr__label{font-size:16px;line-height:1.5;color:#b5b5b5}
+.ftr__val{display:block;margin-top:8px;margin-bottom:24px;font-family:"Exo",sans-serif;font-weight:600;font-size:24px;line-height:1.2;color:#fff}
+.ftr__mid{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-top:64px}
+.ftr__icons{list-style:none;margin:16px 0 0;padding:0;display:flex;gap:8px}
+.ico{width:48px;height:48px;display:flex;align-items:center;justify-content:center;border:1px solid #3a3a3c;border-radius:50%}
+.ico img{width:22px;height:22px}
+.ftr__legal{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-top:48px;padding-bottom:48px;font-size:16px;line-height:1.5;color:#b5b5b5}
+.ftr__pattern{height:64px;border-top:1px solid #212123;background-image:repeating-linear-gradient(110deg,transparent 0 16px,#212123 16px 17px)}
+@media (max-width:1100px){
+.nav{gap:16px}
+.feat__card{grid-template-columns:minmax(0,1fr)}
+.feat__text{padding:0}
+.grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.ftr__top{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:900px){
+.nav{display:none}
+.menu-btn{display:inline-flex;align-items:center}
+}
+@media (max-width:767px){
+.pf{--py:60px}
+.hdr{height:60px}
+.eyebrow{font-size:18px}
+.hero{padding-top:16px;padding-bottom:16px}
+.hero__intro{padding:48px 20px 56px}
+.hero__hint{display:none}
+.hero__title{margin-top:16px !important;font-size:32px;line-height:38px}
+.hero__lead{margin-top:16px !important;font-size:16px}
+.hero__count{padding:16px 20px;font-size:14px}
+.tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.tab,.tab:first-child{padding:20px;border-left:0;border-bottom:1px solid #212123}
+.tab:nth-child(even){border-left:1px solid #212123}
+.tab:last-child{grid-column:span 2;border-bottom:0;border-right:0}
+.feat{padding-block:40px 60px}
+.feat{padding-block:0 60px}
+.feat__card{padding:16px;gap:24px}
+.feat__title{font-size:32px}
+.feat__desc{font-size:16px}
+.list__head{padding-block:60px 40px}
+.list__title{font-size:32px}
+.list__note{font-size:16px}
+.grid{grid-template-columns:minmax(0,1fr)}
+.card{padding:20px;gap:20px}
+.card:hover{transform:none}
+.banner__curves{width:709px;height:82.6px}
+.banner__curves img.only-d{display:none}
+.banner__curves img.only-m{display:block;width:709px;height:83px;margin-top:-0.17px}
+.banner__lines{align-items:flex-start}
+.banner__light{top:7px;left:5px;width:144px;height:148px}
+.pulse{left:calc(var(--mx) * 1px);top:calc(var(--my) * 1px);width:13.7px}
+.cta-card{grid-column:auto}
+.cta-card__body{padding:24px;gap:20px}
+.go{width:56px;height:56px}
+.cta-card__title{font-size:28px}
+.cta-card__text{font-size:16px}
+.stats{grid-template-columns:minmax(0,1fr)}
+.stat{flex-direction:row;align-items:baseline;justify-content:space-between;padding:16px 24px;border-left:0;border-top:1px solid #212123}
+.stat:first-child{border-top:0}
+.stat dd{font-size:28px}
+.cta__st{font-size:16px}
+.cta__status-mid,.cta__status-end,.sig--2{display:none}
+.cta__main{min-height:526px}
+.dash{left:calc(50% + 0.5px)}
+.cta__aside{align-self:stretch;text-align:right;font-size:18px}
+.cta__title{font-size:28px}
+.cta__text{font-size:16px}
+.ftr{padding-top:60px}
+.ftr__claim{font-size:20px}
+.ftr__cols{grid-template-columns:repeat(2,minmax(0,1fr))}
+.ftr__contact{grid-column:span 2}
+.ftr__val{font-size:20px}
+.ftr__mid{flex-wrap:wrap}
+.ftr__legal{flex-direction:column}
+.btn{padding:13px 20px}
+}
+</style>
+</helmet>
+<div class="pf">
+
+<header class="hdr">
+<div class="wrap hdr__in">
+<div style="display: flex; align-items: center; gap: 24px">
+<a href="https://studioartemis.co/" aria-label="Studio Artemis — página inicial"><img src="/_blob/888a800e05de8f8e7def4a353e0e524a" width="137" height="32" alt="Artemis"></a>
+<span class="tag">Portfólio</span>
+</div>
+<nav class="nav" aria-label="Principal">
+<a href="https://studioartemis.co/">Início</a>
+<a href="https://studioartemis.co/servicos">Serviços</a>
+<a href="https://studioartemis.co/#estudos">Estudos de impacto</a>
+<a class="nav__cur" href="https://studioartemis.co/portfolio-artemis/" aria-current="page">Portfólio</a>
+<a href="https://studioartemis.co/blog">Blog</a>
+<a href="https://studioartemis.co/sobre">Sobre</a>
+<a href="https://studioartemis.co/mktops">MktOps</a>
+<span class="nav__sep" aria-hidden="true"></span>
+<a class="nav__cta" href="https://studioartemis.co/contato">Comece um projeto</a>
+</nav>
+<button class="menu-btn" type="button" aria-label="Abrir menu">Menu</button>
+</div>
+</header>
+
+<main>
+<section class="hero" aria-labelledby="pf-title">
+<div class="wrap">
+<div class="hero__box" onMouseMove="{{onMove}}" onMouseLeave="{{onLeave}}">
+<canvas class="hero__fx" aria-hidden="true"></canvas>
+<div class="hero__glow" aria-hidden="true"></div>
+<p class="hero__hint" aria-hidden="true">Passe o cursor</p>
+<div class="hero__intro">
+<p class="eyebrow">Portfólio</p>
+<h1 class="hero__title" id="pf-title">Sites e plataformas que o Studio Artemis <em>desenhou e colocou no ar</em></h1>
+<p class="hero__lead">Sites institucionais, plataformas, onepages e blogs feitos para empresas implementarem estratégias de marketing e vendas. Cada projeto abre a versão publicada.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="filter" aria-label="Filtro do portfólio">
+<div class="band" aria-hidden="true">
+<div class="wrap"><div class="band__pattern"><img class="band__ell band__ell--mirror" src="/_blob/1b72b3ce5acbcc20148a4fea678d570b" alt=""><img class="band__ell" src="/_blob/d46ae096333db4a5724716bd64e8ba8e" alt=""></div></div>
+</div>
+<div class="wrap">
+<div class="filter__in">
+<div class="hero__count">
+<p><strong>23 projetos</strong> no portfólio</p>
+<p>Filtre por categoria</p>
+</div>
+<nav class="tabs" aria-label="Categorias do portfólio">
+<a class="tab tab--on" href="#todos" aria-current="true">Todos</a>
+<a class="tab" href="#site">Site</a>
+<a class="tab" href="#plataforma">Plataforma</a>
+<a class="tab" href="#onepage">Onepage</a>
+<a class="tab" href="#blog">Blog</a>
+</nav>
+</div>
+</div>
+<div class="band band--bottom" aria-hidden="true">
+<div class="wrap"><div class="band__pattern band__pattern--flip"><img class="band__ell band__ell--mirror" src="/_blob/1b72b3ce5acbcc20148a4fea678d570b" alt=""><img class="band__ell" src="/_blob/d46ae096333db4a5724716bd64e8ba8e" alt=""></div></div>
+</div>
+</section>
+
+<section class="feat" aria-labelledby="feat-title">
+<div class="wrap">
+<article class="feat__card" onMouseMove="{{onFeatMove}}" onMouseLeave="{{onFeatLeave}}">
+<a class="feat__media" href="https://expousipa.com" target="_blank" rel="noopener noreferrer" aria-label="Abrir o site da Expo Usipa">
+<div class="shot" role="img" aria-label="Captura de tela do site Expo Usipa">
+<div class="shot__bar" aria-hidden="true"><span class="shot__dot"></span><span class="shot__dot"></span><span class="shot__dot"></span><span class="shot__url">expousipa.com</span></div>
+<img class="shot__img" src="/_blob/eba5717ed591540ecbd4caa783003628" alt="">
+<span class="feat__scan" aria-hidden="true"></span>
+</div>
+<span class="feat__open" aria-hidden="true">Abrir site
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</span>
+</a>
+<div class="feat__text">
+<span class="tag" style="align-self: flex-start">Em destaque</span>
+<p class="meta"><span class="meta__lead">Site de evento</span><span aria-hidden="true">·</span><span>expousipa.com</span></p>
+<h2 class="feat__title" id="feat-title">Expo Usipa</h2>
+<p class="feat__desc">Site oficial da feira, com contagem regressiva para a próxima edição, galeria de momentos do evento e acesso à Vitrine Digital e à área restrita dos expositores.</p>
+<dl class="facts">
+<div class="fact"><dt>Formato</dt><dd>Site de evento</dd></div>
+<div class="fact"><dt>Destaque</dt><dd>Contagem regressiva</dd></div>
+<div class="fact"><dt>Acesso</dt><dd>Vitrine Digital</dd></div>
+</dl>
+<div class="btns">
+<a class="btn btn--pri" href="https://expousipa.com" target="_blank" rel="noopener noreferrer">Ver site no ar
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</a>
+</div>
+</div>
+</article>
+</div>
+</section>
+
+<section class="list" aria-labelledby="list-title">
+<div class="wrap">
+<div class="list__head">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<p class="eyebrow">Todos os projetos</p>
+<h2 class="list__title" id="list-title">Do site institucional <em>à plataforma</em></h2>
+</div>
+<p class="list__note">Cada cartão leva ao projeto publicado. Os que ainda estão em ambiente de teste ou protótipo estão indicados.</p>
+</div>
+<div class="grid">
+<sc-for list="{{projects}}" as="p" hint-placeholder-count="6">
+<article class="card">
+<div class="shot" role="img" aria-label="{{p.alt}}">
+<div class="shot__bar" aria-hidden="true"><span class="shot__dot"></span><span class="shot__dot"></span><span class="shot__dot"></span><span class="shot__url">{{p.domain}}</span></div>
+<sc-if value="{{p.hasImg}}" hint-placeholder-val="{{ false }}"><img class="shot__img" src="{{p.img}}" alt=""></sc-if>
+<sc-if value="{{p.noImg}}" hint-placeholder-val="{{ true }}"><p class="shot__label">Captura do site</p></sc-if>
+</div>
+<div class="card__info">
+<p class="meta"><span class="meta__lead">{{p.n}}</span><span aria-hidden="true">·</span><span>{{p.domain}}</span></p>
+<h3 class="card__name">{{p.name}}</h3>
+</div>
+<a class="card__go" href="{{p.href}}" target="_blank" rel="noopener noreferrer">{{p.cta}}
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</a>
+</article>
+</sc-for>
+<aside class="cta-card" aria-labelledby="cta-card-title">
+<div class="cta-card__body">
+<div class="cta-card__top">
+<div>
+<p class="eyebrow">Próximo projeto</p>
+<h2 class="cta-card__title" id="cta-card-title" style="margin-top: 16px">O próximo site do portfólio <em>pode ser o seu</em></h2>
+</div>
+<a class="go" href="https://studioartemis.co/contato" aria-label="Comece um projeto">
+<svg width="28" height="28" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</a>
+</div>
+<p class="cta-card__text">Site institucional, plataforma, onepage ou blog. Conte o que você precisa e montamos o caminho.</p>
+<div class="btns">
+<a class="btn btn--pri" href="https://studioartemis.co/contato">Comece um projeto</a>
+<a class="btn" href="https://studioartemis.co/servicos">Ver serviços</a>
+</div>
+</div>
+<dl class="stats">
+<div class="stat"><dt>Projetos</dt><dd>23</dd></div>
+<div class="stat"><dt>Formatos</dt><dd>04</dd></div>
+<div class="stat"><dt>Primeira resposta</dt><dd>1 dia <span>útil</span></dd></div>
+</dl>
+<div class="diag" aria-hidden="true"></div>
+</aside>
+</div>
+</div>
+</section>
+
+<section class="cta" aria-labelledby="cta-title">
+<div class="cta__bar" aria-hidden="true">
+<div class="wrap cta__status">
+<p class="cta__st"><span class="cta__led"></span>System: Artemis portfolio</p>
+<span class="sig"><img src="/_blob/c756cfb8d95cff8a9bc48dc9ef7e20af" width="37" height="14" alt=""><span class="sig__lines"></span><img src="/_blob/23c83e428c47129e47b0ae5562da8112" width="55" height="14" alt=""></span>
+<p class="cta__st cta__status-mid">[ Status: online ]</p>
+<span class="sig sig--2"><img src="/_blob/c756cfb8d95cff8a9bc48dc9ef7e20af" width="37" height="14" alt=""><span class="sig__lines"></span><img src="/_blob/23c83e428c47129e47b0ae5562da8112" width="55" height="14" alt=""></span>
+<p class="cta__st cta__status-end">[ Projetos: 23 ]</p>
+</div>
+</div>
+<div class="wrap cta__main">
+<div class="dash" aria-hidden="true">
+<div class="dash__g">
+<img src="/_blob/23f4bf9dd6b65169ce7a28164fed8951" style="width: 610.5px" alt="">
+<img src="/_blob/6bf457b13f2057a8611a5b116942fb14" style="width: 610.5px" alt="">
+<img src="/_blob/c1244f05899bf94cb0a4b0548405122d" style="width: 610.5px" alt="">
+<img src="/_blob/53d09a3b4554d1e3225aaf093a607bb7" style="width: 702px" alt="">
+<img src="/_blob/1da5a76e80b1e2de6c09ffea2e5eaa01" style="width: 702px" alt="">
+<img src="/_blob/9544b82573a3da573579f768c9c5374c" style="width: 1038px" alt="">
+</div>
+<div class="dash__g dash__g--end">
+<span style="width: 519px"><img src="/_blob/5bd366e28a2077652df914bad083f497" style="width: 516.75px" alt=""></span>
+<span style="width: 610.5px"><img src="/_blob/4320ad9f3843bf15ae8c9f508617b11d" style="width: 605.25px" alt=""></span>
+<span style="width: 610.5px"><img src="/_blob/7454c0a80fb7c7cd52cfcff1e4c585e1" style="width: 605.25px" alt=""></span>
+<span style="width: 610.5px"><img src="/_blob/93d0beac7b33b84090470ebee1ea17fd" style="width: 516px" alt=""></span>
+<span style="width: 428.25px"><img src="/_blob/b41cb9cbbb483b026ab903ce564b8383" style="width: 339px" alt=""></span>
+<span style="width: 522px"><img src="/_blob/6a1be81dccd1807dad2683539d7805cd" style="width: 251.25px" alt=""></span>
+</div>
+</div>
+<p class="cta__aside eyebrow">Resposta em até 1 dia útil. Atendimento remoto em todo o Brasil.</p>
+<div class="cta__body">
+<h2 class="cta__title" id="cta-title">Comece um projeto</h2>
+<p class="cta__text">Conte o objetivo, o prazo e o que já existe hoje. Voltamos com escopo, etapas e a primeira proposta de estrutura do site.</p>
+<a class="btn btn--pri" href="https://studioartemis.co/contato">Comece um projeto</a>
+</div>
+</div>
+</section>
+</main>
+
+<footer class="ftr">
+<div class="wrap">
+<div class="ftr__top">
+<div>
+<a href="https://studioartemis.co/" aria-label="Studio Artemis — página inicial"><img src="/_blob/8de4e42ce0268e4f5396c1732c392328" width="137" height="32" alt="Artemis"></a>
+<p class="ftr__claim">Automação aplicada à operação, direto no seu e-mail. <em>Publicamos quando temos algo concreto para dizer.</em></p>
+<form class="ftr__form" action="#" method="post">
+<label for="ftr-email" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Seu endereço de e-mail</label>
+<input class="ftr__input" id="ftr-email" type="email" name="email" placeholder="Seu endereço de e-mail" autocomplete="email">
+<button class="btn btn--pri" type="submit">Enviar</button>
+</form>
+</div>
+<div class="ftr__cols">
+<nav aria-labelledby="ftr-a">
+<h2 class="ftr__h" id="ftr-a">Artemis</h2>
+<ul class="ftr__links">
+<li><a href="https://studioartemis.co/servicos">Serviços</a></li>
+<li><a href="https://studioartemis.co/#estudos">Estudos de impacto</a></li>
+<li><a href="https://studioartemis.co/portfolio-artemis/">Portfólio</a></li>
+<li><a href="https://studioartemis.co/blog">Blog</a></li>
+<li><a href="https://studioartemis.co/sobre">Sobre</a></li>
+<li><a href="https://studioartemis.co/contato">Contato</a></li>
+</ul>
+</nav>
+<nav aria-labelledby="ftr-b">
+<h2 class="ftr__h" id="ftr-b">Outras linhas</h2>
+<ul class="ftr__links">
+<li><a href="https://studioartemis.co/artemis-seo/">Artemis SEO</a></li>
+<li><a href="https://studioartemis.co/mktops/">MktOps</a></li>
+</ul>
+</nav>
+<address class="ftr__contact" style="font-style: normal">
+<p class="ftr__label">Fale conosco</p>
+<a class="ftr__val" href="mailto:contato@studioartemis.co">contato@studioartemis.co</a>
+<p class="ftr__label">WhatsApp</p>
+<a class="ftr__val" href="https://wa.me/554800000000">+55 (48) 0000-0000</a>
+<p class="ftr__label">Endereço</p>
+<p class="ftr__val">R. Fúlvio Aducci, 416 — Florianópolis, SC</p>
+</address>
+</div>
+</div>
+<div class="ftr__mid">
+<div>
+<p class="ftr__label">Social</p>
+<ul class="ftr__icons">
+<li><a class="ico" href="#" aria-label="Instagram"><img src="/_blob/ec9ec5ed7e98e0e2fc1d9d7887708b4d" alt=""></a></li>
+<li><a class="ico" href="#" aria-label="YouTube"><img src="/_blob/2afe469301e5f1a6cc1f7a8851b7e5f2" alt=""></a></li>
+<li><a class="ico" href="#" aria-label="LinkedIn"><img src="/_blob/bb356bcaa0876c47d5580d2240f806a4" alt=""></a></li>
+<li><a class="ico" href="#" aria-label="Behance"><img src="/_blob/c3a60f4ea34bfd9a5cdd1ccb42f390d0" alt=""></a></li>
+<li><a class="ico" href="#" aria-label="Dribbble"><img src="/_blob/b4671c828273e433c3df7c1b1cb860ce" alt=""></a></li>
+<li><a class="ico" href="#" aria-label="X (Twitter)"><img src="/_blob/8921d260e6ccb9568f5d2fb6e3c2d4d1" alt=""></a></li>
+</ul>
+</div>
+<a href="#pf-title" style="display: flex; flex-direction: column; align-items: flex-end; gap: 16px"><span class="ftr__label">Voltar ao topo</span><span class="ico"><img src="/_blob/1b3c2481c09bcc6ca1ce2f36d8b9d0e9" alt=""></span></a>
+</div>
+<div class="ftr__legal">
+<p>© 2026 Studio Artemis. Todos os direitos reservados.</p>
+<div style="display: flex; gap: 24px"><a href="https://studioartemis.co/politica-de-privacidade">Política de privacidade</a><a href="https://studioartemis.co/termos-de-uso">Termos de uso</a></div>
+</div>
+</div>
+<div class="ftr__pattern" aria-hidden="true"></div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":7050}}'>
+class Component extends DCLogic {
+  componentDidMount() {
+    var self = this;
+    this.mouse = { x: -9999, y: -9999, on: false };
+    this.onMove = function (e) {
+      var c = self.cv; if (!c) return;
+      var r = c.getBoundingClientRect();
+      self.mouse.x = e.clientX - r.left; self.mouse.y = e.clientY - r.top; self.mouse.on = true;
+    };
+    this.onLeave = function () { self.mouse.on = false; };
+    this.forceUpdate();
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var start = function () {
+      var c = document.querySelector('.hero__fx');
+      if (!c) { self.raf = requestAnimationFrame(start); return; }
+      self.cv = c;
+      var ctx = c.getContext('2d');
+      var dpr = Math.min(window.devicePixelRatio || 1, 2);
+      var W = 0, H = 0, cols = [], gap = 24;
+      var size = function () {
+        var r = c.getBoundingClientRect();
+        W = r.width; H = r.height;
+        c.width = Math.round(W * dpr); c.height = Math.round(H * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        cols = [];
+        for (var x = gap / 2; x < W; x += gap) {
+          var col = [];
+          for (var y = gap / 2; y < H; y += gap) col.push({ x: x, y: y, s: Math.random() * 6.28, b: Math.random() < 0.06 });
+          cols.push(col);
+        }
+      };
+      size();
+      self.ro = new ResizeObserver(size); self.ro.observe(c);
+      var mx = -9999, my = -9999, glow = 0;
+      var draw = function (t) {
+        ctx.clearRect(0, 0, W, H);
+        var m = self.mouse;
+        glow += ((m.on ? 1 : 0) - glow) * 0.08;
+        if (m.on) { mx += (m.x - mx) * 0.18; my += (m.y - my) * 0.18; if (mx < -999) { mx = m.x; my = m.y; } }
+        var R = 190, sweep = (t * 0.00012 % 1.4 - 0.2) * W;
+        for (var i = 0; i < cols.length; i++) {
+          var col = cols[i];
+          for (var j = 0; j < col.length; j++) {
+            var p = col[j];
+            var dx = p.x - mx, dy = p.y - my, d = Math.sqrt(dx * dx + dy * dy);
+            var near = d < R ? (1 - d / R) * glow : 0;
+            var wave = Math.max(0, 1 - Math.abs(p.x - sweep) / 90) * 0.35;
+            var tw = p.b ? (Math.sin(t * 0.002 + p.s) * 0.5 + 0.5) * 0.5 : 0;
+            var k = Math.min(1, near * 1.2 + wave + tw);
+            var px = p.x, py = p.y;
+            if (near > 0) { px -= dx * near * 0.12; py -= dy * near * 0.12; }
+            if (k > 0.04) {
+              ctx.fillStyle = 'rgba(' + Math.round(132 + (84 - 132) * k) + ',' + Math.round(132 + (153 - 132) * k) + ',' + Math.round(133 + (255 - 133) * k) + ',' + (0.18 + k * 0.82) + ')';
+              var h = 2 + k * 10;
+              ctx.fillRect(px - 0.6, py - h / 2, 1.2, h);
+            } else {
+              ctx.fillStyle = 'rgba(132,132,133,0.16)';
+              ctx.fillRect(px - 0.6, py - 0.6, 1.2, 1.2);
+            }
+          }
+        }
+        if (!reduce) self.raf = requestAnimationFrame(draw);
+      };
+      if (reduce) draw(0); else self.raf = requestAnimationFrame(draw);
+    };
+    start();
+  }
+  componentWillUnmount() {
+    if (this.raf) cancelAnimationFrame(this.raf);
+    if (this.ro) this.ro.disconnect();
+  }
+  renderVals() {
+    var raw = [
+      ['ARV Incorporação & Tecnologia', 'arvinc.com.br', 'https://arvinc.com.br'],
+      ['Zeros à Direita', 'zerosadireita.com', 'https://zerosadireita.com'],
+      ['ebrain', 'ebrain.clinic', 'https://ebrain.clinic'],
+      ['CashWay', 'cashway.io', 'https://cashway.io'],
+      ['Grupo CMD', 'institucional.grupocmd.com.br', 'https://institucional.grupocmd.com.br'],
+      ['3Neuron', '3neuron.com', 'https://3neuron.com'],
+      ['Do Telematics', 'dotelematics.com', 'https://dotelematics.com'],
+      ['FaleUp', 'faleup.com.br', 'https://faleup.com.br'],
+      ['Lebensart – Porsche', 'Ambiente de teste', 'https://testeskatz.artemisdigital.net', 'Ver ambiente de teste'],
+      ['Mais Previdência', 'maisprevidencia.com.br', 'https://maisprevidencia.com.br'],
+      ['Instacont', 'instacont.com.br', 'https://instacont.com.br'],
+      ['FORZA BR', 'forzabr.com.br', 'https://forzabr.com.br'],
+      ['oithe', 'Protótipo no Figma · web e mobile', '#', 'Ver protótipo'],
+      ['SysMiddle', 'sysmiddle.com.br', 'https://sysmiddle.com.br'],
+      ['Voxy', 'voxy.com', 'https://voxy.com'],
+      ['BID Consultoria', 'bidconsultoria.com', 'https://bidconsultoria.com'],
+      ['ESGreen', 'esgreen.com.br', 'https://esgreen.com.br'],
+      ['Nivéro', 'nivero.co', 'https://nivero.co'],
+      ['Bolsa de terras', 'bolsadeterras.com.br', 'https://bolsadeterras.com.br'],
+      ['Intacta', 'intactaengenharia.com.br', 'https://intactaengenharia.com.br'],
+      ['Global Supply', 'consultoriaglobalsupply.com.br', 'https://consultoriaglobalsupply.com.br'],
+      ['Lorenza Franceschi', 'lf.arq.br', 'https://lf.arq.br']
+    ];
+    var imgs = {
+      'ARV Incorporação & Tecnologia': '/_blob/1afb7d525e22e97a4d4c356ec21cfbed',
+      'Zeros à Direita': '/_blob/3eac843e38bafeab3b22a3f504c63219',
+      'CashWay': '/_blob/3078a5a001ad6b9d56b1f27bd08655a6',
+      'Grupo CMD': '/_blob/f562a04a3c7f0c03e8a18ae7abaf5639',
+      '3Neuron': '/_blob/9f61858927aaa2f6ff079ca882c529e6',
+      'ebrain': '/_blob/f61f6c7da5d08a8e5aed263ccedbb31c',
+      'Do Telematics': '/_blob/3548ee6bf408132bd16a3bcf105638f4',
+      'FaleUp': '/_blob/c40e4b542de4a431166b66aa948681de',
+      'Mais Previdência': '/_blob/fd74214905336978b5e8587631c15ea3',
+      'Instacont': '/_blob/9191656c442321539cf1b542a4d8abae',
+      'FORZA BR': '/_blob/ba8249e61ea7ca188263b8a781952233',
+      'SysMiddle': '/_blob/44be9e838fbbf0fc9d7216e6296009f3',
+      'Voxy': '/_blob/66f7c09a7186f0560d25fd03b35ba53b',
+      'BID Consultoria': '/_blob/a16e2f4454f504413b08ee2bbfb8decf',
+      'ESGreen': '/_blob/c09543e29716ab5648ed21d3c0b9d6d3',
+      'Bolsa de terras': '/_blob/f5bd9b4f5c0dbf0a995800c8fd1f7fff',
+      'Intacta': '/_blob/08fb832cfb6bc14e68a950e5cbe18db0',
+      'Global Supply': '/_blob/f6ea02928350bbcc177cda9c55298e17',
+      'Lorenza Franceschi': '/_blob/1e12860c71d4d8a5e16e8c04ed15dc4b'
+    };
+    var projects = raw.map(function (r, i) {
+      var n = i + 2;
+      var img = imgs[r[0]] || '';
+      return {
+        img: img,
+        hasImg: !!img,
+        noImg: !img,
+        n: (n < 10 ? '0' : '') + n,
+        name: r[0],
+        domain: r[1],
+        href: r[2],
+        cta: r[3] || 'Ver site no ar',
+        alt: (img ? 'Captura de tela do projeto ' : 'Espaço para a captura de tela do projeto ') + r[0]
+      };
+    });
+    var self = this;
+    return {
+      projects: projects,
+      onMove: function (e) { if (self.onMove) self.onMove(e); },
+      onFeatMove: function (e) {
+        var el = e.currentTarget, r = el.getBoundingClientRect();
+        var x = e.clientX - r.left, y = e.clientY - r.top;
+        el.style.setProperty('--mx', x + 'px');
+        el.style.setProperty('--my', y + 'px');
+        el.style.setProperty('--on', '1');
+        el.style.setProperty('--ry', ((x / r.width - 0.5) * 8).toFixed(2) + 'deg');
+        el.style.setProperty('--rx', (-(y / r.height - 0.5) * 6).toFixed(2) + 'deg');
+      },
+      onFeatLeave: function (e) {
+        var el = e.currentTarget;
+        el.style.setProperty('--on', '0');
+        el.style.setProperty('--rx', '0deg');
+        el.style.setProperty('--ry', '0deg');
+      },
+      onLeave: function () { if (self.onLeave) self.onLeave(); }
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!-- Seção 04 — Todos os projetos (design .list): o marcador CARDS recebe um src/partials/card.html por item de src/projetos.json (tools/build.py) -->
+<section class="pf-list" id="projetos" aria-labelledby="list-title">
+<div class="pf-wrap">
+<div class="pf-list__head">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<p class="pf-eyebrow" data-pf-rotulo>Todos os projetos</p>
+<h2 class="pf-list__title" id="list-title">Do site institucional <em>à plataforma</em></h2>
+</div>
+<p class="pf-list__note">Cada cartão leva ao projeto publicado. Os que ainda estão em ambiente de teste ou protótipo estão indicados.</p>
+</div>
+<div class="pf-grid" id="pf-grid">
+{{CARDS}}
+<aside class="pf-cta-card" aria-labelledby="cta-card-title">
+<div class="pf-cta-card__body">
+<div class="pf-cta-card__top">
+<div>
+<p class="pf-eyebrow">Próximo projeto</p>
+<h2 class="pf-cta-card__title" id="cta-card-title" style="margin-top: 16px">O próximo site do portfólio <em>pode ser o seu</em></h2>
+</div>
+<a class="pf-go" href="https://studioartemis.co/contato" aria-label="Comece um projeto">
+<svg width="28" height="28" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</a>
+</div>
+<p class="pf-cta-card__text">Site institucional, plataforma, onepage ou blog. Conte o que você precisa e montamos o caminho.</p>
+<div class="pf-btns">
+<a class="pf-btn pf-btn--pri" href="https://studioartemis.co/contato">Comece um projeto</a>
+<a class="pf-btn" href="https://studioartemis.co/servicos">Ver serviços</a>
+</div>
+</div>
+<dl class="pf-stats">
+<div class="pf-stat"><dt>Projetos</dt><dd>23</dd></div>
+<div class="pf-stat"><dt>Formatos</dt><dd>04</dd></div>
+<div class="pf-stat"><dt>Primeira resposta</dt><dd>1 dia <span>útil</span></dd></div>
+</dl>
+<div class="pf-diag" aria-hidden="true"></div>
+</aside>
+</div>
+</div>
+</section>

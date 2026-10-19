@@ -1,0 +1,6 @@
+# gerados localmente pela validação (tools/referencia.py, tools/medir.mjs)
+referencia/
+_site/
+.claude/
+__pycache__/
+*.tmp

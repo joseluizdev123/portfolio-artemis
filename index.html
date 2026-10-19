@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfólio — Sites e plataformas do Studio Artemis</title>
+<meta name="description" content="Sites institucionais, plataformas, onepages e blogs feitos para empresas implementarem estratégias de marketing e vendas. Cada projeto abre a versão publicada.">
+<!-- Prévia fora do site oficial: não indexar enquanto a página não for aprovada -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cabin:wdth,wght@75..100,400..700&family=Exo:wght@400..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/base.css?v=1792427969">
+<link rel="stylesheet" href="assets/css/sections/header.css?v=1792427969">
+<link rel="stylesheet" href="assets/css/sections/portfolio-01-hero.css?v=1792424552">
+<link rel="stylesheet" href="assets/css/sections/portfolio-02-filtro.css?v=1792427969">
+<link rel="stylesheet" href="assets/css/sections/portfolio-03-destaque.css?v=1792424004">
+<link rel="stylesheet" href="assets/css/sections/portfolio-04-projetos.css?v=1792427969">
+<link rel="stylesheet" href="assets/css/sections/portfolio-05-cta.css?v=1792423919">
+<link rel="stylesheet" href="assets/css/sections/footer.css?v=1792427969">
+</head>
+<body>
+<div class="pf">
+
+<!-- Header · variante Portfólio (design/Main.dc.html .hdr): logo + selo "Portfólio", "Portfólio" como item atual, CTA "Comece um projeto" -->
+<header class="pf-hdr">
+<div class="pf-wrap pf-hdr__in">
+<div style="display: flex; align-items: center; gap: 24px">
+<a href="https://studioartemis.co/" aria-label="Studio Artemis — página inicial"><img src="assets/images/header/logo-artemis.svg" width="137" height="32" alt="Artemis"></a>
+<span class="pf-tag">Portfólio</span>
+</div>
+<nav class="pf-nav" aria-label="Principal">
+<a href="https://studioartemis.co/">Início</a>
+<a href="https://studioartemis.co/servicos">Serviços</a>
+<a href="https://studioartemis.co/#estudos">Estudos de impacto</a>
+<a class="pf-nav__cur" href="https://studioartemis.co/portfolio-artemis/" aria-current="page">Portfólio</a>
+<a href="https://studioartemis.co/blog">Blog</a>
+<a href="https://studioartemis.co/sobre">Sobre</a>
+<a href="https://studioartemis.co/mktops">MktOps</a>
+<span class="pf-nav__sep" aria-hidden="true"></span>
+<a class="pf-nav__cta" href="https://studioartemis.co/contato">Comece um projeto</a>
+</nav>
+<button class="pf-menu-btn" type="button" aria-expanded="false" aria-controls="pf-menu" data-pf-menu-btn>Menu</button>
+</div>
+<!-- Menu do celular/tablet (≤900, onde o botão "Menu" aparece): o design só mostra o botão fechado; o painel abre abaixo do header -->
+<nav class="pf-menu" id="pf-menu" aria-label="Principal" hidden data-extra>
+<a href="https://studioartemis.co/">Início</a>
+<a href="https://studioartemis.co/servicos">Serviços</a>
+<a href="https://studioartemis.co/#estudos">Estudos de impacto</a>
+<a href="https://studioartemis.co/portfolio-artemis/" aria-current="page">Portfólio</a>
+<a href="https://studioartemis.co/blog">Blog</a>
+<a href="https://studioartemis.co/sobre">Sobre</a>
+<a href="https://studioartemis.co/mktops">MktOps</a>
+<a class="pf-menu__cta" href="https://studioartemis.co/contato">Comece um projeto</a>
+</nav>
+</header>
+
+<main>
+<!-- Seção 01 — Hero (design/Main.dc.html .hero): campo de pontos em <canvas> que acende perto do cursor (assets/js/portfolio.js) -->
+<section class="pf-hero" aria-labelledby="pf-title">
+<div class="pf-wrap">
+<div class="pf-hero__box">
+<canvas class="pf-hero__fx" aria-hidden="true"></canvas>
+<div class="pf-hero__glow" aria-hidden="true"></div>
+<p class="pf-hero__hint" aria-hidden="true">Passe o cursor</p>
+<div class="pf-hero__intro">
+<p class="pf-eyebrow">Portfólio</p>
+<h1 class="pf-hero__title" id="pf-title">Sites e plataformas que o Studio Artemis <em>desenhou e colocou no ar</em></h1>
+<p class="pf-hero__lead">Sites institucionais, plataformas, onepages e blogs feitos para empresas implementarem estratégias de marketing e vendas. Cada projeto abre a versão publicada.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Seção 02 — Filtro (design .filter): faixas de elipses, contagem e abas de categoria -->
+<section class="pf-filter" aria-label="Filtro do portfólio">
+<div class="pf-band" aria-hidden="true">
+<div class="pf-wrap"><div class="pf-band__pattern"><img class="pf-band__ell pf-band__ell--mirror" src="assets/images/faixa/ellipse-a.svg" alt=""><img class="pf-band__ell" src="assets/images/faixa/ellipse-b.svg" alt=""></div></div>
+</div>
+<div class="pf-wrap">
+<div class="pf-filter__in">
+<div class="pf-hero__count" aria-live="polite" data-pf-contagem>
+<p><strong>23 projetos</strong> no portfólio</p>
+<p>Filtre por categoria</p>
+</div>
+<nav class="pf-tabs" aria-label="Categorias do portfólio" data-pf-filtro>
+<a class="pf-tab pf-tab--on" href="#todos" aria-current="true" aria-controls="pf-grid" data-filtro="todos">Todos</a>
+<a class="pf-tab" href="#site" aria-controls="pf-grid" data-filtro="site">Site</a>
+<a class="pf-tab" href="#plataforma" aria-controls="pf-grid" data-filtro="plataforma">Plataforma</a>
+<a class="pf-tab" href="#onepage" aria-controls="pf-grid" data-filtro="onepage">Onepage</a>
+<a class="pf-tab" href="#blog" aria-controls="pf-grid" data-filtro="blog">Blog</a>
+</nav>
+</div>
+</div>
+<div class="pf-band pf-band--bottom" aria-hidden="true">
+<div class="pf-wrap"><div class="pf-band__pattern pf-band__pattern--flip"><img class="pf-band__ell pf-band__ell--mirror" src="assets/images/faixa/ellipse-a.svg" alt=""><img class="pf-band__ell" src="assets/images/faixa/ellipse-b.svg" alt=""></div></div>
+</div>
+</section>
+
+<!-- Seção 03 — Projeto em destaque (design .feat): luz e inclinação 3D seguem o cursor (assets/js/portfolio.js) -->
+<section class="pf-feat" aria-labelledby="feat-title">
+<div class="pf-wrap">
+<article class="pf-feat__card" data-categorias="site">
+<a class="pf-feat__media" href="https://expousipa.com" target="_blank" rel="noopener noreferrer" aria-label="Abrir o site da Expo Usipa">
+<div class="pf-shot" role="img" aria-label="Captura de tela do site Expo Usipa">
+<div class="pf-shot__bar" aria-hidden="true"><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__url">expousipa.com</span></div>
+<img class="pf-shot__img" src="assets/images/projetos/expo-usipa.jpg" alt="">
+<span class="pf-feat__scan" aria-hidden="true"></span>
+</div>
+<span class="pf-feat__open" aria-hidden="true">Abrir site
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</span>
+</a>
+<div class="pf-feat__text">
+<span class="pf-tag" style="align-self: flex-start">Em destaque</span>
+<p class="pf-meta"><span class="pf-meta__lead">Site de evento</span><span aria-hidden="true">·</span><span>expousipa.com</span></p>
+<h2 class="pf-feat__title" id="feat-title">Expo Usipa</h2>
+<p class="pf-feat__desc">Site oficial da feira, com contagem regressiva para a próxima edição, galeria de momentos do evento e acesso à Vitrine Digital e à área restrita dos expositores.</p>
+<dl class="pf-facts">
+<div class="pf-fact"><dt>Formato</dt><dd>Site de evento</dd></div>
+<div class="pf-fact"><dt>Destaque</dt><dd>Contagem regressiva</dd></div>
+<div class="pf-fact"><dt>Acesso</dt><dd>Vitrine Digital</dd></div>
+</dl>
+<div class="pf-btns">
+<a class="pf-btn pf-btn--pri" href="https://expousipa.com" target="_blank" rel="noopener noreferrer">Ver site no ar
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</a>
+</div>
+</div>
+</article>
+</div>
+</section>
+
+<!-- Seção 04 — Todos os projetos (design .list): o marcador CARDS recebe um src/partials/card.html por item de src/projetos.json (tools/build.py) -->
+<section class="pf-list" id="projetos" aria-labelledby="list-title">
+<div class="pf-wrap">
+<div class="pf-list__head">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<p class="pf-eyebrow" data-pf-rotulo>Todos os projetos</p>
+<h2 class="pf-list__title" id="list-title">Do site institucional <em>à plataforma</em></h2>
+</div>
+<p class="pf-list__note">Cada cartão leva ao projeto publicado. Os que ainda estão em ambiente de teste ou protótipo estão indicados.</p>
+</div>
+<div class="pf-grid" id="pf-grid">
+<article class="pf-card" data-categorias="site">
+<div class="pf-shot" role="img" aria-label="Captura de tela do projeto ARV Incorporação &amp; Tecnologia">
+<div class="pf-shot__bar" aria-hidden="true"><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__url">arvinc.com.br</span></div>
+<img class="pf-shot__img" src="assets/images/projetos/arv-incorporacao.jpg" width="800" height="500" alt="" loading="lazy" decoding="async">
+</div>
+<div class="pf-card__info">
+<p class="pf-meta"><span class="pf-meta__lead">02</span><span aria-hidden="true">·</span><span>arvinc.com.br</span></p>
+<h3 class="pf-card__name">ARV Incorporação &amp; Tecnologia</h3>
+</div>
+<a class="pf-card__go" href="https://arvinc.com.br" target="_blank" rel="noopener noreferrer">Ver site no ar
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</a>
+</article>
+<article class="pf-card" data-categorias="onepage">
+<div class="pf-shot" role="img" aria-label="Captura de tela do projeto Zeros à Direita">
+<div class="pf-shot__bar" aria-hidden="true"><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__url">zerosadireita.com</span></div>
+<img class="pf-shot__img" src="assets/images/projetos/zeros-a-direita.jpg" width="800" height="500" alt="" loading="lazy" decoding="async">
+</div>
+<div class="pf-card__info">
+<p class="pf-meta"><span class="pf-meta__lead">03</span><span aria-hidden="true">·</span><span>zerosadireita.com</span></p>
+<h3 class="pf-card__name">Zeros à Direita</h3>
+</div>
+<a class="pf-card__go" href="https://zerosadireita.com" target="_blank" rel="noopener noreferrer">Ver site no ar
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</a>
+</article>
+<article class="pf-card" data-categorias="onepage">
+<div class="pf-shot" role="img" aria-label="Captura de tela do projeto ebrain">
+<div class="pf-shot__bar" aria-hidden="true"><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__url">ebrain.clinic</span></div>
+<img class="pf-shot__img" src="assets/images/projetos/ebrain.jpg" width="960" height="540" alt="" loading="lazy" decoding="async">
+</div>
+<div class="pf-card__info">
+<p class="pf-meta"><span class="pf-meta__lead">04</span><span aria-hidden="true">·</span><span>ebrain.clinic</span></p>
+<h3 class="pf-card__name">ebrain</h3>
+</div>
+<a class="pf-card__go" href="https://ebrain.clinic" target="_blank" rel="noopener noreferrer">Ver site no ar
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</a>
+</article>
+<article class="pf-card" data-categorias="site">
+<div class="pf-shot" role="img" aria-label="Captura de tela do projeto CashWay">
+<div class="pf-shot__bar" aria-hidden="true"><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__url">cashway.io</span></div>
+<img class="pf-shot__img" src="assets/images/projetos/cashway.jpg" width="800" height="500" alt="" loading="lazy" decoding="async">
+</div>
+<div class="pf-card__info">
+<p class="pf-meta"><span class="pf-meta__lead">05</span><span aria-hidden="true">·</span><span>cashway.io</span></p>
+<h3 class="pf-card__name">CashWay</h3>
+</div>
+<a class="pf-card__go" href="https://cashway.io" target="_blank" rel="noopener noreferrer">Ver site no ar
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</a>
+</article>
+<article class="pf-card" data-categorias="site">
+<div class="pf-shot" role="img" aria-label="Captura de tela do projeto Grupo CMD">
+<div class="pf-shot__bar" aria-hidden="true"><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__url">institucional.grupocmd.com.br</span></div>
+<img class="pf-shot__img" src="assets/images/projetos/grupo-cmd.jpg" width="800" height="500" alt="" loading="lazy" decoding="async">
+</div>
+<div class="pf-card__info">
+<p class="pf-meta"><span class="pf-meta__lead">06</span><span aria-hidden="true">·</span><span>institucional.grupocmd.com.br</span></p>
+<h3 class="pf-card__name">Grupo CMD</h3>
+</div>
+<a class="pf-card__go" href="https://institucional.grupocmd.com.br" target="_blank" rel="noopener noreferrer">Ver site no ar
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</a>
+</article>
+<article class="pf-card" data-categorias="site blog">
+<div class="pf-shot" role="img" aria-label="Captura de tela do projeto 3Neuron">
+<div class="pf-shot__bar" aria-hidden="true"><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__url">3neuron.com</span></div>
+<img class="pf-shot__img" src="assets/images/projetos/3neuron.jpg" width="800" height="500" alt="" loading="lazy" decoding="async">
+</div>
+<div class="pf-card__info">
+<p class="pf-meta"><span class="pf-meta__lead">07</span><span aria-hidden="true">·</span><span>3neuron.com</span></p>
+<h3 class="pf-card__name">3Neuron</h3>
+</div>
+<a class="pf-card__go" href="https://3neuron.com" target="_blank" rel="noopener noreferrer">Ver site no ar
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</a>
+</article>
+<article class="pf-card" data-categorias="site">
+<div class="pf-shot" role="img" aria-label="Captura de tela do projeto Do Telematics">
+<div class="pf-shot__bar" aria-hidden="true"><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__url">dotelematics.com</span></div>
+<img class="pf-shot__img" src="assets/images/projetos/do-telematics.jpg" width="960" height="540" alt="" loading="lazy" decoding="async">
+</div>
+<div class="pf-card__info">
+<p class="pf-meta"><span class="pf-meta__lead">08</span><span aria-hidden="true">·</span><span>dotelematics.com</span></p>
+<h3 class="pf-card__name">Do Telematics</h3>
+</div>
+<a class="pf-card__go" href="https://dotelematics.com" target="_blank" rel="noopener noreferrer">Ver site no ar
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</a>
+</article>
+<article class="pf-card" data-categorias="onepage">
+<div class="pf-shot" role="img" aria-label="Captura de tela do projeto FaleUp">
+<div class="pf-shot__bar" aria-hidden="true"><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__url">faleup.com.br</span></div>
+<img class="pf-shot__img" src="assets/images/projetos/faleup.jpg" width="960" height="540" alt="" loading="lazy" decoding="async">
+</div>
+<div class="pf-card__info">
+<p class="pf-meta"><span class="pf-meta__lead">09</span><span aria-hidden="true">·</span><span>faleup.com.br</span></p>
+<h3 class="pf-card__name">FaleUp</h3>
+</div>
+<a class="pf-card__go" href="https://faleup.com.br" target="_blank" rel="noopener noreferrer">Ver site no ar
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</a>
+</article>
+<article class="pf-card" data-categorias="site">
+<div class="pf-shot" role="img" aria-label="Espaço para a captura de tela do projeto Lebensart – Porsche">
+<div class="pf-shot__bar" aria-hidden="true"><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__url">Ambiente de teste</span></div>
+<p class="pf-shot__label">Captura do site</p>
+</div>
+<div class="pf-card__info">
+<p class="pf-meta"><span class="pf-meta__lead">10</span><span aria-hidden="true">·</span><span>Ambiente de teste</span></p>
+<h3 class="pf-card__name">Lebensart – Porsche</h3>
+</div>
+<a class="pf-card__go" href="https://testeskatz.artemisdigital.net" target="_blank" rel="noopener noreferrer">Ver ambiente de teste
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</a>
+</article>
+<article class="pf-card" data-categorias="site">
+<div class="pf-shot" role="img" aria-label="Captura de tela do projeto Mais Previdência">
+<div class="pf-shot__bar" aria-hidden="true"><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__url">maisprevidencia.com.br</span></div>
+<img class="pf-shot__img" src="assets/images/projetos/mais-previdencia.jpg" width="960" height="540" alt="" loading="lazy" decoding="async">
+</div>
+<div class="pf-card__info">
+<p class="pf-meta"><span class="pf-meta__lead">11</span><span aria-hidden="true">·</span><span>maisprevidencia.com.br</span></p>
+<h3 class="pf-card__name">Mais Previdência</h3>
+</div>
+<a class="pf-card__go" href="https://maisprevidencia.com.br" target="_blank" rel="noopener noreferrer">Ver site no ar
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</a>
+</article>
+<article class="pf-card" data-categorias="site">
+<div class="pf-shot" role="img" aria-label="Captura de tela do projeto Instacont">
+<div class="pf-shot__bar" aria-hidden="true"><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__url">instacont.com.br</span></div>
+<img class="pf-shot__img" src="assets/images/projetos/instacont.jpg" width="960" height="540" alt="" loading="lazy" decoding="async">
+</div>
+<div class="pf-card__info">
+<p class="pf-meta"><span class="pf-meta__lead">12</span><span aria-hidden="true">·</span><span>instacont.com.br</span></p>
+<h3 class="pf-card__name">Instacont</h3>
+</div>
+<a class="pf-card__go" href="https://instacont.com.br" target="_blank" rel="noopener noreferrer">Ver site no ar
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</a>
+</article>
+<article class="pf-card" data-categorias="site">
+<div class="pf-shot" role="img" aria-label="Captura de tela do projeto FORZA BR">
+<div class="pf-shot__bar" aria-hidden="true"><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__url">forzabr.com.br</span></div>
+<img class="pf-shot__img" src="assets/images/projetos/forza-br.jpg" width="960" height="540" alt="" loading="lazy" decoding="async">
+</div>
+<div class="pf-card__info">
+<p class="pf-meta"><span class="pf-meta__lead">13</span><span aria-hidden="true">·</span><span>forzabr.com.br</span></p>
+<h3 class="pf-card__name">FORZA BR</h3>
+</div>
+<a class="pf-card__go" href="https://forzabr.com.br" target="_blank" rel="noopener noreferrer">Ver site no ar
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</a>
+</article>
+<article class="pf-card" data-categorias="plataforma">
+<div class="pf-shot" role="img" aria-label="Espaço para a captura de tela do projeto oithe">
+<div class="pf-shot__bar" aria-hidden="true"><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__url">Protótipo no Figma · web e mobile</span></div>
+<p class="pf-shot__label">Captura do site</p>
+</div>
+<div class="pf-card__info">
+<p class="pf-meta"><span class="pf-meta__lead">14</span><span aria-hidden="true">·</span><span>Protótipo no Figma · web e mobile</span></p>
+<h3 class="pf-card__name">oithe</h3>
+</div>
+<a class="pf-card__go">Protótipo em breve
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</a>
+</article>
+<article class="pf-card" data-categorias="site">
+<div class="pf-shot" role="img" aria-label="Captura de tela do projeto SysMiddle">
+<div class="pf-shot__bar" aria-hidden="true"><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__url">sysmiddle.com.br</span></div>
+<img class="pf-shot__img" src="assets/images/projetos/sysmiddle.jpg" width="960" height="540" alt="" loading="lazy" decoding="async">
+</div>
+<div class="pf-card__info">
+<p class="pf-meta"><span class="pf-meta__lead">15</span><span aria-hidden="true">·</span><span>sysmiddle.com.br</span></p>
+<h3 class="pf-card__name">SysMiddle</h3>
+</div>
+<a class="pf-card__go" href="https://sysmiddle.com.br" target="_blank" rel="noopener noreferrer">Ver site no ar
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</a>
+</article>
+<article class="pf-card" data-categorias="site blog">
+<div class="pf-shot" role="img" aria-label="Captura de tela do projeto Voxy">
+<div class="pf-shot__bar" aria-hidden="true"><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__url">voxy.com</span></div>
+<img class="pf-shot__img" src="assets/images/projetos/voxy.jpg" width="960" height="540" alt="" loading="lazy" decoding="async">
+</div>
+<div class="pf-card__info">
+<p class="pf-meta"><span class="pf-meta__lead">16</span><span aria-hidden="true">·</span><span>voxy.com</span></p>
+<h3 class="pf-card__name">Voxy</h3>
+</div>
+<a class="pf-card__go" href="https://voxy.com" target="_blank" rel="noopener noreferrer">Ver site no ar
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</a>
+</article>
+<article class="pf-card" data-categorias="site">
+<div class="pf-shot" role="img" aria-label="Captura de tela do projeto BID Consultoria">
+<div class="pf-shot__bar" aria-hidden="true"><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__url">bidconsultoria.com</span></div>
+<img class="pf-shot__img" src="assets/images/projetos/bid-consultoria.jpg" width="960" height="540" alt="" loading="lazy" decoding="async">
+</div>
+<div class="pf-card__info">
+<p class="pf-meta"><span class="pf-meta__lead">17</span><span aria-hidden="true">·</span><span>bidconsultoria.com</span></p>
+<h3 class="pf-card__name">BID Consultoria</h3>
+</div>
+<a class="pf-card__go" href="https://bidconsultoria.com" target="_blank" rel="noopener noreferrer">Ver site no ar
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</a>
+</article>
+<article class="pf-card" data-categorias="site">
+<div class="pf-shot" role="img" aria-label="Captura de tela do projeto ESGreen">
+<div class="pf-shot__bar" aria-hidden="true"><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__url">esgreen.com.br</span></div>
+<img class="pf-shot__img" src="assets/images/projetos/esgreen.jpg" width="960" height="540" alt="" loading="lazy" decoding="async">
+</div>
+<div class="pf-card__info">
+<p class="pf-meta"><span class="pf-meta__lead">18</span><span aria-hidden="true">·</span><span>esgreen.com.br</span></p>
+<h3 class="pf-card__name">ESGreen</h3>
+</div>
+<a class="pf-card__go" href="https://esgreen.com.br" target="_blank" rel="noopener noreferrer">Ver site no ar
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</a>
+</article>
+<article class="pf-card" data-categorias="site">
+<div class="pf-shot" role="img" aria-label="Espaço para a captura de tela do projeto Nivéro">
+<div class="pf-shot__bar" aria-hidden="true"><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__url">nivero.co</span></div>
+<p class="pf-shot__label">Captura do site</p>
+</div>
+<div class="pf-card__info">
+<p class="pf-meta"><span class="pf-meta__lead">19</span><span aria-hidden="true">·</span><span>nivero.co</span></p>
+<h3 class="pf-card__name">Nivéro</h3>
+</div>
+<a class="pf-card__go" href="https://nivero.co" target="_blank" rel="noopener noreferrer">Ver site no ar
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</a>
+</article>
+<article class="pf-card" data-categorias="site blog">
+<div class="pf-shot" role="img" aria-label="Captura de tela do projeto Bolsa de terras">
+<div class="pf-shot__bar" aria-hidden="true"><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__url">bolsadeterras.com.br</span></div>
+<img class="pf-shot__img" src="assets/images/projetos/bolsa-de-terras.jpg" width="960" height="540" alt="" loading="lazy" decoding="async">
+</div>
+<div class="pf-card__info">
+<p class="pf-meta"><span class="pf-meta__lead">20</span><span aria-hidden="true">·</span><span>bolsadeterras.com.br</span></p>
+<h3 class="pf-card__name">Bolsa de terras</h3>
+</div>
+<a class="pf-card__go" href="https://bolsadeterras.com.br" target="_blank" rel="noopener noreferrer">Ver site no ar
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</a>
+</article>
+<article class="pf-card" data-categorias="site">
+<div class="pf-shot" role="img" aria-label="Captura de tela do projeto Intacta">
+<div class="pf-shot__bar" aria-hidden="true"><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__url">intactaengenharia.com.br</span></div>
+<img class="pf-shot__img" src="assets/images/projetos/intacta.jpg" width="960" height="540" alt="" loading="lazy" decoding="async">
+</div>
+<div class="pf-card__info">
+<p class="pf-meta"><span class="pf-meta__lead">21</span><span aria-hidden="true">·</span><span>intactaengenharia.com.br</span></p>
+<h3 class="pf-card__name">Intacta</h3>
+</div>
+<a class="pf-card__go" href="https://intactaengenharia.com.br" target="_blank" rel="noopener noreferrer">Ver site no ar
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</a>
+</article>
+<article class="pf-card" data-categorias="site blog">
+<div class="pf-shot" role="img" aria-label="Captura de tela do projeto Global Supply">
+<div class="pf-shot__bar" aria-hidden="true"><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__url">consultoriaglobalsupply.com.br</span></div>
+<img class="pf-shot__img" src="assets/images/projetos/global-supply.jpg" width="960" height="540" alt="" loading="lazy" decoding="async">
+</div>
+<div class="pf-card__info">
+<p class="pf-meta"><span class="pf-meta__lead">22</span><span aria-hidden="true">·</span><span>consultoriaglobalsupply.com.br</span></p>
+<h3 class="pf-card__name">Global Supply</h3>
+</div>
+<a class="pf-card__go" href="https://consultoriaglobalsupply.com.br" target="_blank" rel="noopener noreferrer">Ver site no ar
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</a>
+</article>
+<article class="pf-card" data-categorias="site">
+<div class="pf-shot" role="img" aria-label="Captura de tela do projeto Lorenza Franceschi">
+<div class="pf-shot__bar" aria-hidden="true"><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__url">lf.arq.br</span></div>
+<img class="pf-shot__img" src="assets/images/projetos/lorenza-franceschi.jpg" width="960" height="540" alt="" loading="lazy" decoding="async">
+</div>
+<div class="pf-card__info">
+<p class="pf-meta"><span class="pf-meta__lead">23</span><span aria-hidden="true">·</span><span>lf.arq.br</span></p>
+<h3 class="pf-card__name">Lorenza Franceschi</h3>
+</div>
+<a class="pf-card__go" href="https://lf.arq.br" target="_blank" rel="noopener noreferrer">Ver site no ar
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</a>
+</article>
+<aside class="pf-cta-card" aria-labelledby="cta-card-title">
+<div class="pf-cta-card__body">
+<div class="pf-cta-card__top">
+<div>
+<p class="pf-eyebrow">Próximo projeto</p>
+<h2 class="pf-cta-card__title" id="cta-card-title" style="margin-top: 16px">O próximo site do portfólio <em>pode ser o seu</em></h2>
+</div>
+<a class="pf-go" href="https://studioartemis.co/contato" aria-label="Comece um projeto">
+<svg width="28" height="28" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</a>
+</div>
+<p class="pf-cta-card__text">Site institucional, plataforma, onepage ou blog. Conte o que você precisa e montamos o caminho.</p>
+<div class="pf-btns">
+<a class="pf-btn pf-btn--pri" href="https://studioartemis.co/contato">Comece um projeto</a>
+<a class="pf-btn" href="https://studioartemis.co/servicos">Ver serviços</a>
+</div>
+</div>
+<dl class="pf-stats">
+<div class="pf-stat"><dt>Projetos</dt><dd>23</dd></div>
+<div class="pf-stat"><dt>Formatos</dt><dd>04</dd></div>
+<div class="pf-stat"><dt>Primeira resposta</dt><dd>1 dia <span>útil</span></dd></div>
+</dl>
+<div class="pf-diag" aria-hidden="true"></div>
+</aside>
+</div>
+</div>
+</section>
+
+<!-- Seção 05 — Chamada final (design .cta): barra de status + padrão de traços -->
+<section class="pf-cta" aria-labelledby="cta-title">
+<div class="pf-cta__bar" aria-hidden="true">
+<div class="pf-wrap pf-cta__status">
+<p class="pf-cta__st"><span class="pf-cta__led"></span>System: Artemis portfolio</p>
+<span class="pf-sig"><img src="assets/images/cta/signal-icon.svg" width="37" height="14" alt=""><span class="pf-sig__lines"></span><img src="assets/images/cta/signal-icon-wide.svg" width="55" height="14" alt=""></span>
+<p class="pf-cta__st pf-cta__status-mid">[ Status: online ]</p>
+<span class="pf-sig pf-sig--2"><img src="assets/images/cta/signal-icon.svg" width="37" height="14" alt=""><span class="pf-sig__lines"></span><img src="assets/images/cta/signal-icon-wide.svg" width="55" height="14" alt=""></span>
+<p class="pf-cta__st pf-cta__status-end">[ Projetos: 23 ]</p>
+</div>
+</div>
+<div class="pf-wrap pf-cta__main">
+<div class="pf-dash" aria-hidden="true">
+<div class="pf-dash__g">
+<img src="assets/images/cta/dash-row-0.svg" style="width: 610.5px" alt="">
+<img src="assets/images/cta/dash-row-1.svg" style="width: 610.5px" alt="">
+<img src="assets/images/cta/dash-row-2.svg" style="width: 610.5px" alt="">
+<img src="assets/images/cta/dash-row-3.svg" style="width: 702px" alt="">
+<img src="assets/images/cta/dash-row-4.svg" style="width: 702px" alt="">
+<img src="assets/images/cta/dash-row-5.svg" style="width: 1038px" alt="">
+</div>
+<div class="pf-dash__g pf-dash__g--end">
+<span style="width: 519px"><img src="assets/images/cta/dash-row-6.svg" style="width: 516.75px" alt=""></span>
+<span style="width: 610.5px"><img src="assets/images/cta/dash-row-7.svg" style="width: 605.25px" alt=""></span>
+<span style="width: 610.5px"><img src="assets/images/cta/dash-row-8.svg" style="width: 605.25px" alt=""></span>
+<span style="width: 610.5px"><img src="assets/images/cta/dash-row-9.svg" style="width: 516px" alt=""></span>
+<span style="width: 428.25px"><img src="assets/images/cta/dash-row-10.svg" style="width: 339px" alt=""></span>
+<span style="width: 522px"><img src="assets/images/cta/dash-row-11.svg" style="width: 251.25px" alt=""></span>
+</div>
+</div>
+<p class="pf-cta__aside pf-eyebrow">Resposta em até 1 dia útil. Atendimento remoto em todo o Brasil.</p>
+<div class="pf-cta__body">
+<h2 class="pf-cta__title" id="cta-title">Comece um projeto</h2>
+<p class="pf-cta__text">Conte o objetivo, o prazo e o que já existe hoje. Voltamos com escopo, etapas e a primeira proposta de estrutura do site.</p>
+<a class="pf-btn pf-btn--pri" href="https://studioartemis.co/contato">Comece um projeto</a>
+</div>
+</div>
+</section>
+</main>
+
+<!-- Footer (design/Main.dc.html .ftr) -->
+<footer class="pf-ftr">
+<div class="pf-wrap">
+<div class="pf-ftr__top">
+<div>
+<a href="https://studioartemis.co/" aria-label="Studio Artemis — página inicial"><img src="assets/images/footer/logo-lockup.svg" width="137" height="32" alt="Artemis"></a>
+<p class="pf-ftr__claim">Automação aplicada à operação, direto no seu e-mail. <em>Publicamos quando temos algo concreto para dizer.</em></p>
+<!-- Newsletter: sem servidor nesta prévia — o envio é interceptado no JS e avisa abaixo do campo -->
+<form class="pf-ftr__form" action="#" method="post" data-pf-newsletter>
+<label for="ftr-email" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Seu endereço de e-mail</label>
+<input class="pf-ftr__input" id="ftr-email" type="email" name="email" placeholder="Seu endereço de e-mail" autocomplete="email" required>
+<button class="pf-btn pf-btn--pri" type="submit">Enviar</button>
+</form>
+<p class="pf-ftr__msg" role="status" aria-live="polite" data-extra></p>
+</div>
+<div class="pf-ftr__cols">
+<nav aria-labelledby="ftr-a">
+<h2 class="pf-ftr__h" id="ftr-a">Artemis</h2>
+<ul class="pf-ftr__links">
+<li><a href="https://studioartemis.co/servicos">Serviços</a></li>
+<li><a href="https://studioartemis.co/#estudos">Estudos de impacto</a></li>
+<li><a href="https://studioartemis.co/portfolio-artemis/">Portfólio</a></li>
+<li><a href="https://studioartemis.co/blog">Blog</a></li>
+<li><a href="https://studioartemis.co/sobre">Sobre</a></li>
+<li><a href="https://studioartemis.co/contato">Contato</a></li>
+</ul>
+</nav>
+<nav aria-labelledby="ftr-b">
+<h2 class="pf-ftr__h" id="ftr-b">Outras linhas</h2>
+<ul class="pf-ftr__links">
+<li><a href="https://studioartemis.co/artemis-seo/">Artemis SEO</a></li>
+<li><a href="https://studioartemis.co/mktops/">MktOps</a></li>
+</ul>
+</nav>
+<address class="pf-ftr__contact" style="font-style: normal">
+<p class="pf-ftr__label">Fale conosco</p>
+<a class="pf-ftr__val" href="mailto:contato@studioartemis.co">contato@studioartemis.co</a>
+<p class="pf-ftr__label">WhatsApp</p>
+<a class="pf-ftr__val" href="https://wa.me/554800000000">+55 (48) 0000-0000</a>
+<p class="pf-ftr__label">Endereço</p>
+<p class="pf-ftr__val">R. Fúlvio Aducci, 416 — Florianópolis, SC</p>
+</address>
+</div>
+</div>
+<div class="pf-ftr__mid">
+<div>
+<p class="pf-ftr__label">Social</p>
+<ul class="pf-ftr__icons">
+<li><a class="pf-ico" href="#" aria-label="Instagram"><img src="assets/images/footer/instagram.svg" alt=""></a></li>
+<li><a class="pf-ico" href="#" aria-label="YouTube"><img src="assets/images/footer/youtube.svg" alt=""></a></li>
+<li><a class="pf-ico" href="#" aria-label="LinkedIn"><img src="assets/images/footer/linkedin.svg" alt=""></a></li>
+<li><a class="pf-ico" href="#" aria-label="Behance"><img src="assets/images/footer/behance.svg" alt=""></a></li>
+<li><a class="pf-ico" href="#" aria-label="Dribbble"><img src="assets/images/footer/dribbble.svg" alt=""></a></li>
+<li><a class="pf-ico" href="#" aria-label="X (Twitter)"><img src="assets/images/footer/x.svg" alt=""></a></li>
+</ul>
+</div>
+<a href="#pf-title" style="display: flex; flex-direction: column; align-items: flex-end; gap: 16px"><span class="pf-ftr__label">Voltar ao topo</span><span class="pf-ico"><img src="assets/images/footer/chevron-up.svg" alt=""></span></a>
+</div>
+<div class="pf-ftr__legal">
+<p>© 2026 Studio Artemis. Todos os direitos reservados.</p>
+<div style="display: flex; gap: 24px"><a href="https://studioartemis.co/politica-de-privacidade">Política de privacidade</a><a href="https://studioartemis.co/termos-de-uso">Termos de uso</a></div>
+</div>
+</div>
+<div class="pf-ftr__pattern" aria-hidden="true"></div>
+</footer>
+
+</div>
+<script src="assets/js/portfolio.js?v=1792428486" defer></script>
+</body>
+</html>
