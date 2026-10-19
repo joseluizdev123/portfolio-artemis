@@ -44,6 +44,9 @@ def main():
     bad = 0
     print('== %spx — %s × %s' % (w, ref, pag))
     print('documento: %s %s×%s · %s %s×%s · altura .pf %s vs %s' % (ref, R['docW'], R['docH'], pag, P['docW'], P['docH'], R['rootH'], P['rootH']))
+    if set(R.get('fonts', [])) != set(P.get('fonts', [])):  # ex.: rede falhou e a Google Fonts não carregou
+        print('!! fontes carregadas diferentes — meça de novo: %s × %s' % (sorted(set(R.get('fonts', []))), sorted(set(P.get('fonts', [])))))
+        bad += 1
     if P['docW'] > P['vw']:
         print('!! rolagem lateral na página: docW %s > viewport %s' % (P['docW'], P['vw']))
         bad += 1
