@@ -12,12 +12,16 @@ Monta index.html (página Portfólio) a partir das partes:
 
 Caminhos relativos (assets/…): a página funciona na raiz de um domínio ou numa subpasta (GitHub Pages de projeto).
 
+Também sincroniza o tema WordPress (wordpress/artemis-portfolio/): assets/ → tema/assets/ (cópia exata, sem editar
+à mão no tema) e src/projetos.json → tema/data/projetos.json (dados do seeder).
+
 Uso:  python tools/build.py
 """
 import glob
 import html
 import json
 import os
+import shutil
 import struct
 import sys
 
@@ -87,6 +91,23 @@ def cards():
     return '\n'.join(out)
 
 
+TEMA = os.path.join(ROOT, 'wordpress', 'artemis-portfolio')
+
+
+def sincroniza_tema():
+    """assets/ e src/projetos.json → tema WordPress (o tema usa os mesmos CSS, JS e imagens do estático)."""
+    if not os.path.isdir(TEMA):
+        return
+    destino = os.path.join(TEMA, 'assets')
+    if os.path.isdir(destino):
+        shutil.rmtree(destino)
+    shutil.copytree(os.path.join(ROOT, 'assets'), destino)
+    os.makedirs(os.path.join(TEMA, 'data'), exist_ok=True)
+    shutil.copyfile(os.path.join(ROOT, 'src', 'projetos.json'), os.path.join(TEMA, 'data', 'projetos.json'))
+    n = sum(len(f) for _, _, f in os.walk(destino))
+    print('wordpress/artemis-portfolio/assets (%d arquivos) + data/projetos.json' % n)
+
+
 def main():
     sections = sorted(glob.glob(os.path.join(ROOT, 'src', 'partials', 'portfolio-[0-9][0-9]-*.html')))
     slugs = [os.path.splitext(os.path.basename(s))[0] for s in sections]
@@ -106,6 +127,7 @@ def main():
     with open(os.path.join(ROOT, 'index.html'), 'w', encoding='utf-8', newline='\n') as f:
         f.write(out)
     print('index.html (%d seções: %s · %d cartões)' % (len(slugs), ', '.join(slugs), out.count('class="pf-card"')))
+    sincroniza_tema()
 
 
 if __name__ == '__main__':

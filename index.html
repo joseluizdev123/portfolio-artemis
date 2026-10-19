@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="assets/css/base.css?v=1792427969">
 <link rel="stylesheet" href="assets/css/sections/header.css?v=1792428953">
 <link rel="stylesheet" href="assets/css/sections/portfolio-01-hero.css?v=1792424552">
-<link rel="stylesheet" href="assets/css/sections/portfolio-02-filtro.css?v=1792427969">
+<link rel="stylesheet" href="assets/css/sections/portfolio-02-filtro.css?v=1792430866">
 <link rel="stylesheet" href="assets/css/sections/portfolio-03-destaque.css?v=1792424004">
 <link rel="stylesheet" href="assets/css/sections/portfolio-04-projetos.css?v=1792427969">
 <link rel="stylesheet" href="assets/css/sections/portfolio-05-cta.css?v=1792423919">
@@ -80,16 +80,15 @@
 </div>
 <div class="pf-wrap">
 <div class="pf-filter__in">
-<div class="pf-hero__count" aria-live="polite" data-pf-contagem>
+<div class="pf-hero__count" aria-live="polite" data-pf-contagem data-pf-todos="no portfólio">
 <p><strong>23 projetos</strong> no portfólio</p>
 <p>Filtre por categoria</p>
 </div>
 <nav class="pf-tabs" aria-label="Categorias do portfólio" data-pf-filtro>
 <a class="pf-tab pf-tab--on" href="#todos" aria-current="true" aria-controls="pf-grid" data-filtro="todos">Todos</a>
-<a class="pf-tab" href="#site" aria-controls="pf-grid" data-filtro="site">Site</a>
-<a class="pf-tab" href="#plataforma" aria-controls="pf-grid" data-filtro="plataforma">Plataforma</a>
-<a class="pf-tab" href="#onepage" aria-controls="pf-grid" data-filtro="onepage">Onepage</a>
-<a class="pf-tab" href="#blog" aria-controls="pf-grid" data-filtro="blog">Blog</a>
+<a class="pf-tab" href="#site" aria-controls="pf-grid" data-filtro="site" data-plural="Sites">Site</a>
+<a class="pf-tab" href="#onepage" aria-controls="pf-grid" data-filtro="onepage" data-plural="Onepages">Onepage</a>
+<a class="pf-tab" href="#blog" aria-controls="pf-grid" data-filtro="blog" data-plural="Blogs">Blog</a>
 </nav>
 </div>
 </div>
@@ -299,7 +298,7 @@
 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
 </a>
 </article>
-<article class="pf-card" data-categorias="plataforma">
+<article class="pf-card" data-categorias="">
 <div class="pf-shot" role="img" aria-label="Espaço para a captura de tela do projeto oithe">
 <div class="pf-shot__bar" aria-hidden="true"><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__dot"></span><span class="pf-shot__url">Protótipo no Figma · web e mobile</span></div>
 <p class="pf-shot__label">Captura do site</p>
@@ -448,7 +447,7 @@
 </div>
 <dl class="pf-stats">
 <div class="pf-stat"><dt>Projetos</dt><dd>23</dd></div>
-<div class="pf-stat"><dt>Formatos</dt><dd>04</dd></div>
+<div class="pf-stat"><dt>Formatos</dt><dd>03</dd></div>
 <div class="pf-stat"><dt>Primeira resposta</dt><dd>1 dia <span>útil</span></dd></div>
 </dl>
 <div class="pf-diag" aria-hidden="true"></div>
@@ -564,6 +563,6 @@
 </footer>
 
 </div>
-<script src="assets/js/portfolio.js?v=1792428486" defer></script>
+<script src="assets/js/portfolio.js?v=1792430958" defer></script>
 </body>
 </html>

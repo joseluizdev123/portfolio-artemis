@@ -133,9 +133,14 @@
     var list = document.getElementById('projetos');
     var CATS = tabs.map(function (t) { return t.getAttribute('data-filtro'); }).filter(function (c) { return c !== 'todos'; });
     var ABA = {}, PLURAL = { site: 'Sites', plataforma: 'Plataformas', onepage: 'Onepages', blog: 'Blogs' };
-    tabs.forEach(function (t) { ABA[t.getAttribute('data-filtro')] = t.textContent.trim(); });
+    tabs.forEach(function (t) { // nome da aba e plural (data-plural, editável no WordPress) para contagem e rótulo da grade
+      var c = t.getAttribute('data-filtro');
+      ABA[c] = t.textContent.trim();
+      if (t.getAttribute('data-plural')) PLURAL[c] = t.getAttribute('data-plural');
+    });
     var sel = [], empty = null;
     var hintTexto = hint ? hint.textContent : '';
+    var todosTexto = (box && box.getAttribute('data-pf-todos')) || 'no portfólio'; // editável no WordPress
 
     // as abas viram botões de liga/desliga (sem JS continuam links para âncoras)
     tabs.forEach(function (t) {
@@ -180,7 +185,7 @@
       var total = n + (feat && featOn ? 1 : 0);
       if (count) {
         count.innerHTML = '<strong>' + total + (total === 1 ? ' projeto' : ' projetos') + '</strong> ' +
-          (sel.length ? 'em ' + lista(nomes) : 'no portfólio');
+          (sel.length ? 'em ' + lista(nomes) : todosTexto);
       }
       if (hint) {
         if (sel.length) hint.innerHTML = '<a href="#projetos" data-pf-ver>Ver os projetos ↓</a>';
@@ -286,7 +291,7 @@
     if (!form || !msg) return;
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      msg.textContent = 'Prévia: o cadastro na newsletter ainda não está ligado nesta página.';
+      msg.textContent = form.getAttribute('data-aviso') || 'Prévia: o cadastro na newsletter ainda não está ligado nesta página.';
     });
   })();
 })();

@@ -118,9 +118,16 @@
     border-left: 1px solid #212123;
   }
   .pf-tab:last-child {
-    grid-column: span 2;
     border-bottom: 0;
     border-right: 0;
+  }
+  /* Número de abas variável (as categorias vêm do WordPress): com abas em número ímpar a última ocupa a linha inteira
+     (o design tinha 5); com número par, a última linha tem duas abas e nenhuma das duas leva borda embaixo. */
+  .pf-tab:last-child:nth-child(odd) {
+    grid-column: span 2;
+  }
+  .pf-tab:nth-child(odd):nth-last-child(2) {
+    border-bottom: 0;
   }
 }
 

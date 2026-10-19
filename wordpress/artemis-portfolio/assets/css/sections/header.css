@@ -1,0 +1,168 @@
+/* Header — variante Portfólio (selo "Portfólio", item "Portfólio" atual, CTA "Comece um projeto").
+   Fonte: design/Main.dc.html (Claude Design) — valores literais do design. */
+
+.pf-hdr {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #212123;
+  background: #09090b;
+}
+
+.pf-hdr__in {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.pf-nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.pf-nav a {
+  font-size: 16px;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+.pf-nav__cur {
+  position: relative;
+}
+
+.pf-nav__cur::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 1px;
+  background: #87baff;
+}
+
+.pf-nav__sep {
+  width: 4px;
+  height: 4px;
+  background: #848485;
+  flex: none;
+}
+
+.pf-nav__cta {
+  font-weight: 600;
+}
+
+.pf-menu-btn {
+  display: none;
+  min-height: 44px;
+  padding: 0 4px;
+  background: none;
+  border: 0;
+  color: #fff;
+  font: 600 16px/1.5 "Cabin",sans-serif;
+}
+
+@media (max-width: 1100px) {
+  .pf-nav {
+    gap: 16px;
+  }
+}
+
+/* Desvio do design (correção): no design o "Menu" entra em ≤900, mas de 901 a 981 a nav quebra em 2 linhas
+   (o CTA desce sozinho). O botão "Menu" assume até 1000. */
+@media (max-width: 1000px) {
+  .pf-nav {
+    display: none;
+  }
+  .pf-menu-btn {
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
+@media (max-width: 767px) {
+  .pf-hdr {
+    height: 60px;
+  }
+}
+
+/* Menu do celular/tablet — acréscimo desta implementação: o design mostra só o botão "Menu" fechado
+   (≤1000 aqui). O painel abre logo abaixo do header, sobre o conteúdo, com os mesmos links do menu principal. */
+.pf-hdr {
+  position: relative;
+  z-index: 20;
+}
+
+.pf-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 8px var(--px) 24px;
+  background: #09090b;
+  border-bottom: 1px solid #212123;
+  box-shadow: 0 24px 48px -24px rgba(0, 0, 0, .8);
+}
+
+.pf-menu[hidden] {
+  display: none;
+}
+
+.pf-menu a {
+  display: flex;
+  align-items: center;
+  min-height: 52px;
+  border-bottom: 1px solid #212123;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.pf-menu a[aria-current="page"] {
+  color: #87baff;
+}
+
+.pf-menu .pf-menu__cta {
+  justify-content: center;
+  margin-top: 24px;
+  border: 1px solid #ffffff;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #09090b;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.pf-menu .pf-menu__cta:hover {
+  background: #cecece;
+  border-color: #cecece;
+  color: #09090b;
+}
+
+@media (min-width: 1001px) {
+  .pf-menu {
+    display: none !important;
+  }
+}
+
+/* Telas abaixo de 360 (fora do design): logo + selo + "Menu" somam 326 px — espaçamentos de 24 caem para 12.
+   O !important vence o gap inline do grupo logo + selo (marcação igual à do design). */
+@media (max-width: 359px) {
+  .pf-hdr__in {
+    gap: 12px;
+  }
+  .pf-hdr__in > div {
+    gap: 12px !important;
+  }
+}
+
+/* Abaixo de 320 (mais estreito que qualquer celular; ex.: painel lateral de um app): sem o selo, logo + "Menu" cabem até ~230 px */
+@media (max-width: 319px) {
+  .pf-hdr .pf-tag {
+    display: none;
+  }
+}

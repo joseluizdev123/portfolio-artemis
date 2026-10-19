@@ -1,0 +1,42 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"meta": {
+		"title": "Studio Artemis — Portfólio (prévia)",
+		"description": "WordPress local do tema artemis-portfolio. Usado por tools/wordpress.mjs só na primeira instalação (e nos passos de tema e seeder enquanto o conteúdo não foi populado).",
+		"author": "Studio Artemis",
+		"categories": ["theme"]
+	},
+	"preferredVersions": {
+		"php": "8.2",
+		"wp": "7.1.3"
+	},
+	"login": false,
+	"steps": [
+		{
+			"step": "setSiteOptions",
+			"options": {
+				"blogname": "Studio Artemis — Portfólio (prévia)",
+				"blogdescription": "",
+				"timezone_string": "America/Sao_Paulo",
+				"date_format": "d/m/Y",
+				"time_format": "H:i"
+			}
+		},
+		{
+			"step": "runPHP",
+			"code": "<?php\n// artemis:admin — senha local admin/admin e links permanentes /%postname%/.\nrequire_once '/wordpress/wp-load.php';\n$admin = get_user_by( 'login', 'admin' );\nif ( $admin ) {\n\twp_set_password( 'admin', $admin->ID );\n}\nupdate_option( 'permalink_structure', '/%postname%/' );\nflush_rewrite_rules( false );\n"
+		},
+		{
+			"step": "setSiteLanguage",
+			"language": "pt_BR"
+		},
+		{
+			"step": "runPHP",
+			"code": "<?php\n// artemis:tema — ativa o tema só se ele já estiver completo (style.css + index.php).\nrequire_once '/wordpress/wp-load.php';\n$tema = wp_get_theme( 'artemis-portfolio' );\n$erro = $tema->errors();\n$ok = $tema->exists() && ! $erro;\nif ( $ok ) {\n\tswitch_theme( 'artemis-portfolio' );\n}\n$st = array(\n\t'quando' => gmdate( 'c' ),\n\t'tema' => $ok ? 'ativo' : 'incompleto',\n\t'tema_detalhe' => $erro ? $erro->get_error_message() : '',\n);\nfile_put_contents( WP_CONTENT_DIR . '/artemis-provisionamento.json', json_encode( $st, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT ) );\n"
+		},
+		{
+			"step": "runPHP",
+			"code": "<?php\n// artemis:seed — chama artemis_pf_seed( true ) só se o tema estiver ativo e a função existir.\n// Nunca derruba a instalação: erro do tema vira status 'erro' no arquivo de provisionamento.\n$arquivo = '/wordpress/wp-content/artemis-provisionamento.json';\n$GLOBALS['artemis_st'] = is_file( $arquivo ) ? (array) json_decode( file_get_contents( $arquivo ), true ) : array();\nregister_shutdown_function( function () use ( $arquivo ) {\n\t$st = $GLOBALS['artemis_st'];\n\tif ( empty( $st['seed'] ) ) {\n\t\t$e = error_get_last();\n\t\t$st['seed'] = 'erro';\n\t\t$st['seed_detalhe'] = $e ? $e['message'] . ' (' . $e['file'] . ':' . $e['line'] . ')' : 'interrompido antes do fim';\n\t}\n\tfile_put_contents( $arquivo, json_encode( $st, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT ) );\n\t$e = error_get_last();\n\tif ( $e && in_array( $e['type'], array( E_ERROR, E_PARSE, E_CORE_ERROR, E_COMPILE_ERROR, E_USER_ERROR ), true ) ) {\n\t\texit( 0 ); // fatal do tema: registra e deixa a instalação seguir\n\t}\n} );\ntry {\n\trequire_once '/wordpress/wp-load.php';\n\trequire_once ABSPATH . 'wp-admin/includes/admin.php';\n\t$admin = get_user_by( 'login', 'admin' );\n\tif ( $admin ) {\n\t\twp_set_current_user( $admin->ID );\n\t}\n\tif ( get_stylesheet() !== 'artemis-portfolio' ) {\n\t\t$GLOBALS['artemis_st']['seed'] = 'pendente';\n\t\t$GLOBALS['artemis_st']['seed_detalhe'] = 'o tema artemis-portfolio não está ativo';\n\t} elseif ( ! function_exists( 'artemis_pf_seed' ) ) {\n\t\t$GLOBALS['artemis_st']['seed'] = 'pendente';\n\t\t$GLOBALS['artemis_st']['seed_detalhe'] = 'artemis_pf_seed() ainda não existe no tema';\n\t} else {\n\t\t$log = artemis_pf_seed( true );\n\t\tflush_rewrite_rules( false );\n\t\t$GLOBALS['artemis_st']['seed'] = is_wp_error( $log ) ? 'erro' : 'ok';\n\t\t$GLOBALS['artemis_st']['seed_detalhe'] = is_wp_error( $log ) ? $log->get_error_message() : $log;\n\t}\n} catch ( Throwable $e ) {\n\t$GLOBALS['artemis_st']['seed'] = 'erro';\n\t$GLOBALS['artemis_st']['seed_detalhe'] = get_class( $e ) . ': ' . $e->getMessage() . ' (' . $e->getFile() . ':' . $e->getLine() . ')';\n}\n"
+		}
+	]
+}

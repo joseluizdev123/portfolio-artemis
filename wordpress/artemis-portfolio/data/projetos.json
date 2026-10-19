@@ -1,0 +1,59 @@
+{
+  "_sobre": "Cartões da grade \"Todos os projetos\" (Portfólio). Ordem = numeração na página: o 1º cartão é o 02 (o 01 é o projeto em destaque, em src/partials/portfolio-03-destaque.html). Campos: nome, dominio (texto do cartão), url, cta (opcional, padrão \"Ver site no ar\"), imagem (opcional; sem imagem o cartão mostra \"Captura do site\"). Fonte: design/Main.dc.html (artefato do Claude Design). \"destaque\" e \"categorias\" alimentam o seeder do WordPress (o estático usa src/partials/portfolio-03-destaque.html e as abas de portfolio-02-filtro.html — tools/comparar.py acusa se divergirem). categorias: zero ou mais de site | onepage | blog (sem categoria = só em \"Todos\") (abas do filtro; o projeto em destaque tem as dele no atributo data-categorias da seção 03). Classificação aprovada pelo Studio Artemis em 2026-10-19.",
+  "categorias": [
+    {"slug": "site", "nome": "Site", "plural": "Sites"},
+    {"slug": "onepage", "nome": "Onepage", "plural": "Onepages"},
+    {"slug": "blog", "nome": "Blog", "plural": "Blogs"}
+  ],
+  "destaque": {
+    "nome": "Expo Usipa",
+    "dominio": "expousipa.com",
+    "url": "https://expousipa.com",
+    "imagem": "assets/images/projetos/expo-usipa.jpg",
+    "categorias": [
+      "site"
+    ],
+    "selo": "Em destaque",
+    "formato": "Site de evento",
+    "descricao": "Site oficial da feira, com contagem regressiva para a próxima edição, galeria de momentos do evento e acesso à Vitrine Digital e à área restrita dos expositores.",
+    "fatos": [
+      [
+        "Formato",
+        "Site de evento"
+      ],
+      [
+        "Destaque",
+        "Contagem regressiva"
+      ],
+      [
+        "Acesso",
+        "Vitrine Digital"
+      ]
+    ],
+    "botao": "Ver site no ar"
+  },
+  "projetos": [
+    {"nome": "ARV Incorporação & Tecnologia", "dominio": "arvinc.com.br", "url": "https://arvinc.com.br", "imagem": "assets/images/projetos/arv-incorporacao.jpg", "categorias": ["site"]},
+    {"nome": "Zeros à Direita", "dominio": "zerosadireita.com", "url": "https://zerosadireita.com", "imagem": "assets/images/projetos/zeros-a-direita.jpg", "categorias": ["onepage"]},
+    {"nome": "ebrain", "dominio": "ebrain.clinic", "url": "https://ebrain.clinic", "imagem": "assets/images/projetos/ebrain.jpg", "categorias": ["onepage"]},
+    {"nome": "CashWay", "dominio": "cashway.io", "url": "https://cashway.io", "imagem": "assets/images/projetos/cashway.jpg", "categorias": ["site"]},
+    {"nome": "Grupo CMD", "dominio": "institucional.grupocmd.com.br", "url": "https://institucional.grupocmd.com.br", "imagem": "assets/images/projetos/grupo-cmd.jpg", "categorias": ["site"]},
+    {"nome": "3Neuron", "dominio": "3neuron.com", "url": "https://3neuron.com", "imagem": "assets/images/projetos/3neuron.jpg", "categorias": ["site", "blog"]},
+    {"nome": "Do Telematics", "dominio": "dotelematics.com", "url": "https://dotelematics.com", "imagem": "assets/images/projetos/do-telematics.jpg", "categorias": ["site"]},
+    {"nome": "FaleUp", "dominio": "faleup.com.br", "url": "https://faleup.com.br", "imagem": "assets/images/projetos/faleup.jpg", "categorias": ["onepage"]},
+    {"nome": "Lebensart – Porsche", "dominio": "Ambiente de teste", "url": "https://testeskatz.artemisdigital.net", "cta": "Ver ambiente de teste", "categorias": ["site"]},
+    {"nome": "Mais Previdência", "dominio": "maisprevidencia.com.br", "url": "https://maisprevidencia.com.br", "imagem": "assets/images/projetos/mais-previdencia.jpg", "categorias": ["site"]},
+    {"nome": "Instacont", "dominio": "instacont.com.br", "url": "https://instacont.com.br", "imagem": "assets/images/projetos/instacont.jpg", "categorias": ["site"]},
+    {"nome": "FORZA BR", "dominio": "forzabr.com.br", "url": "https://forzabr.com.br", "imagem": "assets/images/projetos/forza-br.jpg", "categorias": ["site"]},
+    {"nome": "oithe", "dominio": "Protótipo no Figma · web e mobile", "url": "#", "cta": "Ver protótipo", "categorias": []},
+    {"nome": "SysMiddle", "dominio": "sysmiddle.com.br", "url": "https://sysmiddle.com.br", "imagem": "assets/images/projetos/sysmiddle.jpg", "categorias": ["site"]},
+    {"nome": "Voxy", "dominio": "voxy.com", "url": "https://voxy.com", "imagem": "assets/images/projetos/voxy.jpg", "categorias": ["site", "blog"]},
+    {"nome": "BID Consultoria", "dominio": "bidconsultoria.com", "url": "https://bidconsultoria.com", "imagem": "assets/images/projetos/bid-consultoria.jpg", "categorias": ["site"]},
+    {"nome": "ESGreen", "dominio": "esgreen.com.br", "url": "https://esgreen.com.br", "imagem": "assets/images/projetos/esgreen.jpg", "categorias": ["site"]},
+    {"nome": "Nivéro", "dominio": "nivero.co", "url": "https://nivero.co", "categorias": ["site"]},
+    {"nome": "Bolsa de terras", "dominio": "bolsadeterras.com.br", "url": "https://bolsadeterras.com.br", "imagem": "assets/images/projetos/bolsa-de-terras.jpg", "categorias": ["site", "blog"]},
+    {"nome": "Intacta", "dominio": "intactaengenharia.com.br", "url": "https://intactaengenharia.com.br", "imagem": "assets/images/projetos/intacta.jpg", "categorias": ["site"]},
+    {"nome": "Global Supply", "dominio": "consultoriaglobalsupply.com.br", "url": "https://consultoriaglobalsupply.com.br", "imagem": "assets/images/projetos/global-supply.jpg", "categorias": ["site", "blog"]},
+    {"nome": "Lorenza Franceschi", "dominio": "lf.arq.br", "url": "https://lf.arq.br", "imagem": "assets/images/projetos/lorenza-franceschi.jpg", "categorias": ["site"]}
+  ]
+}

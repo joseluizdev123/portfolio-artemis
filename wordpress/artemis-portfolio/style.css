@@ -1,0 +1,13 @@
+/*
+Theme Name: Studio Artemis — Portfólio (prévia)
+Theme URI: https://joseluizdev123.github.io/portfolio-artemis/
+Author: Studio Artemis
+Description: Página Portfólio do Studio Artemis em WordPress — mesmo HTML, CSS e JS da página estática (pixel perfect do Claude Design). Projetos em post type (art_projeto) com categorias; todos os textos da página editáveis na própria página "Portfólio"; header e rodapé no Personalizar e em Menus. Prévia separada do site oficial: ver INTEGRACAO.md para levar ao tema artemis.
+Version: 0.1.0
+Requires at least: 6.3
+Requires PHP: 7.4
+Text Domain: artemis
+GitHub Theme URI: https://github.com/joseluizdev123/portfolio-artemis
+Primary Branch: main
+*/
+/* Estilos reais em assets/css/ (copiados do estático por tools/build.py). */

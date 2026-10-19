@@ -1,0 +1,119 @@
+/* Seção 01 — Hero: caixa com campo de pontos em <canvas> que reage ao cursor (assets/js/portfolio.js).
+   Fonte: design/Main.dc.html (Claude Design) — valores literais do design. */
+
+.pf-hero {
+  padding-top: var(--py);
+  padding-bottom: var(--px);
+}
+
+.pf-hero__box {
+  position: relative;
+  isolation: isolate;
+  border: 1px solid #212123;
+  overflow: clip;
+  background: radial-gradient(120% 90% at 50% 0%,#0f1420 0%,#09090b 60%);
+}
+
+.pf-hero__fx {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+}
+
+.pf-hero__glow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(50% 60% at 50% 55%,rgba(9,9,11,.92) 0%,rgba(9,9,11,.55) 55%,rgba(9,9,11,0) 100%);
+}
+
+.pf-hero__intro {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 96px var(--px) 104px;
+  text-align: center;
+}
+
+.pf-hero__hint {
+  position: absolute;
+  right: 16px;
+  bottom: 12px;
+  z-index: 1;
+  font-family: "Instrument Serif",serif;
+  font-style: italic;
+  font-size: 14px;
+  line-height: 1.3;
+  color: #848485;
+  pointer-events: none;
+}
+
+.pf-hero__title {
+  max-width: 982px;
+  margin-top: 24px !important;
+  font-family: "Exo",sans-serif;
+  font-weight: 600;
+  font-size: clamp(40px,4.3056vw,62px);
+  line-height: 1.1;
+  text-wrap: pretty;
+}
+
+.pf-hero__title em {
+  font-style: normal;
+  color: #848485;
+}
+
+.pf-hero__lead {
+  max-width: 705px;
+  margin-top: 32px !important;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #b5b5b5;
+}
+
+@media (max-width: 767px) {
+  .pf-hero {
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+  .pf-hero__intro {
+    padding: 48px 20px 56px;
+  }
+  .pf-hero__hint {
+    display: none;
+  }
+  .pf-hero__title {
+    margin-top: 16px !important;
+    font-size: 32px;
+    line-height: 38px;
+  }
+  .pf-hero__lead {
+    margin-top: 16px !important;
+    font-size: 16px;
+  }
+}
+
+/* Hero maior (pedido do cliente, 2026-10-19): a caixa ocupa a 1ª tela — header (80) + respiro do design (120 acima,
+   32 abaixo) + caixa = altura da janela, então a faixa do filtro começa exatamente na dobra. Conteúdo centralizado.
+   Limites: 560 (telas baixas) a 860 (monitores altos). No celular: 480 a 600. */
+.pf-hero__box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: clamp(560px, calc(100vh - 80px - var(--py) - var(--px)), 860px);
+  min-height: clamp(560px, calc(100svh - 80px - var(--py) - var(--px)), 860px);
+}
+
+@media (max-width: 767px) {
+  .pf-hero__box {
+    min-height: clamp(480px, calc(100vh - 60px - 32px), 600px);
+    min-height: clamp(480px, calc(100svh - 60px - 32px), 600px);
+  }
+}

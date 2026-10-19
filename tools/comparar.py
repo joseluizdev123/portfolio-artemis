@@ -2,7 +2,10 @@
 """
 Diff numérico + diff de pixels entre o design (referência) e a página montada.
 
-  python tools/comparar.py <dir-medidas> <largura> [--ref design] [--pag pagina]
+  python tools/comparar.py <dir-medidas> <largura> [--ref design] [--pag pagina] [--sem-links]
+
+--sem-links: não compara src de imagens nem href de links (WordPress × estático: as imagens vêm do tema e da Mídia,
+e o item "Portfólio" do menu aponta para a própria página) — todo o resto continua comparado.
 
 Lê <dir>/<ref>-<largura>.json/.png e <dir>/<pag>-<largura>.json/.png (gerados por tools/medir.mjs) e imprime:
   1. estrutura: mesma sequência de elementos (tag + classes sem o prefixo pf-)
@@ -35,6 +38,8 @@ def main():
     d, w = a[0], a[1]
     ref = a[a.index('--ref') + 1] if '--ref' in a else 'design'
     pag = a[a.index('--pag') + 1] if '--pag' in a else 'pagina'
+    if '--sem-links' in a:
+        SKIP.update({'src', 'href'})
     R, P = load(d, ref, w), load(d, pag, w)
     bad = 0
     print('== %spx — %s × %s' % (w, ref, pag))

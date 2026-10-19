@@ -4,3 +4,5 @@ _site/
 .claude/
 __pycache__/
 *.tmp
+# WordPress local (tools/wordpress.mjs): core, banco SQLite e uploads do Playground
+wordpress/.playground/

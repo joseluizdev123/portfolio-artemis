@@ -63,8 +63,8 @@ Resultado (2026-10-19): com o aumento da hero neutralizado, **0 pixel diferente*
 ## Diferenças em relação ao design
 
 1. **Hero maior** (pedido do Studio): a caixa ocupa a primeira tela, e a faixa do filtro começa na dobra.
-2. **Filtro funcionando, com seleção múltipla:** no design as abas eram só visuais. Agora Site, Plataforma, Onepage
-   e Blog ligam e desligam, e "Todos" limpa a seleção. O projeto em destaque some quando não entra no filtro, e o
+2. **Filtro funcionando, com seleção múltipla:** no design as abas eram só visuais. Agora Site, Onepage e Blog
+   ligam e desligam (a aba Plataforma do design foi retirada a pedido do Studio), e "Todos" limpa a seleção. O projeto em destaque some quando não entra no filtro, e o
    endereço guarda a seleção (`#site+blog`). As categorias de cada projeto ficam em `src/projetos.json` (aprovadas
    pelo Studio em 2026-10-19).
 3. **Rodapé:** a coluna de contato tem a largura do e-mail. No design o e-mail vazava 20px da tela e criava rolagem
@@ -83,3 +83,34 @@ Resultado (2026-10-19): com o aumento da hero neutralizado, **0 pixel diferente*
 ## Publicação
 
 O workflow `.github/workflows/pages.yml` publica `index.html` + `assets/` no GitHub Pages a cada push na `main`.
+
+## WordPress local (Playground)
+
+O tema `wordpress/artemis-portfolio/` roda num WordPress local feito com o
+[WordPress Playground](https://wordpress.github.io/wordpress-playground/) (`@wp-playground/cli` 3.1.59, PHP 8.2 em
+WebAssembly, SQLite): sem Docker, sem MySQL, sem Apache. Requisitos: Node 22.13+ e rede na primeira execução.
+
+```bash
+node tools/wordpress.mjs            # sobe em http://127.0.0.1:9400 (Ctrl+C para parar)
+node tools/wordpress.mjs --reset    # apaga o WordPress local e instala do zero
+node tools/wordpress.mjs --popular  # roda o seeder de novo ao subir (sobrescreve o conteúdo pelo data/projetos.json)
+```
+
+| Endereço | O que é |
+|---|---|
+| http://127.0.0.1:9400/ | site (a página Portfólio é a página inicial) |
+| http://127.0.0.1:9400/wp-admin/ | painel — usuário `admin`, senha `admin` (só local) |
+
+- **WordPress 7.1.3 em português**, sem atualização automática. A primeira instalação leva uns 5 minutos (baixa o
+  WordPress e grava cerca de 4 mil arquivos). Depois disso, subir leva uns 30 segundos.
+- **O tema é montado ao vivo:** basta editar um arquivo em `wordpress/artemis-portfolio/` e recarregar a página.
+- **O conteúdo fica salvo** em `wordpress/.playground/` (core, banco SQLite, mídia), fora do Git. O que se edita no
+  painel continua lá depois de reiniciar. `--reset` apaga tudo.
+- Na primeira instalação, `wordpress/blueprint.json` define o título, o idioma e a senha, ativa o tema e chama
+  `artemis_pf_seed( true )`. Se o tema ainda estiver incompleto, o seeder fica pendente e roda sozinho na próxima
+  vez que o WordPress subir. Para popular de novo a qualquer momento: **Aparência → Portfólio: popular conteúdo**
+  (ou `--popular`).
+- **O site abre deslogado** (sem a barra do admin), também para o Chrome headless de `tools/medir.mjs`. Para entrar,
+  use `/wp-login.php`.
+- **Cada página leva de 3 a 8 segundos** (PHP em WebAssembly com tradução MySQL → SQLite). Para validar,
+  use um timeout generoso.

@@ -102,12 +102,17 @@ try {
   s = await estado();
   ok('Blog + Onepage: 7 cartões, "7 projetos em Onepage e Blog", #onepage+blog', s.cartoes === 7 && s.contagem === '7 projetos em Onepage e Blog' && s.hash === '#onepage+blog', s.contagem + ' ' + s.hash);
   ok('Blog + Onepage: chamada fecha a linha (7 % 3 = 1 → span 2), grade com 3 colunas', s.span === 'span 2' && s.cols === 3);
+  await clica('[data-filtro="blog"]');
+  s = await estado();
+  ok('desmarcar Blog: só Onepage (3 cartões)', s.ativas === 'Onepage' && s.cartoes === 3, s.ativas);
   await clica('[data-filtro="site"]');
   s = await estado();
-  ok('+ Site: destaque volta', s.destaque && s.ativas === 'Site+Onepage+Blog', s.ativas);
-  await clica('[data-filtro="plataforma"]');
+  ok('Onepage + Site: destaque volta, 21 cartões', s.destaque && s.ativas === 'Site+Onepage' && s.cartoes === 21, s.ativas);
+  await clica('[data-filtro="blog"]');
   s = await estado();
-  ok('as quatro marcadas = Todos', s.ativas === 'Todos' && s.cartoes === 22 && s.hash === '', s.ativas);
+  ok('todas as categorias marcadas = Todos (inclui projetos sem categoria)', s.ativas === 'Todos' && s.cartoes === 22 && s.hash === '', s.ativas);
+  const abas = await ev(`return [...document.querySelectorAll('[data-filtro]')].map(t => t.textContent.trim()).join(',');`);
+  ok('abas: Todos, Site, Onepage, Blog (sem Plataforma)', abas === 'Todos,Site,Onepage,Blog', abas);
 
   // 2. Redimensionar depois de filtrar não cria colunas implícitas (achado INT-1)
   await clica('[data-filtro="site"]');
@@ -126,9 +131,12 @@ try {
   ok('girar o celular (844×390 → 390×844): 1 coluna, sem rolagem lateral', s.cols === 1 && s.docW <= s.vw, { cols: s.cols, docW: s.docW });
 
   // 3. Chamada em 1 coluna usa o arranjo compacto (achado V1)
-  await abre(BASE + '#plataforma', 768);
+  await abre(BASE + '#onepage', 768);
   s = await estado();
-  ok('768 #plataforma: chamada em 1 coluna com título 28px e altura < 700', s.span === 'span 1' && s.ctaTitulo === '28px' && s.ctaH < 700, { span: s.span, titulo: s.ctaTitulo, h: s.ctaH });
+  ok('768 #onepage (3 cartões, 2 colunas): chamada em 1 coluna com título 28px e altura < 700', s.span === 'span 1' && s.ctaTitulo === '28px' && s.ctaH < 700, { span: s.span, titulo: s.ctaTitulo, h: s.ctaH });
+  await abre(BASE + '#plataforma', 1440);
+  s = await estado();
+  ok('#plataforma (aba removida) no endereço: abre em Todos', s.ativas === 'Todos' && s.cartoes === 22, s.ativas);
 
   // 4. Abrir filtrado rola até a grade, depois das fontes (achado INT-4)
   await abre(BASE + '#site+blog', 1440);

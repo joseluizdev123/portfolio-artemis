@@ -56,7 +56,7 @@ Modelo de dados proposto, no mesmo padrão dos CPTs do tema (`inc/cpt-cliente.ph
 | Conteúdo | Tipo | Slug WP | Campos |
 |---|---|---|---|
 | Projetos do portfólio | CPT | `art_projeto` | título (nome), domínio exibido, URL, texto do botão (padrão "Ver site no ar"), imagem destacada (captura 16:10), ordem (`menu_order`) |
-| Categorias | taxonomia | `art_projeto_cat` | Site, Plataforma, Onepage, Blog (as abas do filtro) |
+| Categorias | taxonomia | `art_projeto_cat` | Site, Onepage, Blog (as abas do filtro; a Plataforma do design foi retirada) |
 | Projeto em destaque | meta no CPT | `_art_destaque` | marcar 1 projeto + descrição, 3 fatos (Formato/Destaque/Acesso) |
 | Textos da página | Customizer | `art_portfolio_*` | eyebrow, título e texto do hero, títulos da grade e da chamada |
 | Página | Page | `portfolio-artemis` | template `page-portfolio-artemis.php` → `template-parts/portfolio/NN-slug.php` |
@@ -68,8 +68,8 @@ publicados.
 ## Pendências de conteúdo (revisar com o Studio Artemis)
 
 - **Categorias dos projetos:** aprovadas pelo Studio em 2026-10-19. São 18 Site (mais o destaque Expo Usipa),
-  3 Onepage (Zeros à Direita, ebrain, FaleUp), 1 Plataforma (oithe) e 4 Blog (3Neuron, Voxy, Bolsa de terras e
-  Global Supply, que também são Site).
+  3 Onepage (Zeros à Direita, ebrain, FaleUp) e 4 Blog (3Neuron, Voxy, Bolsa de terras e Global Supply, que também
+  são Site). A aba Plataforma foi retirada a pedido do Studio: o oithe ficou sem categoria e aparece só em "Todos".
 - **Sem captura:** Lebensart – Porsche (ambiente de teste), oithe (protótipo) e Nivéro mostram "Captura do site".
 - **oithe:** o link do protótipo no Figma ainda é `#`, e o cartão mostra "Protótipo em breve". Para ativar, coloque a URL em
   `src/projetos.json`.
