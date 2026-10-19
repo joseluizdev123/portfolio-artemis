@@ -10,6 +10,12 @@
 defined( 'ABSPATH' ) || exit;
 
 get_header();
+
+if ( post_password_required() ) { // página protegida por senha: só o formulário
+	echo '<main><section class="pf-hero"><div class="pf-wrap"><div class="pf-hero__intro">' . get_the_password_form() . '</div></div></section></main>'; // phpcs:ignore WordPress.Security.EscapeOutput -- formulário do core
+	get_footer();
+	return;
+}
 ?>
 
 <main>

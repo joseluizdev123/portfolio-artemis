@@ -33,7 +33,7 @@ add_action( 'init', function () {
 		'show_ui'      => true,
 		'show_in_rest' => true,
 		'menu_icon'    => 'dashicons-portfolio',
-		'supports'     => array( 'title', 'thumbnail', 'page-attributes' ),
+		'supports'     => array( 'title', 'thumbnail', 'page-attributes', 'custom-fields' ), // custom-fields: metas no REST
 	) );
 
 	register_taxonomy( 'art_projeto_cat', 'art_projeto', array(
@@ -68,9 +68,10 @@ add_action( 'init', function () {
 	}
 	foreach ( array( '_pf_plural' => 'string', '_pf_ordem' => 'integer' ) as $key => $type ) {
 		register_term_meta( 'art_projeto_cat', $key, array(
-			'type'          => $type,
-			'single'        => true,
-			'show_in_rest'  => true,
+			'type'              => $type,
+			'single'            => true,
+			'show_in_rest'      => true,
+			'sanitize_callback' => 'string' === $type ? 'sanitize_text_field' : 'intval',
 			'auth_callback' => function () {
 				return current_user_can( 'manage_categories' );
 			},
@@ -159,7 +160,7 @@ add_action( 'save_post_art_projeto', function ( $post_id ) {
 		if ( '' === $valor ) {
 			delete_post_meta( $post_id, $key );
 		} else {
-			update_post_meta( $post_id, $key, $valor );
+			update_post_meta( $post_id, $key, wp_slash( $valor ) );
 		}
 	}
 } );
@@ -223,7 +224,7 @@ $artemis_pf_salva_cat = function ( $term_id ) {
 		return;
 	}
 	if ( isset( $_POST['pf_plural'] ) ) {
-		update_term_meta( $term_id, '_pf_plural', sanitize_text_field( wp_unslash( $_POST['pf_plural'] ) ) );
+		update_term_meta( $term_id, '_pf_plural', wp_slash( sanitize_text_field( wp_unslash( $_POST['pf_plural'] ) ) ) );
 	}
 	if ( isset( $_POST['pf_ordem'] ) ) {
 		update_term_meta( $term_id, '_pf_ordem', (int) $_POST['pf_ordem'] );

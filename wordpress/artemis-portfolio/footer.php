@@ -42,7 +42,7 @@ $artemis_pf_redes  = array(
 <h2 class="pf-ftr__h" id="ftr-a"><?php echo esc_html( artemis_pf_mod( 'art_pf_rod_col1' ) ); ?></h2>
 <ul class="pf-ftr__links">
 <?php foreach ( $artemis_pf_col1 as $artemis_pf_item ) : ?>
-<li><a href="<?php echo esc_url( $artemis_pf_item[1] ); ?>"><?php echo esc_html( $artemis_pf_item[0] ); ?></a></li>
+<li><a href="<?php echo esc_url( $artemis_pf_item[1] ); ?>"<?php echo artemis_pf_menu_attrs( $artemis_pf_item ); // phpcs:ignore WordPress.Security.EscapeOutput ?>><?php echo esc_html( $artemis_pf_item[0] ); ?></a></li>
 <?php endforeach; ?>
 </ul>
 </nav>
@@ -50,7 +50,7 @@ $artemis_pf_redes  = array(
 <h2 class="pf-ftr__h" id="ftr-b"><?php echo esc_html( artemis_pf_mod( 'art_pf_rod_col2' ) ); ?></h2>
 <ul class="pf-ftr__links">
 <?php foreach ( $artemis_pf_col2 as $artemis_pf_item ) : ?>
-<li><a href="<?php echo esc_url( $artemis_pf_item[1] ); ?>"><?php echo esc_html( $artemis_pf_item[0] ); ?></a></li>
+<li><a href="<?php echo esc_url( $artemis_pf_item[1] ); ?>"<?php echo artemis_pf_menu_attrs( $artemis_pf_item ); // phpcs:ignore WordPress.Security.EscapeOutput ?>><?php echo esc_html( $artemis_pf_item[0] ); ?></a></li>
 <?php endforeach; ?>
 </ul>
 </nav>
@@ -69,6 +69,7 @@ $artemis_pf_redes  = array(
 <p class="pf-ftr__label"><?php echo esc_html( artemis_pf_mod( 'art_pf_rod_social' ) ); ?></p>
 <ul class="pf-ftr__icons">
 <?php foreach ( $artemis_pf_redes as $artemis_pf_key => $artemis_pf_rede ) : ?>
+<?php if ( '-' === artemis_pf_mod( $artemis_pf_key ) ) { continue; } // "-" no Personalizar = rede escondida ?>
 <li><a class="pf-ico" href="<?php echo esc_url( artemis_pf_mod( $artemis_pf_key ) ); ?>" aria-label="<?php echo esc_attr( $artemis_pf_rede[0] ); ?>"><img src="<?php echo esc_url( artemis_pf_asset( 'images/footer/' . $artemis_pf_rede[1] ) ); ?>" alt=""></a></li>
 <?php endforeach; ?>
 </ul>
@@ -77,7 +78,7 @@ $artemis_pf_redes  = array(
 </div>
 <div class="pf-ftr__legal">
 <p><?php echo esc_html( artemis_pf_mod( 'art_pf_rod_copyright' ) ); ?></p>
-<div style="display: flex; gap: 24px"><?php foreach ( $artemis_pf_legal as $artemis_pf_item ) : ?><a href="<?php echo esc_url( $artemis_pf_item[1] ); ?>"><?php echo esc_html( $artemis_pf_item[0] ); ?></a><?php endforeach; ?></div>
+<div style="display: flex; gap: 24px"><?php foreach ( $artemis_pf_legal as $artemis_pf_item ) : ?><a href="<?php echo esc_url( $artemis_pf_item[1] ); ?>"<?php echo artemis_pf_menu_attrs( $artemis_pf_item ); // phpcs:ignore WordPress.Security.EscapeOutput ?>><?php echo esc_html( $artemis_pf_item[0] ); ?></a><?php endforeach; ?></div>
 </div>
 </div>
 <div class="pf-ftr__pattern" aria-hidden="true"></div>

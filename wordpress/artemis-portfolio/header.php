@@ -28,9 +28,9 @@ $artemis_pf_menu = artemis_pf_menu_itens( 'pf_principal', artemis_pf_menu_princi
 <nav class="pf-nav" aria-label="<?php esc_attr_e( 'Principal', 'artemis' ); ?>">
 <?php foreach ( $artemis_pf_menu as $artemis_pf_item ) : ?>
 <?php if ( $artemis_pf_item[2] ) : ?>
-<a class="pf-nav__cur" href="<?php echo esc_url( $artemis_pf_item[1] ); ?>" aria-current="page"><?php echo esc_html( $artemis_pf_item[0] ); ?></a>
+<a class="pf-nav__cur" href="<?php echo esc_url( $artemis_pf_item[1] ); ?>"<?php echo artemis_pf_menu_attrs( $artemis_pf_item ); // phpcs:ignore WordPress.Security.EscapeOutput ?> aria-current="page"><?php echo esc_html( $artemis_pf_item[0] ); ?></a>
 <?php else : ?>
-<a href="<?php echo esc_url( $artemis_pf_item[1] ); ?>"><?php echo esc_html( $artemis_pf_item[0] ); ?></a>
+<a href="<?php echo esc_url( $artemis_pf_item[1] ); ?>"<?php echo artemis_pf_menu_attrs( $artemis_pf_item ); // phpcs:ignore WordPress.Security.EscapeOutput ?>><?php echo esc_html( $artemis_pf_item[0] ); ?></a>
 <?php endif; ?>
 <?php endforeach; ?>
 <span class="pf-nav__sep" aria-hidden="true"></span>
@@ -41,7 +41,7 @@ $artemis_pf_menu = artemis_pf_menu_itens( 'pf_principal', artemis_pf_menu_princi
 <!-- Menu do celular/tablet (≤1000): os mesmos links do menu principal + o botão do topo -->
 <nav class="pf-menu" id="pf-menu" aria-label="<?php esc_attr_e( 'Principal', 'artemis' ); ?>" hidden data-extra>
 <?php foreach ( $artemis_pf_menu as $artemis_pf_item ) : ?>
-<a href="<?php echo esc_url( $artemis_pf_item[1] ); ?>"<?php echo $artemis_pf_item[2] ? ' aria-current="page"' : ''; ?>><?php echo esc_html( $artemis_pf_item[0] ); ?></a>
+<a href="<?php echo esc_url( $artemis_pf_item[1] ); ?>"<?php echo artemis_pf_menu_attrs( $artemis_pf_item ) . ( $artemis_pf_item[2] ? ' aria-current="page"' : '' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>><?php echo esc_html( $artemis_pf_item[0] ); ?></a>
 <?php endforeach; ?>
 <a class="pf-menu__cta" href="<?php echo esc_url( artemis_pf_mod( 'art_pf_cta_url' ) ); ?>"><?php echo esc_html( artemis_pf_mod( 'art_pf_cta_texto' ) ); ?></a>
 </nav>

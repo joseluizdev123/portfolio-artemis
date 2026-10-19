@@ -26,9 +26,16 @@ function artemis_pf_pagina_id() {
 		$id = (int) $atual;
 		return $id;
 	}
+	$inicial = (int) get_option( 'page_on_front' );
+	if ( $inicial && 'templates/portfolio.php' === get_page_template_slug( $inicial ) ) {
+		$id = $inicial;
+		return $id;
+	}
 	$paginas = get_posts( array(
 		'post_type'   => 'page',
 		'post_status' => 'publish',
+		'orderby'     => 'ID',
+		'order'       => 'ASC',
 		'meta_key'    => '_wp_page_template', // phpcs:ignore WordPress.DB.SlowDBQuery
 		'meta_value'  => 'templates/portfolio.php', // phpcs:ignore WordPress.DB.SlowDBQuery
 		'numberposts' => 1,
@@ -130,12 +137,17 @@ function artemis_pf_projeto_dados( $post ) {
 function artemis_pf_todos_projetos() {
 	static $todos = null;
 	if ( null === $todos ) {
-		$todos = array_map( 'artemis_pf_projeto_dados', get_posts( array(
+		$posts = get_posts( array(
 			'post_type'      => 'art_projeto',
 			'post_status'    => 'publish',
 			'posts_per_page' => -1,
 			'orderby'        => array( 'menu_order' => 'ASC', 'date' => 'ASC' ),
-		) ) );
+		) );
+		$capturas = array_filter( array_map( 'get_post_thumbnail_id', $posts ) );
+		if ( $capturas ) {
+			_prime_post_caches( $capturas, false, true ); // anexos + meta das capturas numa consulta só
+		}
+		$todos = array_map( 'artemis_pf_projeto_dados', $posts );
 	}
 	return $todos;
 }
@@ -184,10 +196,9 @@ function artemis_pf_categorias() {
 	return $out;
 }
 
-/** "23 projetos" / "1 projeto". */
+/** "23 projetos" / "1 projeto" — palavras editáveis na caixa "2. Filtro". */
 function artemis_pf_n_projetos( $n ) {
-	/* translators: %d: número de projetos */
-	return sprintf( _n( '%d projeto', '%d projetos', $n, 'artemis' ), $n );
+	return $n . ' ' . artemis_pf_txt( 1 === (int) $n ? 'pf_filtro_projeto' : 'pf_filtro_projetos' );
 }
 
 /** Seta "↗" usada nos links (mesmo SVG do design). $traco: espessura do traço. */
@@ -208,7 +219,7 @@ function artemis_pf_cartao( array $p, $n ) {
 	$alt     = ( $tem_img ? __( 'Captura de tela do projeto ', 'artemis' ) : __( 'Espaço para a captura de tela do projeto ', 'artemis' ) ) . $p['nome'];
 	$midia   = $tem_img
 		? sprintf( '<img class="pf-shot__img" src="%s" width="%d" height="%d" alt="" loading="lazy" decoding="async">', esc_url( $p['imagem']['src'] ), $p['imagem']['w'], $p['imagem']['h'] )
-		: '<p class="pf-shot__label">' . esc_html__( 'Captura do site', 'artemis' ) . '</p>';
+		: '<p class="pf-shot__label">' . esc_html( artemis_pf_txt( 'pf_lista_sem_captura' ) ) . '</p>';
 	$link    = '' !== $p['url'];
 	$acao    = sprintf(
 		'<a class="pf-card__go"%s%s>%s' . "\n" . '%s' . "\n" . '</a>',
@@ -223,7 +234,7 @@ function artemis_pf_cartao( array $p, $n ) {
 		. $midia . "\n"
 		. '</div>' . "\n"
 		. '<div class="pf-card__info">' . "\n"
-		. '<p class="pf-meta"><span class="pf-meta__lead">' . esc_html( sprintf( '%02d', $n ) ) . '</span><span aria-hidden="true">·</span><span>' . esc_html( $p['dominio'] ) . '</span></p>' . "\n"
+		. '<p class="pf-meta"><span class="pf-meta__lead">' . esc_html( sprintf( '%02d', $n ) ) . '</span>' . ( '' !== $p['dominio'] ? '<span aria-hidden="true">·</span><span>' . esc_html( $p['dominio'] ) . '</span>' : '' ) . '</p>' . "\n"
 		. '<h3 class="pf-card__name">' . esc_html( $p['nome'] ) . '</h3>' . "\n"
 		. '</div>' . "\n"
 		. $acao . "\n"
@@ -241,8 +252,11 @@ function artemis_pf_menu_itens( $local, array $reserva ) {
 		return $reserva;
 	}
 	$itens = wp_get_nav_menu_items( $locais[ $local ] );
-	if ( ! $itens ) {
+	if ( false === $itens ) { // o menu atribuído não existe mais
 		return $reserva;
+	}
+	if ( ! $itens ) { // menu atribuído e vazio: sem links, como o usuário deixou
+		return array();
 	}
 	_wp_menu_item_classes_by_context( $itens ); // marca current-menu-item como o wp_nav_menu() faria
 	$out = array();
@@ -251,7 +265,7 @@ function artemis_pf_menu_itens( $local, array $reserva ) {
 			continue; // o design não tem submenus
 		}
 		$classes = (array) $item->classes;
-		$out[]   = array( $item->title, $item->url, in_array( 'current-menu-item', $classes, true ) || in_array( 'current_page_item', $classes, true ) );
+		$out[]   = array( $item->title, $item->url, in_array( 'current-menu-item', $classes, true ) || in_array( 'current_page_item', $classes, true ), (string) $item->target, (string) $item->xfn );
 	}
 	return $out;
 }
@@ -267,4 +281,17 @@ function artemis_pf_menu_principal_reserva() {
 		array( 'Sobre', 'https://studioartemis.co/sobre', false ),
 		array( 'MktOps', 'https://studioartemis.co/mktops', false ),
 	);
+}
+
+/** Atributos extras de um item de menu: target e rel (campos "Abrir em nova aba" e "XFN" do menu). */
+function artemis_pf_menu_attrs( array $item ) {
+	$attrs = '';
+	if ( ! empty( $item[3] ) ) {
+		$attrs .= ' target="' . esc_attr( $item[3] ) . '"';
+	}
+	$rel = trim( ( ! empty( $item[4] ) ? $item[4] : '' ) . ( ( isset( $item[3] ) && '_blank' === $item[3] ) ? ' noopener noreferrer' : '' ) );
+	if ( '' !== $rel ) {
+		$attrs .= ' rel="' . esc_attr( $rel ) . '"';
+	}
+	return $attrs;
 }

@@ -111,8 +111,11 @@
   })();
 
   /* 3. Filtro por categoria — seleção múltipla. No design as abas são só visuais; aqui:
-     - Site, Plataforma, Onepage e Blog ligam/desligam (aria-pressed); a grade mostra quem tem QUALQUER uma das
-       categorias marcadas (data-categorias, de src/projetos.json). "Todos" limpa a seleção; marcar as quatro = Todos;
+     - cada categoria (Site, Onepage, Blog — no WordPress, as categorias cadastradas) liga/desliga (aria-pressed); a grade
+       mostra quem tem QUALQUER uma das categorias marcadas (data-categorias). "Todos" limpa a seleção; marcar todas = Todos
+       (quando há mais de uma categoria e todo projeto tem alguma — senão "todas" e "Todos" mostrariam coisas diferentes);
+     - todo texto que o filtro escreve vem de data-txt-* no [data-pf-contagem] (editáveis no WordPress), com o padrão abaixo
+       de reserva, e entra na página como texto (nunca como HTML);
      - a contagem ("22 projetos em Site e Blog"), o rótulo da grade e o endereço (#site+blog) acompanham;
      - com filtro ativo, "Filtre por categoria" vira o link "Ver os projetos ↓" (a página não rola sozinha a cada
        clique, para dar tempo de marcar mais de uma aba); abrir a página com #site+blog já filtra e rola até a grade;
@@ -140,7 +143,21 @@
     });
     var sel = [], empty = null;
     var hintTexto = hint ? hint.textContent : '';
-    var todosTexto = (box && box.getAttribute('data-pf-todos')) || 'no portfólio'; // editável no WordPress
+    var rotuloTexto = rotulo ? rotulo.textContent : ''; // "Todos os projetos" (editável): o que veio no HTML
+    function txt(nome, padrao) {
+      var v = box && box.getAttribute('data-txt-' + nome);
+      return v === null || v === undefined || v === '' ? padrao : v;
+    }
+    var T = {
+      todos: txt('todos', 'no portfólio'), projeto: txt('projeto', 'projeto'), projetos: txt('projetos', 'projetos'),
+      em: txt('em', 'em'), e: txt('e', 'e'), ver: txt('ver', 'Ver os projetos ↓'),
+      vazio: txt('vazio', 'Ainda não há projetos em %s publicados no portfólio.'),
+      vazioTodos: txt('vazio-todos', 'Ainda não há projetos publicados no portfólio.'),
+    };
+    // marcar todas as categorias = "Todos" só quando isso não esconde nada (mais de uma aba e todo projeto categorizado)
+    var reduz = CATS.length > 1 && !cards.concat(feat ? [feat] : []).some(function (el) {
+      return !(el.getAttribute('data-categorias') || '').trim();
+    });
 
     // as abas viram botões de liga/desliga (sem JS continuam links para âncoras)
     tabs.forEach(function (t) {
@@ -149,7 +166,7 @@
     });
 
     function lista(itens) { // "Site", "Site e Blog", "Site, Onepage e Blog"
-      return itens.length < 2 ? itens.join('') : itens.slice(0, -1).join(', ') + ' e ' + itens[itens.length - 1];
+      return itens.length < 2 ? itens.join('') : itens.slice(0, -1).join(', ') + ' ' + T.e + ' ' + itens[itens.length - 1];
     }
 
     function passa(el) {
@@ -183,22 +200,31 @@
       var featOn = !feat || passa(feat);
       if (featSec) featSec.hidden = !featOn;
       var total = n + (feat && featOn ? 1 : 0);
-      if (count) {
-        count.innerHTML = '<strong>' + total + (total === 1 ? ' projeto' : ' projetos') + '</strong> ' +
-          (sel.length ? 'em ' + lista(nomes) : todosTexto);
+      if (count) { // nós de texto: os textos vêm do painel e nunca viram HTML
+        var forte = document.createElement('strong');
+        forte.textContent = total + ' ' + (total === 1 ? T.projeto : T.projetos);
+        count.textContent = '';
+        count.appendChild(forte);
+        count.appendChild(document.createTextNode(' ' + (sel.length ? T.em + ' ' + lista(nomes) : T.todos)));
       }
       if (hint) {
-        if (sel.length) hint.innerHTML = '<a href="#projetos" data-pf-ver>Ver os projetos ↓</a>';
-        else hint.textContent = hintTexto;
+        hint.textContent = sel.length ? '' : hintTexto;
+        if (sel.length) {
+          var ver = document.createElement('a');
+          ver.href = '#projetos';
+          ver.setAttribute('data-pf-ver', '');
+          ver.textContent = T.ver;
+          hint.appendChild(ver);
+        }
       }
-      if (rotulo) rotulo.textContent = sel.length ? lista(sel.map(function (c) { return PLURAL[c] || ABA[c]; })) : 'Todos os projetos';
-      if (!n) {
+      if (rotulo) rotulo.textContent = sel.length ? lista(sel.map(function (c) { return PLURAL[c] || ABA[c]; })) : rotuloTexto;
+      if (!total) { // nem a grade nem o destaque têm projetos desta seleção
         if (!empty) {
           empty = document.createElement('p');
           empty.className = 'pf-grid__empty';
           empty.setAttribute('data-extra', '');
         }
-        empty.textContent = 'Ainda não há projetos em ' + lista(nomes) + ' publicados no portfólio.';
+        empty.textContent = sel.length ? T.vazio.replace('%s', lista(nomes)) : T.vazioTodos;
         grid.insertBefore(empty, cta);
       } else if (empty) {
         empty.remove();
@@ -225,7 +251,7 @@
       if (c === 'todos') sel = [];
       else if (sel.indexOf(c) > -1) sel = sel.filter(function (x) { return x !== c; });
       else sel = CATS.filter(function (x) { return x === c || sel.indexOf(x) > -1; }); // mantém a ordem das abas
-      if (sel.length === CATS.length) sel = []; // as quatro marcadas = Todos
+      if (reduz && sel.length === CATS.length) sel = []; // todas marcadas = Todos
       if (history.replaceState) history.replaceState(null, '', sel.length ? '#' + sel.join('+') : location.pathname + location.search);
       aplica();
     }
@@ -253,7 +279,7 @@
       // Sem fragmento (voltou à URL limpa) ou #todos: limpa o filtro.
       // (href="#" deixa location.hash vazio: o que distingue da URL limpa é o "#" no endereço)
       if (!h.length && location.href.indexOf('#') > -1 && location.hash !== '#todos') return;
-      sel = h.length === CATS.length ? [] : h;
+      sel = reduz && h.length === CATS.length ? [] : h;
       aplica();
       if (sel.length) rolaAteGrade();
     });
@@ -261,7 +287,7 @@
     else window.addEventListener('resize', fechaLinha);
 
     sel = hashAtual();
-    if (sel.length === CATS.length) sel = [];
+    if (reduz && sel.length === CATS.length) sel = [];
     aplica();
     if (sel.length) (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(rolaAteGrade);
   })();

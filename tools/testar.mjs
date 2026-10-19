@@ -110,7 +110,10 @@ try {
   ok('Onepage + Site: destaque volta, 21 cartões', s.destaque && s.ativas === 'Site+Onepage' && s.cartoes === 21, s.ativas);
   await clica('[data-filtro="blog"]');
   s = await estado();
-  ok('todas as categorias marcadas = Todos (inclui projetos sem categoria)', s.ativas === 'Todos' && s.cartoes === 22 && s.hash === '', s.ativas);
+  ok('as três categorias marcadas: 21 cartões (o oithe, sem categoria, só aparece em Todos)', s.ativas === 'Site+Onepage+Blog' && s.cartoes === 21, s.ativas + ' · ' + s.cartoes);
+  await clica('[data-filtro="todos"]');
+  s = await estado();
+  ok('Todos: volta aos 22 cartões e limpa o endereço', s.ativas === 'Todos' && s.cartoes === 22 && s.hash === '', s.ativas);
   const abas = await ev(`return [...document.querySelectorAll('[data-filtro]')].map(t => t.textContent.trim()).join(',');`);
   ok('abas: Todos, Site, Onepage, Blog (sem Plataforma)', abas === 'Todos,Site,Onepage,Blog', abas);
 

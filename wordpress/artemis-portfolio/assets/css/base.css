@@ -214,3 +214,17 @@ body {
     padding: 13px 20px;
   }
 }
+
+/* Conteúdo vindo do WordPress: nome ou endereço muito longo (sem espaço) quebra em vez de vazar da tela.
+   Com os textos atuais nada muda (tools/comparar.py: 0 px). */
+.pf-card__name,
+.pf-feat__title,
+.pf-meta > span {
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+.pf-feat__text .pf-btn {
+  white-space: normal;
+  max-width: 100%;
+}

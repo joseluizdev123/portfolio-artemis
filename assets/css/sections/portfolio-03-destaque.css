@@ -203,3 +203,8 @@
     font-size: 16px;
   }
 }
+
+/* Destaque sem link (projeto sem URL no WordPress): sem o selo "Abrir site" no hover */
+.pf-feat__media:not([href]) .pf-feat__open {
+  display: none;
+}

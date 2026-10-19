@@ -16,7 +16,24 @@ $artemis_pf_faixa = '<div class="pf-wrap"><div class="pf-band__pattern{flip}"><i
 </div>
 <div class="pf-wrap">
 <div class="pf-filter__in">
-<div class="pf-hero__count" aria-live="polite" data-pf-contagem data-pf-todos="<?php echo esc_attr( artemis_pf_txt( 'pf_filtro_contagem' ) ); ?>">
+<?php
+// textos que o filtro (assets/js/portfolio.js) escreve ao marcar abas — editáveis na caixa "2. Filtro"
+$artemis_pf_txts = array(
+	'todos'       => 'pf_filtro_contagem',
+	'projeto'     => 'pf_filtro_projeto',
+	'projetos'    => 'pf_filtro_projetos',
+	'em'          => 'pf_filtro_em',
+	'e'           => 'pf_filtro_e',
+	'ver'         => 'pf_filtro_ver',
+	'vazio'       => 'pf_filtro_vazio',
+	'vazio-todos' => 'pf_filtro_vazio_todos',
+);
+$artemis_pf_data = '';
+foreach ( $artemis_pf_txts as $artemis_pf_nome => $artemis_pf_campo ) {
+	$artemis_pf_data .= ' data-txt-' . $artemis_pf_nome . '="' . esc_attr( artemis_pf_txt( $artemis_pf_campo ) ) . '"';
+}
+?>
+<div class="pf-hero__count" aria-live="polite" data-pf-contagem<?php echo $artemis_pf_data; // phpcs:ignore WordPress.Security.EscapeOutput -- esc_attr acima ?>>
 <p><strong><?php echo esc_html( artemis_pf_n_projetos( artemis_pf_total() ) ); ?></strong> <?php artemis_pf_e( 'pf_filtro_contagem' ); ?></p>
 <p><?php artemis_pf_e( 'pf_filtro_dica' ); ?></p>
 </div>

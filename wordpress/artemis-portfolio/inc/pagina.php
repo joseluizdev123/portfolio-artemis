@@ -27,9 +27,22 @@ function artemis_pf_campos() {
 		'filtro'  => array(
 			__( 'Portfólio — 2. Filtro', 'artemis' ),
 			array(
-				'pf_filtro_contagem' => array( __( 'Depois do número de projetos (ex.: 23 projetos …)', 'artemis' ), 'text', 'no portfólio' ),
-				'pf_filtro_dica'     => array( __( 'Texto à direita da contagem', 'artemis' ), 'text', 'Filtre por categoria' ),
-				'pf_filtro_todos'    => array( __( 'Aba que mostra todos os projetos', 'artemis' ), 'text', 'Todos' ),
+				'pf_filtro_contagem'    => array( __( 'Depois do número de projetos (ex.: 23 projetos …)', 'artemis' ), 'text', 'no portfólio' ),
+				'pf_filtro_dica'        => array( __( 'Texto à direita da contagem', 'artemis' ), 'text', 'Filtre por categoria' ),
+				'pf_filtro_todos'       => array( __( 'Aba que mostra todos os projetos', 'artemis' ), 'text', 'Todos' ),
+				'pf_filtro_projeto'     => array( __( 'Palavra "projeto" (singular, na contagem)', 'artemis' ), 'text', 'projeto' ),
+				'pf_filtro_projetos'    => array( __( 'Palavra "projetos" (plural, na contagem)', 'artemis' ), 'text', 'projetos' ),
+				'pf_filtro_em'          => array( __( 'Com abas marcadas: palavra antes das categorias (ex.: 22 projetos em Site e Blog)', 'artemis' ), 'text', 'em' ),
+				'pf_filtro_e'           => array( __( 'Com abas marcadas: palavra entre as duas últimas categorias', 'artemis' ), 'text', 'e' ),
+				'pf_filtro_ver'         => array( __( 'Com abas marcadas: link que leva à grade (no lugar do texto à direita)', 'artemis' ), 'text', 'Ver os projetos ↓' ),
+				'pf_filtro_vazio'       => array( __( 'Aviso quando as abas marcadas não têm projetos (%s = as categorias)', 'artemis' ), 'text', 'Ainda não há projetos em %s publicados no portfólio.' ),
+				'pf_filtro_vazio_todos' => array( __( 'Aviso quando não há nenhum projeto publicado', 'artemis' ), 'text', 'Ainda não há projetos publicados no portfólio.' ),
+			),
+		),
+		'destaque' => array(
+			__( 'Portfólio — 3. Projeto em destaque', 'artemis' ),
+			array(
+				'pf_destaque_abrir' => array( __( 'Selo sobre a captura ao passar o cursor (os demais dados vêm do projeto marcado "Em destaque")', 'artemis' ), 'text', 'Abrir site' ),
 			),
 		),
 		'lista'   => array(
@@ -38,6 +51,7 @@ function artemis_pf_campos() {
 				'pf_lista_eyebrow' => array( __( 'Chamada acima do título', 'artemis' ), 'text', 'Todos os projetos' ),
 				'pf_lista_titulo'  => array( __( 'Título — {entre chaves} o trecho em cinza', 'artemis' ), 'text', 'Do site institucional {à plataforma}' ),
 				'pf_lista_nota'    => array( __( 'Texto à direita do título', 'artemis' ), 'textarea', 'Cada cartão leva ao projeto publicado. Os que ainda estão em ambiente de teste ou protótipo estão indicados.' ),
+				'pf_lista_sem_captura' => array( __( 'Texto no lugar da captura, nos projetos sem imagem', 'artemis' ), 'text', 'Captura do site' ),
 			),
 		),
 		'chamada' => array(
@@ -166,6 +180,7 @@ function artemis_pf_caixa_ajuda() {
 	echo '</ul>';
 	/* translators: %d: total de projetos publicados */
 	echo '<p class="description">' . esc_html( sprintf( __( 'Os números da página são calculados: hoje há %d projetos publicados.', 'artemis' ), artemis_pf_contar_publicados() ) ) . '</p>';
+	echo '<p class="description">' . esc_html__( 'O botão "Visualizar alterações" não mostra o que foi digitado nestas caixas: clique em "Atualizar" e abra a página.', 'artemis' ) . '</p>';
 }
 
 function artemis_pf_contar_publicados() {
@@ -216,7 +231,7 @@ add_action( 'save_post_page', function ( $post_id ) {
 		if ( '' === $valor || $valor === $c['padrao'] ) {
 			delete_post_meta( $post_id, '_' . $key );
 		} else {
-			update_post_meta( $post_id, '_' . $key, $valor );
+			update_post_meta( $post_id, '_' . $key, wp_slash( $valor ) );
 		}
 	}
 } );
@@ -239,3 +254,13 @@ add_filter( 'wp_robots', function ( $robots ) {
 	}
 	return $robots;
 } );
+
+/* Página com senha: o REST não entrega os textos (meta) a quem não pode editar — o template mostra o formulário de senha. */
+add_filter( 'rest_prepare_page', function ( $resposta, $post ) {
+	if ( '' !== $post->post_password && ! current_user_can( 'edit_post', $post->ID ) ) {
+		$dados = $resposta->get_data();
+		unset( $dados['meta'] );
+		$resposta->set_data( $dados );
+	}
+	return $resposta;
+}, 10, 2 );

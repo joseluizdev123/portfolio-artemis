@@ -36,7 +36,7 @@ function artemis_pf_mod_campos() {
 				'art_pf_rod_end_rot'     => array( __( 'Contato — rótulo do endereço', 'artemis' ), 'text', 'Endereço' ),
 				'art_pf_rod_end'         => array( __( 'Contato — endereço', 'artemis' ), 'text', 'R. Fúlvio Aducci, 416 — Florianópolis, SC' ),
 				'art_pf_rod_social'      => array( __( 'Rótulo das redes sociais', 'artemis' ), 'text', 'Social' ),
-				'art_pf_rod_instagram'   => array( __( 'Instagram — link', 'artemis' ), 'url', '#' ),
+				'art_pf_rod_instagram'   => array( __( 'Instagram — link ("-" esconde o ícone; vale para todas as redes)', 'artemis' ), 'url', '#' ),
 				'art_pf_rod_youtube'     => array( __( 'YouTube — link', 'artemis' ), 'url', '#' ),
 				'art_pf_rod_linkedin'    => array( __( 'LinkedIn — link', 'artemis' ), 'url', '#' ),
 				'art_pf_rod_behance'     => array( __( 'Behance — link', 'artemis' ), 'url', '#' ),
@@ -78,8 +78,8 @@ add_action( 'customize_register', function ( $wp_customize ) {
 			$wp_customize->add_setting( $key, array(
 				'default'           => $padrao,
 				'sanitize_callback' => function ( $valor ) use ( $tipo ) {
-					// "#" fica como está nos links (redes ainda sem endereço, como no design)
-					return ( 'url' === $tipo && '#' === trim( (string) $valor ) ) ? '#' : artemis_pf_limpa( $valor, $tipo );
+					// "#" (rede ainda sem endereço, como no design) e "-" (rede escondida) ficam como estão
+					return ( 'url' === $tipo && in_array( trim( (string) $valor ), array( '#', '-' ), true ) ) ? trim( (string) $valor ) : artemis_pf_limpa( $valor, $tipo );
 				},
 				'transport'         => 'refresh',
 			) );

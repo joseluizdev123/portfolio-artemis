@@ -49,21 +49,34 @@ o do site, nem quando o WordPress carrega todas as folhas em todas as páginas.
 9. **Validar:** `python tools/diff.py`/`page_check.mjs` do site e as ferramentas daqui (`tools/medir.mjs` +
    `tools/comparar.py`, apontando `design` para esta prévia e `pagina` para a página no site).
 
-## WordPress (tema `theme/artemis`)
+## WordPress
 
-Modelo de dados proposto, no mesmo padrão dos CPTs do tema (`inc/cpt-cliente.php`):
+O WordPress **já está pronto** num tema próprio: `wordpress/artemis-portfolio/`. Modelo de dados em [`MODEL.md`](MODEL.md).
 
-| Conteúdo | Tipo | Slug WP | Campos |
-|---|---|---|---|
-| Projetos do portfólio | CPT | `art_projeto` | título (nome), domínio exibido, URL, texto do botão (padrão "Ver site no ar"), imagem destacada (captura 16:10), ordem (`menu_order`) |
-| Categorias | taxonomia | `art_projeto_cat` | Site, Onepage, Blog (as abas do filtro; a Plataforma do design foi retirada) |
-| Projeto em destaque | meta no CPT | `_art_destaque` | marcar 1 projeto + descrição, 3 fatos (Formato/Destaque/Acesso) |
-| Textos da página | Customizer | `art_portfolio_*` | eyebrow, título e texto do hero, títulos da grade e da chamada |
-| Página | Page | `portfolio-artemis` | template `page-portfolio-artemis.php` → `template-parts/portfolio/NN-slug.php` |
+- **Projetos:** post type `art_projeto` (Portfólio → Projetos), com captura, link, textos, ordem e "Em destaque".
+- **Abas do filtro:** taxonomia `art_projeto_cat` (Portfólio → Categorias), com nome, plural e ordem.
+- **Textos da página:** todos editáveis na própria página Portfólio (Páginas → Portfólio), uma caixa por seção.
+- **Header e rodapé:** Personalizar → Portfólio: header e rodapé, e Aparência → Menus.
+- **Números** ("23 projetos", "Formatos 03"…): calculados.
+- **Mesmo HTML, CSS e JS do estático.** O WordPress renderiza a página com 0 pixel de diferença (`tools/comparar.py`).
 
-O seeder do tema (`inc/seeder.php`) importaria `src/projetos.json` e as 20 capturas para a Mídia. Os números da
-página ("23 projetos", "Projetos 23", "[ Projetos: 23 ]") passariam a ser calculados pela quantidade de projetos
-publicados.
+Para testar localmente: `node tools/wordpress.mjs` (WordPress Playground; ver README).
+
+### Levar para o tema oficial (`site_artemis/theme/artemis`)
+
+O tema oficial já tem header, rodapé, Customizer ("Dados do site") e seeder. Do tema de prévia entram só as peças da página:
+
+| Do tema de prévia | No tema oficial | Ajuste |
+|---|---|---|
+| `inc/cpt-projeto.php` | `inc/section-portfolio.php` (ou `inc/cpt-projeto.php`) | nenhum (prefixos `art_projeto`/`artemis_pf_` não colidem com o tema) |
+| `inc/pagina.php` | junto, no mesmo arquivo ou em `inc/portfolio-pagina.php` | nenhum |
+| `inc/helpers.php` (funções `artemis_pf_*`) | junto | `artemis_pf_asset()` → `artemis_asset()` do tema; os menus `pf_*` podem virar os menus do tema |
+| `templates/portfolio.php` + `template-parts/portfolio/` | iguais | `get_header()`/`get_footer()` do tema oficial com a variante Portfólio (selo, item atual) |
+| `inc/seeder.php` | um `add_filter( 'artemis_seed', … )` no padrão do tema | reaproveitar `artemis_pf_seed_*()` |
+| `assets/css/sections/portfolio-*.css`, `assets/js/portfolio.js` | `assets/css/sections/`, `assets/js/sections/` | o tema carrega todas as folhas em todas as páginas: o CSS é todo prefixado e o JS não faz nada fora da página |
+
+Não levar `header.php`, `footer.php`, `inc/customizer.php` nem `assets/css/sections/header.css`/`footer.css`: o
+tema oficial já tem os seus, vindos do Figma.
 
 ## Pendências de conteúdo (revisar com o Studio Artemis)
 
