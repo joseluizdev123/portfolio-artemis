@@ -159,3 +159,10 @@
     gap: 12px !important;
   }
 }
+
+/* Abaixo de 320 (mais estreito que qualquer celular; ex.: painel lateral de um app): sem o selo, logo + "Menu" cabem até ~230 px */
+@media (max-width: 319px) {
+  .pf-hdr .pf-tag {
+    display: none;
+  }
+}
