@@ -6,3 +6,5 @@ __pycache__/
 *.tmp
 # WordPress local (tools/wordpress.mjs): core, banco SQLite e uploads do Playground
 wordpress/.playground/
+# pacote do tema para instalar (python: zip de wordpress/artemis-portfolio)
+dist/
