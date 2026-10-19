@@ -67,9 +67,9 @@ publicados.
 
 ## Pendências de conteúdo (revisar com o Studio Artemis)
 
-- **Categorias dos projetos:** classificação provisória, feita pelas capturas e pelos menus dos sites. Hoje são
-  18 Site, 3 Onepage (Zeros à Direita, ebrain, FaleUp), 1 Plataforma (oithe) e 4 Blog (3Neuron, Voxy, Bolsa de
-  terras e Global Supply, que têm blog no site).
+- **Categorias dos projetos:** aprovadas pelo Studio em 2026-10-19. São 18 Site (mais o destaque Expo Usipa),
+  3 Onepage (Zeros à Direita, ebrain, FaleUp), 1 Plataforma (oithe) e 4 Blog (3Neuron, Voxy, Bolsa de terras e
+  Global Supply, que também são Site).
 - **Sem captura:** Lebensart – Porsche (ambiente de teste), oithe (protótipo) e Nivéro mostram "Captura do site".
 - **oithe:** o link do protótipo no Figma ainda é `#`, e o cartão mostra "Protótipo em breve". Para ativar, coloque a URL em
   `src/projetos.json`.

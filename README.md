@@ -65,8 +65,8 @@ Resultado (2026-10-19): com o aumento da hero neutralizado, **0 pixel diferente*
 1. **Hero maior** (pedido do Studio): a caixa ocupa a primeira tela, e a faixa do filtro começa na dobra.
 2. **Filtro funcionando, com seleção múltipla:** no design as abas eram só visuais. Agora Site, Plataforma, Onepage
    e Blog ligam e desligam, e "Todos" limpa a seleção. O projeto em destaque some quando não entra no filtro, e o
-   endereço guarda a seleção (`#site+blog`). As categorias em `src/projetos.json` são **provisórias** e precisam de
-   revisão.
+   endereço guarda a seleção (`#site+blog`). As categorias de cada projeto ficam em `src/projetos.json` (aprovadas
+   pelo Studio em 2026-10-19).
 3. **Rodapé:** a coluna de contato tem a largura do e-mail. No design o e-mail vazava 20px da tela e criava rolagem
    lateral.
 4. **Menu do celular:** o design só mostra o botão "Menu" fechado. O painel abre abaixo do header. Ele vale até
