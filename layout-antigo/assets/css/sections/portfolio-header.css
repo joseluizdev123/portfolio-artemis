@@ -1,0 +1,55 @@
+/* Header do Portfólio — layout antigo (canvas "Portfólio Artemis — nova página" › Desktop-copia).
+   No fluxo da página (o header do site é fixo e por isso o <main> leva padding-top: aqui não). */
+
+.page-portfolio main { padding-top: 0; }
+
+.pf-header {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--gray-900);
+  background: #000;
+}
+
+.pf-header__in {
+  width: 100%;
+  max-width: var(--frame-w);
+  margin-inline: auto;
+  padding-inline: var(--section-px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.pf-start {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  font: 400 20px/1.3 var(--font-body);
+  color: var(--gray-0);
+  white-space: nowrap;
+}
+.pf-start:hover { color: var(--gray-200); }
+
+.pf-start__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #7ee19a;
+  box-shadow: 0 0 0 5px rgba(126, 225, 154, .22);
+}
+
+.pf-header a:focus-visible { outline: 2px solid var(--blue-400); outline-offset: 3px; }
+
+@media (max-width: 767px) {
+  .pf-header { height: 60px; }
+  .pf-start { font-size: 16px; }
+}
+
+/* Abaixo do quadro (390): logo + "Comece um projeto" não cabem em 320 com os espaços do quadro (335) */
+@media (max-width: 359px) {
+  .pf-header__in { gap: 12px; }
+  .pf-start { gap: 8px; font-size: 15px; }
+}

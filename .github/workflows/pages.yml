@@ -1,6 +1,7 @@
-# Publica a página no GitHub Pages a cada push na main.
-# tools/build.py monta index.html a partir de src/; só index.html + assets/ vão para o Pages
-# (src/, tools/ e design/ ficam no repositório, fora do site publicado).
+# Publica no GitHub Pages a cada push na main.
+# Raiz: layout-antigo/ — o layout escolhido pelo Studio (2026-10-20), gerado no site_artemis por
+# tools/build_portfolio_standalone.py (não editar aqui). /layout-novo/: a prévia anterior, montada por tools/build.py
+# a partir de src/ (só index.html + assets/; src/, tools/ e design/ ficam fora do site publicado).
 name: GitHub Pages
 
 on:
@@ -27,9 +28,10 @@ jobs:
           python-version: '3.12'
       - run: python tools/build.py
       - run: |
-          mkdir _site
-          cp index.html _site/
-          cp -r assets _site/
+          mkdir -p _site/layout-novo
+          cp -r layout-antigo/. _site/
+          cp index.html _site/layout-novo/
+          cp -r assets _site/layout-novo/
           touch _site/.nojekyll
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

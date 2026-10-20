@@ -1,0 +1,239 @@
+/* Portfólio · layout antigo (logos) — canvas "Portfólio Artemis — nova página" › Desktop-copia (1440) e Mobile-antigo (390).
+   Valores literais do quadro. Cores fora da paleta do site (só desta página): fundo #000, linhas #2a2a2c,
+   caixas #0c0c0e, marcado #1a73e8, WhatsApp #25d366. */
+
+.pf {
+  position: relative;
+  display: grid;
+  grid-template-columns: 415px minmax(0, 1fr);
+  background: #000;
+  border-top: 1px solid var(--gray-900);
+}
+
+.pf__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.pf button:focus-visible,
+.pf a:focus-visible,
+.pf-wa:focus-visible { outline: 2px solid var(--blue-400); outline-offset: 3px; }
+
+/* Coluna "Navegue por aqui" */
+.pf-side {
+  padding: 100px 40px 100px 96px;
+  border-right: 1px solid #2a2a2c;
+}
+
+.pf-side__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 1.3;
+  color: var(--gray-0);
+}
+
+.pf-side__list {
+  list-style: none;
+  margin: 40px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.pf-chk {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--gray-0);
+  font: 400 20px/1.3 var(--font-body);
+  cursor: pointer;
+}
+
+.pf-chk__box {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--gray-800);
+  border-radius: 2px;
+  background: #000;
+  color: transparent;
+}
+.pf-chk[aria-pressed="true"] .pf-chk__box { background: #1a73e8; border-color: #1a73e8; color: var(--gray-0); }
+
+/* Lista suspensa "Categoria: …" — só no celular */
+.pf-dd { display: none; }
+.pf-dd__chev { transition: transform .2s ease; }
+
+/* Grade de logos */
+.pf-main { padding: 100px 50px 120px; }
+
+.pf-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 33px 32px;
+}
+
+.pf-tile {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 283 / 237;
+  overflow: hidden;
+  background: #0c0c0e;
+  border: 1px solid #2a2a2c;
+  color: var(--gray-0);
+}
+
+.pf-tile__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform .5s cubic-bezier(.2, .7, .2, 1);
+}
+
+.pf-tile__ph { /* projeto sem logo (tema WP): o nome no lugar, como no quadro */
+  padding: 16px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.2;
+  text-align: center;
+  color: var(--gray-200);
+}
+
+.pf-tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, .75) 100%);
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+
+.pf-tile__name {
+  position: absolute;
+  left: 32px;
+  right: 32px; /* nome longo quebra dentro do logo, em linhas equilibradas (sem viúva) */
+  bottom: 36px;
+  z-index: 1;
+  font: 400 22px/1.2 var(--font-body);
+  text-wrap: balance;
+  color: var(--gray-0);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity .3s ease, transform .3s ease;
+}
+
+a.pf-tile:hover::after,
+a.pf-tile:focus-visible::after { opacity: 1; }
+a.pf-tile:hover .pf-tile__name,
+a.pf-tile:focus-visible .pf-tile__name { opacity: 1; transform: none; }
+a.pf-tile:hover .pf-tile__img { transform: scale(1.04); }
+
+/* Efeitos de hover só no logo com link (regra de hover). Cada logo é link: com o cursor (ou o foco do teclado) ele vem para frente — sobe, cresce e ganha sombra,
+   como os arquivos da MktOps tinham antes da regra de hover — e passa por cima dos vizinhos.
+   Só com mouse: no toque o tap não deixa o logo preso à frente. */
+.pf-grid > li { position: relative; }
+.pf-tile { transition: transform .45s cubic-bezier(.2, .7, .2, 1), box-shadow .45s ease; }
+@media (hover: hover) and (pointer: fine) {
+  .pf-grid > li:hover { z-index: 2; }
+  a.pf-tile:hover { transform: translateY(-10px) scale(1.06); box-shadow: 0 18px 22px rgb(0 0 0 / .55); }
+}
+.pf-grid > li:focus-within { z-index: 2; }
+a.pf-tile:focus-visible { transform: translateY(-10px) scale(1.06); box-shadow: 0 18px 22px rgb(0 0 0 / .55); }
+
+/* Botão flutuante do WhatsApp — símbolo oficial em branco sobre o verde da marca (#25d366), ocupando 59% do
+   círculo como no botão do portfólio antigo (no quadro era um desenho aproximado) */
+.pf-wa {
+  position: fixed;
+  right: 12px;
+  bottom: 28px;
+  z-index: 40;
+  width: 74px;
+  height: 74px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #25d366;
+  color: var(--gray-0);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .35);
+  transition: transform .2s ease;
+}
+.pf-wa:hover { transform: scale(1.06); }
+
+/* Até 1100: coluna do filtro em cima (opções em linha) e grade de 2 */
+@media (max-width: 1100px) {
+  .pf { grid-template-columns: minmax(0, 1fr); }
+  .pf-side { padding: 48px var(--section-px) 24px; border-right: 0; border-bottom: 1px solid #2a2a2c; }
+  .pf-side__list { flex-direction: row; flex-wrap: wrap; gap: 4px 24px; margin-top: 20px; }
+  .pf-main { padding: 40px var(--section-px) 80px; }
+  .pf-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .pf-tile__name { left: 16px; right: 16px; bottom: 16px; font-size: 18px; }
+}
+
+/* Celular (Mobile-antigo, 390): filtro vira lista suspensa */
+@media (max-width: 767px) {
+  .pf-side__title { font-size: 22px; }
+
+  .pf-dd {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    min-height: 50px;
+    margin-top: 16px;
+    padding: 0 16px;
+    border: 1px solid var(--gray-800);
+    border-radius: 4px;
+    background: #0c0c0e;
+    color: var(--gray-0);
+    font: 400 16px/1.4 var(--font-body);
+    text-align: left;
+    cursor: pointer;
+  }
+  .pf-side.is-open .pf-dd { border-color: #1a73e8; }
+  .pf-side.is-open .pf-dd__chev { transform: rotate(180deg); }
+
+  /* a lista só aparece com a suspensa aberta (sem JS a grade mostra tudo, como com "Todos") */
+  .pf-side__list { display: none; }
+  .pf-side.is-open .pf-side__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 4px 0 0;
+    padding: 6px 16px;
+    border: 1px solid #2a2a2c;
+    border-radius: 4px;
+    background: #0c0c0e;
+  }
+
+  .pf-wa { width: 60px; height: 60px; right: 12px; bottom: 16px; }
+  .pf-wa svg { width: 35px; height: 35px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pf-tile, .pf-tile__img, .pf-tile::after, .pf-tile__name, .pf-dd__chev, .pf-wa { transition: none; }
+  a.pf-tile:hover, a.pf-tile:focus-visible, a.pf-tile:hover .pf-tile__img { transform: none; }
+}

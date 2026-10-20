@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfólio — Sites, plataformas e onepages que entregamos · Studio Artemis</title>
+  <meta name="description" content="Projetos da Artemis no ar: sites institucionais com blog, plataformas e onepages. Navegue por categoria e abra cada projeto.">
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:wdth,wght@75..100,400..700&family=Exo:wght@400..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css?v=1792416544">
+  <link rel="stylesheet" href="assets/css/motion.css?v=1792366822">
+  <!-- Motion: liga html.motion-on antes da 1ª pintura (só com movimento liberado); volta sozinho se o motion.js não carregar -->
+  <script>(function(d){if(matchMedia('(prefers-reduced-motion: no-preference)').matches&&'IntersectionObserver' in window){d.classList.add('motion-on');setTimeout(function(){if(!window.ArtemisMotion)d.classList.remove('motion-on')},4000)}})(document.documentElement)</script>
+  <link rel="stylesheet" href="assets/css/sections/portfolio-01-grid.css?v=1792492588">
+  <link rel="stylesheet" href="assets/css/sections/portfolio-header.css?v=1792492408">
+</head>
+<body class="page-portfolio">
+
+  <!-- Header do Portfólio (layout antigo, quadro "Portfólio — layout antigo (logos)"): logo + "Comece um projeto". Fica no fluxo (não é fixo) e não tem menu: a página fica fora do menu oficial. -->
+  <header class="pf-header">
+    <div class="pf-header__in">
+      <a class="pf-header__logo" href="https://studioartemis.co/" aria-label="Studio Artemis — página inicial"><img src="assets/images/logo-artemis.svg" width="137" height="32" alt="Artemis"></a>
+      <a class="pf-start" href="https://studioartemis.co/contato"><span class="pf-start__dot" aria-hidden="true"></span>Comece um projeto</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Portfólio · layout antigo (logos) — canvas "Portfólio Artemis — nova página", quadros Desktop-copia (1440) e Mobile-antigo (390).
+         Coluna "Navegue por aqui" com o filtro por categoria (no celular vira lista suspensa) + grade de logos (4 colunas; 2 até 1100).
+         Categorias aprovadas pelo Studio em 2026-10-19 (repositório portfolio-artemis): sem a aba Plataforma — o oithe fica só em "Todos". -->
+    <section class="pf" aria-labelledby="pf-title" data-portfolio>
+      <h1 class="pf__sr" id="pf-title">Portfólio — Studio Artemis</h1>
+      <aside class="pf-side" aria-labelledby="pf-nav" data-pf-side>
+        <h2 class="pf-side__title" id="pf-nav" data-split="lines" data-motion-start="load">Navegue por aqui</h2>
+        <button class="pf-dd" type="button" aria-expanded="false" aria-controls="pf-filtros" data-pf-dd><span data-pf-dd-label>Categoria: Todos</span><svg class="pf-dd__chev" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <ul class="pf-side__list" id="pf-filtros" data-reveal-group="up" data-motion-start="load" data-motion-delay="150">
+          <li><button class="pf-chk" type="button" aria-pressed="true" data-pf-filter="todos"><span class="pf-chk__box" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6.2l2.3 2.3 4.7-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Todos</span></button></li>
+          <li><button class="pf-chk" type="button" aria-pressed="false" data-pf-filter="site"><span class="pf-chk__box" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6.2l2.3 2.3 4.7-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Site</span></button></li>
+          <li><button class="pf-chk" type="button" aria-pressed="false" data-pf-filter="onepage"><span class="pf-chk__box" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6.2l2.3 2.3 4.7-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Onepage</span></button></li>
+          <li><button class="pf-chk" type="button" aria-pressed="false" data-pf-filter="blog"><span class="pf-chk__box" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6.2l2.3 2.3 4.7-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Blog</span></button></li>
+        </ul>
+      </aside>
+      <div class="pf-main">
+        <p class="pf__sr" role="status" data-pf-status></p>
+        <ul class="pf-grid" data-reveal-group="up" data-motion-start="load" data-motion-delay="200">
+          <li data-pf-cat="site"><a class="pf-tile" href="https://expousipa.com" target="_blank" rel="noopener noreferrer" aria-label="Expo Usipa"><img class="pf-tile__img" src="assets/images/portfolio/expo-usipa.webp" width="1156" height="842" alt="" decoding="async"><span class="pf-tile__name" aria-hidden="true">Expo Usipa</span></a></li>
+          <li data-pf-cat="site"><a class="pf-tile" href="https://arvinc.com.br" target="_blank" rel="noopener noreferrer" aria-label="ARV Incorporação &amp; Tecnologia"><img class="pf-tile__img" src="assets/images/portfolio/arv.webp" width="1156" height="842" alt="" decoding="async"><span class="pf-tile__name" aria-hidden="true">ARV Incorporação &amp; Tecnologia</span></a></li>
+          <li data-pf-cat="site"><a class="pf-tile" href="https://cashway.io" target="_blank" rel="noopener noreferrer" aria-label="CashWay"><img class="pf-tile__img" src="assets/images/portfolio/cashway.webp" width="1156" height="842" alt="" decoding="async"><span class="pf-tile__name" aria-hidden="true">CashWay</span></a></li>
+          <li data-pf-cat="site"><a class="pf-tile" href="https://institucional.grupocmd.com.br" target="_blank" rel="noopener noreferrer" aria-label="Grupo CMD"><img class="pf-tile__img" src="assets/images/portfolio/grupo-cmd.webp" width="1156" height="842" alt="" decoding="async"><span class="pf-tile__name" aria-hidden="true">Grupo CMD</span></a></li>
+          <li data-pf-cat="site blog"><a class="pf-tile" href="https://3neuron.com" target="_blank" rel="noopener noreferrer" aria-label="3Neuron"><img class="pf-tile__img" src="assets/images/portfolio/3neuron.webp" width="1156" height="842" alt="" decoding="async"><span class="pf-tile__name" aria-hidden="true">3Neuron</span></a></li>
+          <li data-pf-cat="site"><a class="pf-tile" href="https://maisprevidencia.com.br" target="_blank" rel="noopener noreferrer" aria-label="Mais Previdência"><img class="pf-tile__img" src="assets/images/portfolio/mais-previdencia.webp" width="1156" height="842" alt="" decoding="async"><span class="pf-tile__name" aria-hidden="true">Mais Previdência</span></a></li>
+          <li data-pf-cat="site"><a class="pf-tile" href="https://instacont.com.br" target="_blank" rel="noopener noreferrer" aria-label="Instacont"><img class="pf-tile__img" src="assets/images/portfolio/instacont.webp" width="1156" height="842" alt="" decoding="async"><span class="pf-tile__name" aria-hidden="true">Instacont</span></a></li>
+          <li data-pf-cat="site"><a class="pf-tile" href="https://forzabr.com.br" target="_blank" rel="noopener noreferrer" aria-label="FORZA BR"><img class="pf-tile__img" src="assets/images/portfolio/forza-br.webp" width="1156" height="842" alt="" decoding="async"><span class="pf-tile__name" aria-hidden="true">FORZA BR</span></a></li>
+          <li data-pf-cat="site"><a class="pf-tile" href="https://sysmiddle.com.br" target="_blank" rel="noopener noreferrer" aria-label="SysMiddle"><img class="pf-tile__img" src="assets/images/portfolio/sysmiddle.webp" width="1156" height="842" alt="" loading="lazy" decoding="async"><span class="pf-tile__name" aria-hidden="true">SysMiddle</span></a></li>
+          <li data-pf-cat="site blog"><a class="pf-tile" href="https://voxy.com" target="_blank" rel="noopener noreferrer" aria-label="Voxy"><img class="pf-tile__img" src="assets/images/portfolio/voxy.webp" width="1156" height="842" alt="" loading="lazy" decoding="async"><span class="pf-tile__name" aria-hidden="true">Voxy</span></a></li>
+          <li data-pf-cat="site"><a class="pf-tile" href="https://esgreen.com.br" target="_blank" rel="noopener noreferrer" aria-label="ESGreen"><img class="pf-tile__img" src="assets/images/portfolio/esgreen.webp" width="1156" height="842" alt="" loading="lazy" decoding="async"><span class="pf-tile__name" aria-hidden="true">ESGreen</span></a></li>
+          <li data-pf-cat="site blog"><a class="pf-tile" href="https://bolsadeterras.com.br" target="_blank" rel="noopener noreferrer" aria-label="Bolsa de terras"><img class="pf-tile__img" src="assets/images/portfolio/bolsa-de-terras.webp" width="1156" height="842" alt="" loading="lazy" decoding="async"><span class="pf-tile__name" aria-hidden="true">Bolsa de terras</span></a></li>
+          <li data-pf-cat="onepage"><a class="pf-tile" href="https://zerosadireita.com" target="_blank" rel="noopener noreferrer" aria-label="Zeros à Direita"><img class="pf-tile__img" src="assets/images/portfolio/zeros-a-direita.webp" width="1156" height="842" alt="" loading="lazy" decoding="async"><span class="pf-tile__name" aria-hidden="true">Zeros à Direita</span></a></li>
+          <li data-pf-cat="onepage"><a class="pf-tile" href="https://www.ebrain.clinic" target="_blank" rel="noopener noreferrer" aria-label="ebrain"><img class="pf-tile__img" src="assets/images/portfolio/ebrain.webp" width="1156" height="842" alt="" loading="lazy" decoding="async"><span class="pf-tile__name" aria-hidden="true">ebrain</span></a></li>
+          <li data-pf-cat="site"><a class="pf-tile" href="https://dotelematics.com" target="_blank" rel="noopener noreferrer" aria-label="Do Telematics"><img class="pf-tile__img" src="assets/images/portfolio/do-telematics.webp" width="1156" height="842" alt="" loading="lazy" decoding="async"><span class="pf-tile__name" aria-hidden="true">Do Telematics</span></a></li>
+          <li data-pf-cat="onepage"><a class="pf-tile" href="https://www.faleup.com.br" target="_blank" rel="noopener noreferrer" aria-label="FaleUp"><img class="pf-tile__img" src="assets/images/portfolio/faleup.webp" width="1156" height="842" alt="" loading="lazy" decoding="async"><span class="pf-tile__name" aria-hidden="true">FaleUp</span></a></li>
+          <li data-pf-cat="site"><a class="pf-tile" href="https://testeskatz.artemisdigital.net" target="_blank" rel="noopener noreferrer" aria-label="Lebensart – Porsche"><img class="pf-tile__img" src="assets/images/portfolio/lebensart.webp" width="1156" height="842" alt="" loading="lazy" decoding="async"><span class="pf-tile__name" aria-hidden="true">Lebensart – Porsche</span></a></li>
+          <li data-pf-cat=""><a class="pf-tile" href="https://www.figma.com/proto/DM3eSolLKRDnMDaHOD16RM/OITHE---Sistema-Web-e-Mobile?page-id=7117%3A1772&amp;node-id=7118-1877&amp;viewport=2919%2C354%2C0.46&amp;t=SPQty4qoWcJkBhoZ-1&amp;scaling=scale-down&amp;content-scaling=fixed&amp;starting-point-node-id=7118%3A1877&amp;show-proto-sidebar=1" target="_blank" rel="noopener noreferrer" aria-label="oithe"><img class="pf-tile__img" src="assets/images/portfolio/oithe.webp" width="1156" height="842" alt="" loading="lazy" decoding="async"><span class="pf-tile__name" aria-hidden="true">oithe</span></a></li>
+          <li data-pf-cat="site"><a class="pf-tile" href="https://bidconsultoria.com" target="_blank" rel="noopener noreferrer" aria-label="BID Consultoria"><img class="pf-tile__img" src="assets/images/portfolio/bid-consultoria.webp" width="1156" height="842" alt="" loading="lazy" decoding="async"><span class="pf-tile__name" aria-hidden="true">BID Consultoria</span></a></li>
+          <li data-pf-cat="site"><a class="pf-tile" href="https://nivero.co" target="_blank" rel="noopener noreferrer" aria-label="Nivéro"><img class="pf-tile__img" src="assets/images/portfolio/nivero.webp" width="1156" height="842" alt="" loading="lazy" decoding="async"><span class="pf-tile__name" aria-hidden="true">Nivéro</span></a></li>
+          <li data-pf-cat="site"><a class="pf-tile" href="https://intactaengenharia.com.br" target="_blank" rel="noopener noreferrer" aria-label="Intacta"><img class="pf-tile__img" src="assets/images/portfolio/intacta.webp" width="1156" height="842" alt="" loading="lazy" decoding="async"><span class="pf-tile__name" aria-hidden="true">Intacta</span></a></li>
+          <li data-pf-cat="site blog"><a class="pf-tile" href="https://consultoriaglobalsupply.com.br" target="_blank" rel="noopener noreferrer" aria-label="Global Supply"><img class="pf-tile__img" src="assets/images/portfolio/global-supply.webp" width="1156" height="842" alt="" loading="lazy" decoding="async"><span class="pf-tile__name" aria-hidden="true">Global Supply</span></a></li>
+          <li data-pf-cat="site"><a class="pf-tile" href="https://lf.arq.br" target="_blank" rel="noopener noreferrer" aria-label="Lorenza Franceschi"><img class="pf-tile__img" src="assets/images/portfolio/lorenza-franceschi.webp" width="1156" height="842" alt="" loading="lazy" decoding="async"><span class="pf-tile__name" aria-hidden="true">Lorenza Franceschi</span></a></li>
+        </ul>
+      </div>
+    </section>
+
+    <a class="pf-wa" href="https://wa.me/554800000000" target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp"><svg width="44" height="44" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg></a>
+  </main>
+
+  <script src="assets/js/main.js?v=1792414817" defer></script>
+  <script src="assets/js/motion.js?v=1792413390" defer></script>
+  <script src="assets/js/sections/portfolio-01-grid.js?v=1792491769" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,172 @@
+/* Studio Artemis — motion.css: estados e animações da biblioteca assets/js/motion.js (catálogo em MODEL.md › Motion).
+   Tudo que esconde fica atrás de html.motion-on (ligado no <head> só com prefers-reduced-motion: no-preference)
+   e some com .is-done: em repouso, sem JS, com movimento reduzido e na impressão a página é a do Figma.
+   Só transform-like (translate/scale), opacity e clip-path; nada muda o tamanho da caixa (sem CLS). */
+
+:root { --motion-ease: cubic-bezier(.25, .6, .3, 1); }
+
+/* --------------------------------------------------------------------------
+   Entradas — data-reveal (estado inicial só enquanto não entrou)
+   -------------------------------------------------------------------------- */
+.motion-on [data-reveal]:not(.is-in):not(.is-done) { opacity: 0; }
+.motion-on [data-reveal="rise"]:not(.is-in):not(.is-done) { opacity: 1; translate: 0 32px; }
+.motion-on [data-reveal="grow-x"]:not(.is-in):not(.is-done) { opacity: 1; scale: 0 1; }
+.motion-on [data-reveal="grow-y"]:not(.is-in):not(.is-done) { opacity: 1; scale: 1 0; }
+
+.motion-on [data-reveal].is-in { animation: m-up .9s var(--motion-ease) var(--m-delay, 0ms) both; }
+.motion-on [data-reveal="diag"].is-in { animation-name: m-diag; }
+.motion-on [data-reveal="fade"].is-in { animation-name: m-fade; animation-duration: .7s; }
+.motion-on [data-reveal="pop"].is-in { animation-name: m-pop; animation-duration: .8s; }
+.motion-on [data-reveal="rise"].is-in { animation-name: m-rise; animation-duration: 1.1s; }
+.motion-on [data-reveal="grow-x"].is-in { animation-name: m-grow-x; }
+.motion-on [data-reveal="grow-y"].is-in { animation-name: m-grow-y; }
+
+[data-reveal="grow-x"] { transform-origin: left center; }
+[data-reveal="grow-x"][data-origin="right"] { transform-origin: right center; }
+[data-reveal="grow-x"][data-origin="center"] { transform-origin: center; }
+[data-reveal="grow-y"] { transform-origin: center top; }
+[data-reveal="grow-y"][data-origin="bottom"] { transform-origin: center bottom; }
+[data-reveal="grow-y"][data-origin="center"] { transform-origin: center; }
+
+@keyframes m-up { from { opacity: 0; translate: 0 24px; } }
+@keyframes m-diag { from { opacity: 0; translate: -32px 24px; } }
+@keyframes m-fade { from { opacity: 0; } }
+@keyframes m-pop { from { opacity: 0; scale: .9; } }
+@keyframes m-rise { from { translate: 0 32px; } }
+@keyframes m-grow-x { from { scale: 0 1; } }
+@keyframes m-grow-y { from { scale: 1 0; } }
+
+/* --------------------------------------------------------------------------
+   Título por linhas — data-split="lines" (o JS fixa as quebras do repouso e devolve o HTML no fim)
+   -------------------------------------------------------------------------- */
+.motion-on [data-split]:not(.is-split):not(.is-done) { opacity: 0; }
+.m-w {
+  display: inline-block;
+  vertical-align: top;
+  overflow: clip;
+  padding-bottom: .12em; /* respiro para os descendentes (g, p, ç) dentro da máscara */
+  margin-bottom: -.12em;
+}
+.m-w__i { display: inline-block; }
+.motion-on [data-split].is-split:not(.is-in) .m-w__i { translate: 0 110%; }
+.motion-on [data-split].is-in .m-w__i {
+  animation: m-line .9s var(--motion-ease) both;
+  animation-delay: calc(var(--m-delay, 0ms) + var(--m-line, 0) * 80ms);
+}
+@keyframes m-line { from { translate: 0 110%; } }
+
+/* --------------------------------------------------------------------------
+   Cortina — data-wipe (máscara que abre na direção pedida) · data-wipe-zoom assenta a 1ª imagem
+   Máscara, não clip-path: no Chrome a IntersectionObserver aplica o clip-path do próprio alvo — com o recorte
+   fechado o elemento contava como fora da tela e, depois de voltar ao início (repetição), nunca mais tocava.
+   -------------------------------------------------------------------------- */
+.motion-on [data-wipe] { --m-mpos: 0 0; --m-mfrom: 0% 100%; }        /* right: abre da esquerda para a direita */
+.motion-on [data-wipe="left"] { --m-mpos: 100% 0; }
+.motion-on [data-wipe="up"] { --m-mpos: 0 100%; --m-mfrom: 100% 0%; } /* abre de baixo para cima */
+.motion-on [data-wipe="down"] { --m-mfrom: 100% 0%; }
+.motion-on [data-wipe="out"] { --m-mpos: 50% 0; }                    /* abre do centro para as bordas */
+.motion-on [data-wipe]:not(.is-done) {
+  -webkit-mask: linear-gradient(#000, #000) var(--m-mpos) / var(--m-mfrom) no-repeat;
+  mask: linear-gradient(#000, #000) var(--m-mpos) / var(--m-mfrom) no-repeat;
+}
+.motion-on [data-wipe].is-in { animation: m-wipe 1s var(--motion-ease) var(--m-delay, 0ms) both; }
+.motion-on [data-wipe-zoom].is-in img { animation: m-settle 1.3s var(--motion-ease) var(--m-delay, 0ms) both; }
+
+@keyframes m-wipe { to { -webkit-mask-size: 100% 100%; mask-size: 100% 100%; } }
+@keyframes m-settle { from { scale: 1.06; } }
+
+/* --------------------------------------------------------------------------
+   Contador e digitação
+   -------------------------------------------------------------------------- */
+/* Contém o .m-sr (absolute): sem ancestral posicionado ele escapa do clip do main e alarga a página no celular */
+[data-type], [data-count] { position: relative; }
+.m-count { display: inline-block; text-align: right; }
+.m-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+.motion-on [data-type].is-typing-ready:not(.is-in) .m-c { opacity: 0; }
+.motion-on [data-type].is-in .m-c {
+  animation: m-fade .12s linear both;
+  animation-delay: calc(var(--m-delay, 0ms) + var(--m-i, 0) * 18ms);
+}
+
+/* --------------------------------------------------------------------------
+   Hover só em link e botão (Regra de hover)
+   -------------------------------------------------------------------------- */
+/* Botão: o rótulo sobe e a cópia (text-shadow) ocupa o lugar. A máscara tem a altura da linha do .btn (1,5em). */
+.m-roll { display: inline-block; vertical-align: top; height: 1.5em; overflow: clip; }
+.m-roll__in { display: block; text-shadow: 0 1.5em currentColor; }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .m-roll__in { transition: translate .45s var(--motion-ease); }
+  .btn:hover .m-roll__in,
+  .btn:focus-visible .m-roll__in { translate: 0 -1.5em; }
+}
+
+/* Link de texto: sublinhado que cresce da esquerda (o link atual, aria-current, fica como no Figma) */
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  :is(.site-nav a, .site-header__cta, .site-footer__legal-links a, [data-hover="line"]):not([aria-current]) {
+    background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+    transition: background-size .35s var(--motion-ease), color .2s ease;
+  }
+  :is(.site-nav a, .site-header__cta, .site-footer__legal-links a, [data-hover="line"]):not([aria-current]):hover {
+    background-size: 100% 1px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Menu do celular: os links chegam um por vez ao abrir a gaveta
+   -------------------------------------------------------------------------- */
+@media (max-width: 767px) and (prefers-reduced-motion: no-preference) {
+  .site-header__drawer.is-open .site-header__menu a,
+  .site-header__drawer.is-open .site-header__contact {
+    animation: m-drawer .3s var(--motion-ease) both;
+  }
+  .site-header__drawer.is-open .site-header__menu a:nth-child(1) { animation-delay: .12s; }
+  .site-header__drawer.is-open .site-header__menu a:nth-child(2) { animation-delay: .16s; }
+  .site-header__drawer.is-open .site-header__menu a:nth-child(3) { animation-delay: .2s; }
+  .site-header__drawer.is-open .site-header__menu a:nth-child(4) { animation-delay: .24s; }
+  .site-header__drawer.is-open .site-header__menu a:nth-child(5) { animation-delay: .28s; }
+  .site-header__drawer.is-open .site-header__menu a:nth-child(6) { animation-delay: .32s; }
+  .site-header__drawer.is-open .site-header__menu a:nth-child(7) { animation-delay: .36s; }
+  .site-header__drawer.is-open .site-header__contact { animation-delay: .4s; }
+}
+@keyframes m-drawer { from { opacity: 0; translate: -12px 0; } }
+
+/* --------------------------------------------------------------------------
+   Loops com tempo (data-loop): as seções ligam a animação infinita só com .is-looping
+   -------------------------------------------------------------------------- */
+.cta__status:not(.is-looping) .cta__led,
+.newsletter__status:not(.is-looping) .newsletter__led { animation: none; } /* LED aceso (quadro do Figma) fora do tempo */
+.cta__pattern.is-live:not(.is-looping) .cta__dash-row path:not(.is-lit) { animation: none; }
+
+/* --------------------------------------------------------------------------
+   Transição entre páginas (View Transitions entre documentos) — header parado, conteúdo em fade curto
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+  .site-header { view-transition-name: site-header; }
+  ::view-transition-old(root) { animation: m-vt-out .18s ease both; }
+  ::view-transition-new(root) { animation: m-vt-in .26s var(--motion-ease) both; }
+}
+@keyframes m-vt-out { to { opacity: 0; } }
+@keyframes m-vt-in { from { opacity: 0; translate: 0 8px; } }
+
+/* --------------------------------------------------------------------------
+   Impressão: tudo no repouso
+   -------------------------------------------------------------------------- */
+@media print {
+  .motion-on [data-reveal],
+  .motion-on [data-split],
+  .motion-on [data-wipe],
+  .motion-on [data-wipe] img,
+  .motion-on .m-w__i,
+  .motion-on .m-c { opacity: 1 !important; translate: none !important; scale: none !important; clip-path: none !important; -webkit-mask: none !important; mask: none !important; animation: none !important; }
+}

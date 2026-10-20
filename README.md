@@ -1,5 +1,14 @@
 # Portfólio — Studio Artemis (prévia separada do site)
 
+> **2026-10-20 — layout escolhido: o antigo (logos).** A raiz do Pages
+> (https://joseluizdev123.github.io/portfolio-artemis/) mostra agora o quadro *Portfólio — layout antigo (logos)* do mesmo
+> artefato, já integrado ao site oficial em `site_artemis` (página `/portfolio/`, link no rodapé). A pasta
+> [`layout-antigo/`](layout-antigo/) é gerada lá — `python tools/build_portfolio_standalone.py --out <este repo>/layout-antigo` —
+> e não se edita aqui. Categorias = as aprovadas pelo Studio em 2026-10-19 (`src/projetos.json`), sem a aba Plataforma.
+>
+> O layout descrito abaixo (o "novo", com capturas) continua no repositório e publicado em
+> https://joseluizdev123.github.io/portfolio-artemis/layout-novo/.
+
 Página **Portfólio** do Studio Artemis, implementada pixel a pixel a partir do design feito no Claude Design
 (artefato *Portfólio Artemis — nova página*, cópia em [`design/`](design/)).
 
